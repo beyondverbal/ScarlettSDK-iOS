@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SCAResponseStatuses : NSObject
-
-@end
+extern NSString* const kResponseStatusSucceed;
+extern NSString* const kResponseStatusFailure;

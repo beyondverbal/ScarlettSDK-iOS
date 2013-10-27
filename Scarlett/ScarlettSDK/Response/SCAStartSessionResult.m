@@ -8,9 +8,6 @@
 
 #import "SCAStartSessionResult.h"
 
-NSString* const kStatusSucceed = @"success";
-NSString* const kStatusFailure = @"failure";
-
 @implementation SCAStartSessionResult
 
 -(id)initWithResponseData:(NSData*)responseData
@@ -23,13 +20,13 @@ NSString* const kStatusFailure = @"failure";
         
         self.status = [dictionary objectForKey:@"status"];
         
-        if([self.status isEqualToString:kStatusSucceed])
+        if([self.status isEqualToString:kResponseStatusSucceed])
         {
             NSDictionary *followupActionsDictionary = [dictionary objectForKey:@"followupActions"];
             
             self.followupActions = [[SCAFollowupActions alloc] initWithDictionary:followupActionsDictionary];
         }
-        else if ([self.status isEqualToString:kStatusFailure])
+        else if ([self.status isEqualToString:kResponseStatusFailure])
         {
             self.reason = [dictionary objectForKey:@"reason"];
         }
@@ -43,7 +40,7 @@ NSString* const kStatusFailure = @"failure";
 
 -(BOOL)isSucceed
 {
-    return [self.status isEqualToString:kStatusSucceed];
+    return [self.status isEqualToString:kResponseStatusSucceed];
 }
 
 @end

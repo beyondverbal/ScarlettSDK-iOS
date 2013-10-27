@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SCAFollowupActions.h"
+#import "SCAResponseStatuses.h"
 
 @interface SCAStartSessionResult : NSObject
 

@@ -143,12 +143,13 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
 -(void)getAnalysisSucceed:(NSData *)responseData
 {
     //TODO: parse response
+    SCAAnalysisResult *analysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
     
     id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
     NSLog(@"analysisSucceed %@", jsonObject);
     
-    [self.delegate getAnalysisSucceed];
+    [self.delegate getAnalysisSucceed:analysisResult];
 }
 
 -(void)getAnalysisFailed:(NSError *)error

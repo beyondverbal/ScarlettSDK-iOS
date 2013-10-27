@@ -14,8 +14,29 @@
 {
     if(self = [super init])
     {
-        //TODO: parse analysis results
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
         
+        NSLog(@"SCAAnalysisResult %@", jsonObject);
+        
+        NSDictionary *dictionary = (NSDictionary*)jsonObject;
+        
+        
+//        self.status = [dictionary objectForKey:@"status"];
+//        
+//        if([self.status isEqualToString:kResponseStatusSucceed])
+//        {
+//            NSDictionary *followupActionsDictionary = [dictionary objectForKey:@"followupActions"];
+//            
+//            self.followupActions = [[SCAFollowupActions alloc] initWithDictionary:followupActionsDictionary];
+//        }
+//        else if ([self.status isEqualToString:kResponseStatusFailure])
+//        {
+//            self.reason = [dictionary objectForKey:@"reason"];
+//        }
+//        else
+//        {
+//            @throw([NSException exceptionWithName:@"Unknown status" reason:@"Unknow status received from server: " userInfo:nil]);
+//        }
     }
     return self;
 }

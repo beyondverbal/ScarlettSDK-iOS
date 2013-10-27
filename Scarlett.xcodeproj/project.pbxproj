@@ -17,6 +17,8 @@
 		652798B01816917800D54EE4 /* SCAStreamPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798AB1816917300D54EE4 /* SCAStreamPostManager.m */; };
 		652798B41816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */; };
 		652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */; };
+		657FCA8F181D27DE002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */; };
+		657FCA90181D27DE002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -96,6 +98,8 @@
 		652798B11816A55D00D54EE4 /* SCAAnalysisResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponder.h; sourceTree = "<group>"; };
 		652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisResponder.m; sourceTree = "<group>"; };
 		652798B31816A55E00D54EE4 /* SCAAnalysisResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponderDelegate.h; sourceTree = "<group>"; };
+		657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAResponseStatuses.h; sourceTree = "<group>"; };
+		657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAResponseStatuses.m; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -275,8 +279,6 @@
 			children = (
 				65C5F6CB1813C5D10012328F /* SCAAnalysisCollection.h */,
 				65C5F6CC1813C5D10012328F /* SCAAnalysisCollection.m */,
-				65C5F6CD1813C5D10012328F /* SCAAnalysisResult.h */,
-				65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */,
 				65C5F6CF1813C5D10012328F /* SCACompositStringAnalysis.h */,
 				65C5F6D01813C5D10012328F /* SCACompositStringAnalysis.m */,
 				65C5F6D11813C5D10012328F /* SCAFloatAnalysis.h */,
@@ -285,12 +287,16 @@
 				65C5F6D41813C5D10012328F /* SCAFollowupActions.m */,
 				65C5F6D51813C5D10012328F /* SCAHeirarchyStringAnalysis.h */,
 				65C5F6D61813C5D10012328F /* SCAHeirarchyStringAnalysis.m */,
-				65C5F6D71813C5D10012328F /* SCAStartSessionResult.h */,
-				65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */,
 				65C5F6D91813C5D10012328F /* SCASegment.h */,
 				65C5F6DA1813C5D10012328F /* SCASegment.m */,
 				65C5F6DB1813C5D10012328F /* SCAStringAnalysis.h */,
 				65C5F6DC1813C5D10012328F /* SCAStringAnalysis.m */,
+				65C5F6D71813C5D10012328F /* SCAStartSessionResult.h */,
+				65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */,
+				65C5F6CD1813C5D10012328F /* SCAAnalysisResult.h */,
+				65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */,
+				657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */,
+				657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 				65C5F6F61813C5D10012328F /* SCAGeoLocation.m in Sources */,
 				652798B41816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
 				65C5F70C1813C5D10012328F /* SCAStartSessionResult.m in Sources */,
+				657FCA8F181D27DE002DA371 /* SCAResponseStatuses.m in Sources */,
 				652798AD1816917600D54EE4 /* NSStream_BoundPairAdditions.m in Sources */,
 				65C5F6FC1813C5D10012328F /* SCASessionParameters.m in Sources */,
 				65C5F78B181424A70012328F /* SCAStartSessionResponder.m in Sources */,
@@ -487,6 +494,7 @@
 				65C5F6F71813C5D10012328F /* SCAGeoLocation.m in Sources */,
 				652798AE1816917800D54EE4 /* NSStream_BoundPairAdditions.m in Sources */,
 				65C5F7071813C5D10012328F /* SCAFloatAnalysis.m in Sources */,
+				657FCA90181D27DE002DA371 /* SCAResponseStatuses.m in Sources */,
 				65C5F787181412D30012328F /* SCAUrlRequest.m in Sources */,
 				65C5F79218151FC40012328F /* SCAUpStreamVoiceResponder.m in Sources */,
 				65C5F6F91813C5D10012328F /* SCARecorderInfo.m in Sources */,

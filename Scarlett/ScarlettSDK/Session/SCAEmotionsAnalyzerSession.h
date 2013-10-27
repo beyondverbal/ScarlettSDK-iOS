@@ -15,6 +15,7 @@
 #import "SCAUpStreamVoiceResponder.h"
 #import "SCAAnalysisResponder.h"
 #import "SCAStartSessionResult.h"
+#import "SCAAnalysisResult.h"
 #import "SCAStreamPostManager.h"
 
 @interface SCAEmotionsAnalyzerSession : NSObject<SCAStartSessionResponderDelegate, SCAUpStreamVoiceResponderDelegate, SCAAnalysisResponderDelegate>

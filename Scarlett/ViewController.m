@@ -145,12 +145,12 @@ void AudioOutputCallback(void * inUserData,
     [self.emotionsAnalyzerSession getAnalysis];
 }
 
--(void)analysisSucceed
+-(void)getAnalysisSucceed:(SCAAnalysisResult *)analysisResult
 {
     //TODO: display results
 }
 
--(void)analysisFailed:(NSString *)errorDescription
+-(void)getAnalysisFailed:(NSString *)errorDescription
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error getting analysis" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
@@ -264,7 +264,7 @@ void AudioOutputCallback(void * inUserData,
     
     SCASessionParameters *sessionParameters = [[SCASessionParameters alloc] initWithDataFormat:dataFormat recorderInfo:recorderInfo requiredAnalysisTypes:requiredAnalysis];
     
-    self.emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:kApiKey timeoutInterval:30 delegate:self];
+    self.emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:kApiKey requestTimeout:130.0 getAnalysisTimeInterval:5.0 delegate:self];
     [self.emotionsAnalyzerSession startSession];
 }
 

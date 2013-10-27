@@ -8,6 +8,5 @@
 
 #import "SCAResponseStatuses.h"
 
-@implementation SCAResponseStatuses
-
-@end
+NSString* const kResponseStatusSucceed = @"success";
+NSString* const kResponseStatusFailure = @"failure";
