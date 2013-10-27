@@ -24,22 +24,6 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
         
         self.bufferOffset = 0;
         self.bufferLimit  = 0;
-        
-//        NSString *boundaryString = [self generateBoundaryString];
-//        NSString *bodyPrefixString = [NSString stringWithFormat:
-//                         @
-//                         "\r\n"
-//                         "--%@\r\n"
-//                         "Content-Disposition: form-data; name=\"fileContents\"; filename=\"%@.wav\"\r\n"
-//                         "Content-Type: %@\r\n"
-//                         "\r\n",
-//                         boundaryString,
-//                         boundaryString,
-//                         @"audio/x-wav"
-//                         ];
-//        self.bodyPrefixData = [bodyPrefixString dataUsingEncoding:NSASCIIStringEncoding];
-//        self.buffer      = [self.bodyPrefixData bytes];
-//        self.bufferLimit = [self.bodyPrefixData length];
     }
     return self;
 }
@@ -71,19 +55,6 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     NSInputStream *         consStream;
     NSOutputStream *        prodStream;
     
-//    assert(self.connection == nil);         // don't tap send twice in a row!
-//    assert(self.bodyPrefixData == nil);     // ditto
-//    assert(self.fileStream == nil);         // ditto
-//    assert(self.bodySuffixData == nil);     // ditto
-//    assert(self.consumerStream == nil);     // ditto
-//    assert(self.producerStream == nil);     // ditto
-//    assert(self.buffer == NULL);            // ditto
-//    assert(self.bufferOnHeap == NULL);      // ditto
-    
-    // Open producer/consumer streams.  We open the producerStream straight
-    // away.  We leave the consumerStream alone; NSURLConnection will deal
-    // with it.
-    
     [NSStream createBoundInputStream:&consStream outputStream:&prodStream bufferSize:kPostBufferSize];
     assert(consStream != nil);
     assert(prodStream != nil);
@@ -94,15 +65,11 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     [self.producerStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self.producerStream open];
     
-    // Open a connection for the URL, configured to POST the file.
     request = [NSMutableURLRequest requestWithURL:myURL];
     request.timeoutInterval = 100000; //TODO: check how to make infinite timeout
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBodyStream:self.consumerStream];
-    
-//    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=\"%@\"", boundaryStr] forHTTPHeaderField:@"Content-Type"];
-//    [request setValue:[NSString stringWithFormat:@"%llu", bodyLength] forHTTPHeaderField:@"Content-Length"];
     
     self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
     assert(self.connection != nil);
@@ -122,24 +89,20 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     self.bufferOffset = 0;
     self.bufferLimit  = 0;
     
-//    if (self.connection != nil)
-//    {
-//        [self.connection cancel];
-//        self.connection = nil;
-//    }
-    
-    self.bodyPrefixData = nil;
+    if (self.connection != nil)
+    {
+        [self.connection cancel];
+        self.connection = nil;
+    }
     
     if (self.producerStream != nil)
     {
         self.producerStream.delegate = nil;
         [self.producerStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [self.producerStream close];
-//        self.producerStream = nil;
     }
     
     self.consumerStream = nil;
-    self.bodySuffixData = nil;
 }
 
 -(void)appendPostData:(NSData*)data
@@ -165,68 +128,7 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
             break;
             
         case NSStreamEventHasSpaceAvailable:
-
             [self checkForNewPostDataToWrite];
-            
-//            // Check to see if we've run off the end of our buffer.  If we have,
-//            // work out the next buffer of data to send.
-//            
-//            if (self.bufferOffset == self.bufferLimit)
-//            {
-//                NSUInteger postDataLength = [self.postData length];
-//                
-//                NSLog(@"---------- postDataLength %d --------------", postDataLength);
-//                
-//                if(postDataLength > 0)
-//                {
-//                    NSUInteger bytesRead = postDataLength;
-//                    
-//                    if(bytesRead > kPostBufferSize)
-//                    {
-//                        bytesRead = kPostBufferSize;
-//                    }
-//                    
-//                    [self.postData getBytes:self.bufferOnHeap length:bytesRead];
-//                    
-//                    NSUInteger bytesLeft = postDataLength - bytesRead;
-//                    
-//                    NSLog(@"---------- bytesRead-bytesLeft %d-%d", bytesRead, bytesLeft);
-//                    NSLog(@"---------- postData %d", [self.postData length]);
-//                    
-//                    NSData *subData = [self.postData subdataWithRange:NSMakeRange(bytesRead, bytesLeft)];
-//                    
-//                    self.postData = [NSMutableData dataWithData:subData];
-//                    
-//                    NSLog(@"---------- postData %d", [self.postData length]);
-//
-//                    self.bufferOffset = 0;
-//                    self.bufferLimit  = bytesRead;
-//                }
-//            }
-//            
-//            // Send the next chunk of data in our buffer.
-//            if (self.bufferOffset != self.bufferLimit)
-//            {
-//                NSInteger bytesWritten = [self.producerStream write:&self.buffer[self.bufferOffset] maxLength:self.bufferLimit - self.bufferOffset];
-//                
-//                NSLog(@"---------- bytesWritten %d --------------", bytesWritten);
-//                
-//                if (bytesWritten <= 0)
-//                {
-//                    [self stopSend];
-//                    [self.delegate streamFailed:@"Network write error"];
-//                }
-//                else
-//                {
-//                    self.bufferOffset += bytesWritten;
-//                }
-//            }
-//            else
-//            {
-//                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkForNewPostDataToWrite) object:nil];
-//                [self performSelector:@selector(checkForNewPostDataToWrite) withObject:nil afterDelay:kCheckForNewPostDataToWrite];
-//            }
-            
             break;
             
         case NSStreamEventErrorOccurred:

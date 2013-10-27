@@ -10,4 +10,14 @@
 
 @implementation SCAAnalysisResult
 
+-(id)initWithResponseData:(NSData*)responseData
+{
+    if(self = [super init])
+    {
+        //TODO: parse analysis results
+        
+    }
+    return self;
+}
+
 @end

@@ -13,4 +13,6 @@
 @property (nonatomic) unsigned long durationProcessed;
 @property (nonatomic, strong) NSArray *analysisSegments;
 
+-(id)initWithResponseData:(NSData*)responseData;
+
 @end

@@ -15,7 +15,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
 
 -(id)initWithSessionParameters:(SCASessionParameters*)sessionParameters
                         apiKey:(NSString*)apiKey
-               timeoutInterval:(NSTimeInterval)timeoutInterval
+                requestTimeout:(NSTimeInterval)requestTimeout
+       getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                       delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate
 {
     if(self = [super init])
@@ -32,7 +33,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
         _sessionParameters = sessionParameters;
         _apiKey = apiKey;
         
-        self.timeoutInterval = timeoutInterval;
+        self.requestTimeout = requestTimeout;
+        self.getAnalysisTimeInterval = getAnalysisTimeInterval;
     }
     return self;
 }
@@ -53,7 +55,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     
     NSString *url = [NSString stringWithFormat:SCAStartSessionUrlFormat, _apiKey];
     
-    [request loadWithUrl:url body:bodyData timeoutInterval:self.timeoutInterval isStream:NO httpMethod:@"POST" delegate:self.startSessionResponder];
+    [request loadWithUrl:url body:bodyData timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"POST" delegate:self.startSessionResponder];
 }
 
 -(void)startSessionSucceed:(NSData *)responseData
@@ -63,10 +65,6 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     if([_startSessionResult isSucceed])
     {
         [self.delegate startSessionSucceed];
-        
-        self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
-        
-        [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
     }
     else
     {
@@ -74,19 +72,43 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     }
 }
 
--(void)stopSession
-{
-    [self.streamPostManager stopSend];
-}
-
 -(void)startSessionFailed:(NSError*)error
 {
     [self.delegate startSessionFailed:[error localizedDescription]];
 }
 
+-(void)stopSession
+{
+    [self.streamPostManager stopSend];
+    
+    self.streamPostManager = nil;
+    
+    [self.getAnalysisTimer invalidate];
+    
+    self.getAnalysisTimer = nil;
+}
+
 -(void)upStreamVoiceData:(NSData*)voiceData
-{   
+{
+    if(!self.streamPostManager)
+    {
+        self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
+        
+        [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
+        
+        self.getAnalysisTimer = [NSTimer scheduledTimerWithTimeInterval:self.getAnalysisTimeInterval
+                                                                 target:self
+                                                               selector:@selector(getAnalysisExecute:)
+                                                               userInfo:nil
+                                                                repeats:YES];
+    }
+    
     [self.streamPostManager appendPostData:voiceData];
+}
+
+-(void)getAnalysisExecute:(NSTimer *)timer
+{
+    [self getAnalysis];
 }
 
 -(void)upStreamVoiceSucceed:(NSData *)responseData
@@ -115,7 +137,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     
     NSLog(@"getAnalysis %@", url);
     
-    [request loadWithUrl:url body:nil timeoutInterval:self.timeoutInterval isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
+    [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
 }
 
 -(void)getAnalysisSucceed:(NSData *)responseData
@@ -126,14 +148,14 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     
     NSLog(@"analysisSucceed %@", jsonObject);
     
-    [self.delegate analysisSucceed];
+    [self.delegate getAnalysisSucceed];
 }
 
 -(void)getAnalysisFailed:(NSError *)error
 {
     NSLog(@"analysisFailed %@", [error localizedDescription]);
     
-    [self.delegate analysisFailed:[error localizedDescription]];
+    [self.delegate getAnalysisFailed:[error localizedDescription]];
 }
 
 @end

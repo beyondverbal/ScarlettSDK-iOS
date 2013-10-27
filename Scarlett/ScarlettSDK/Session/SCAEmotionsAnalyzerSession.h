@@ -30,11 +30,14 @@
 @property (nonatomic, strong) SCAUpStreamVoiceResponder *upStreamVoiceResponder;
 @property (nonatomic, strong) SCAAnalysisResponder *analysisResponder;
 @property (nonatomic, strong) SCAStreamPostManager *streamPostManager;
-@property (nonatomic) NSTimeInterval timeoutInterval;
+@property (nonatomic) NSTimeInterval requestTimeout;
+@property (nonatomic) NSTimeInterval getAnalysisTimeInterval;
+@property (nonatomic, retain) NSTimer *getAnalysisTimer;
 
 -(id)initWithSessionParameters:(SCASessionParameters*)sessionParameters
                         apiKey:(NSString*)apiKey
-               timeoutInterval:(NSTimeInterval)timeoutInterval
+                requestTimeout:(NSTimeInterval)requestTimeout
+       getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                       delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate;
 -(void)startSession;
 -(void)stopSession;

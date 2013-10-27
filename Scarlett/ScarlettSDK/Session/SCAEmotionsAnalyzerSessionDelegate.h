@@ -14,8 +14,8 @@
 -(void)startSessionFailed:(NSString*)errorDescription;
 -(void)upStreamVoiceDataSucceed;
 -(void)upStreamVoiceDataFailed:(NSString*)errorDescription;
--(void)analysisSucceed;
--(void)analysisFailed:(NSString*)errorDescription;
+-(void)getAnalysisSucceed;
+-(void)getAnalysisFailed:(NSString*)errorDescription;
 -(void)voteSucceed;
 -(void)voteFailed;
 -(void)newAnalysisRecieved;
