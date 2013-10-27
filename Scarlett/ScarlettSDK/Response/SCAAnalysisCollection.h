@@ -19,4 +19,6 @@
 @property (nonatomic, strong) SCACompositStringAnalysis *compositMood;
 @property (nonatomic, strong) SCACompositStringAnalysis *moodGroup;
 
+-(id)initWithDictionary:(NSDictionary*)dictionary;
+
 @end

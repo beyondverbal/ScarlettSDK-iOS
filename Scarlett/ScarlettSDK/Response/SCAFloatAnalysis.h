@@ -12,4 +12,6 @@
 
 @property (nonatomic) float value;
 
+-(id)initWithDictionary:(NSDictionary*)dictionary;
+
 @end

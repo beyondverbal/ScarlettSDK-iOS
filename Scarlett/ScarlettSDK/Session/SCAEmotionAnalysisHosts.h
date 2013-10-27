@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SCAEmotionAnalysisHosts : NSObject
-
-@end
+extern NSString* const kEmotionAnalysisHostBeta;
+extern NSString* const kEmotionAnalysisHostProduction;

@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSString *primary;
 @property (nonatomic, strong) NSString *secondary;
 
+-(id)initWithDictionary:(NSDictionary*)dictionary;
+
 @end

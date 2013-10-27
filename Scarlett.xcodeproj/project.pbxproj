@@ -19,6 +19,8 @@
 		652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */; };
 		657FCA8F181D27DE002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */; };
 		657FCA90181D27DE002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */; };
+		657FCA93181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */; };
+		657FCA94181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -100,6 +102,8 @@
 		652798B31816A55E00D54EE4 /* SCAAnalysisResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponderDelegate.h; sourceTree = "<group>"; };
 		657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAResponseStatuses.h; sourceTree = "<group>"; };
 		657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAResponseStatuses.m; sourceTree = "<group>"; };
+		657FCA91181D3113002DA371 /* SCAEmotionAnalysisHosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionAnalysisHosts.h; sourceTree = "<group>"; };
+		657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionAnalysisHosts.m; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -291,12 +295,12 @@
 				65C5F6DA1813C5D10012328F /* SCASegment.m */,
 				65C5F6DB1813C5D10012328F /* SCAStringAnalysis.h */,
 				65C5F6DC1813C5D10012328F /* SCAStringAnalysis.m */,
+				657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */,
+				657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */,
 				65C5F6D71813C5D10012328F /* SCAStartSessionResult.h */,
 				65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */,
 				65C5F6CD1813C5D10012328F /* SCAAnalysisResult.h */,
 				65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */,
-				657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */,
-				657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -316,6 +320,8 @@
 				652798B11816A55D00D54EE4 /* SCAAnalysisResponder.h */,
 				652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */,
 				652798B31816A55E00D54EE4 /* SCAAnalysisResponderDelegate.h */,
+				657FCA91181D3113002DA371 /* SCAEmotionAnalysisHosts.h */,
+				657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				65C5F7001813C5D10012328F /* SCAAnalysisCollection.m in Sources */,
 				65C5F6FA1813C5D10012328F /* SCARequiredAnalysis.m in Sources */,
 				65C5F7021813C5D10012328F /* SCAAnalysisResult.m in Sources */,
+				657FCA93181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
 				65C5F7101813C5D10012328F /* SCAStringAnalysis.m in Sources */,
 				65C5F7171813C9330012328F /* SCABaseDataFormat.m in Sources */,
 				65C5F6F61813C5D10012328F /* SCAGeoLocation.m in Sources */,
@@ -510,6 +517,7 @@
 				65C5F7091813C5D10012328F /* SCAFollowupActions.m in Sources */,
 				65C5F70F1813C5D10012328F /* SCASegment.m in Sources */,
 				65C5F7181813C9330012328F /* SCABaseDataFormat.m in Sources */,
+				657FCA94181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
 				65C5F6FD1813C5D10012328F /* SCASessionParameters.m in Sources */,
 				65C5F71C1813C9A30012328F /* SCAPcmDataFormat.m in Sources */,
 			);

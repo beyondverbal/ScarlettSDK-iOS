@@ -10,4 +10,13 @@
 
 @implementation SCAFloatAnalysis
 
+-(id)initWithDictionary:(NSDictionary*)dictionary
+{
+    if(self = [super init])
+    {
+        self.value = [[dictionary objectForKey:@"value"] floatValue];
+    }
+    return self;
+}
+
 @end

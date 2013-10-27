@@ -10,4 +10,15 @@
 
 @implementation SCASegment
 
+-(id)initWithDictionary:(NSDictionary*)dictionary
+{
+    if(self = [super init])
+    {
+        self.duration = [[dictionary objectForKey:@"duration"] unsignedLongValue];
+        self.offset = [[dictionary objectForKey:@"offset"] unsignedLongValue];
+        self.analysis = [[SCAAnalysisCollection alloc] initWithDictionary:[dictionary objectForKey:@"analysis"]];
+    }
+    return self;
+}
+
 @end

@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) SCAHeirarchyStringAnalysis *value;
 
+-(id)initWithDictionary:(NSDictionary*)dictionary;
+
 @end

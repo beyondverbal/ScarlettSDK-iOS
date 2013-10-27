@@ -20,23 +20,39 @@
         
         NSDictionary *dictionary = (NSDictionary*)jsonObject;
         
+        self.status = [dictionary objectForKey:@"status"];
         
-//        self.status = [dictionary objectForKey:@"status"];
-//        
-//        if([self.status isEqualToString:kResponseStatusSucceed])
-//        {
-//            NSDictionary *followupActionsDictionary = [dictionary objectForKey:@"followupActions"];
-//            
-//            self.followupActions = [[SCAFollowupActions alloc] initWithDictionary:followupActionsDictionary];
-//        }
-//        else if ([self.status isEqualToString:kResponseStatusFailure])
-//        {
-//            self.reason = [dictionary objectForKey:@"reason"];
-//        }
-//        else
-//        {
-//            @throw([NSException exceptionWithName:@"Unknown status" reason:@"Unknow status received from server: " userInfo:nil]);
-//        }
+        if([self.status isEqualToString:kResponseStatusSucceed])
+        {
+            NSDictionary *followupActionsDictionary = [dictionary objectForKey:@"followupActions"];
+            
+            self.followupActions = [[SCAFollowupActions alloc] initWithDictionary:followupActionsDictionary];
+            
+            NSDictionary *resultDictionary = [dictionary objectForKey:@"result"];
+            
+            self.durationProcessed = [[resultDictionary objectForKey:@"duration"] unsignedLongValue];
+            
+            //TODO: ask sharon about session statuses if needed (sessionStatus)
+            
+            self.analysisSegments = [[NSMutableArray alloc] init];
+            
+            NSArray *analysisSegmentsArray = [resultDictionary objectForKey:@"analysisSegments"];
+            
+            for (NSDictionary *analysisSegmentDictionary in analysisSegmentsArray)
+            {
+                SCASegment *segment = [[SCASegment alloc] initWithDictionary:analysisSegmentDictionary];
+                
+                [self.analysisSegments addObject:segment];
+            }
+        }
+        else if ([self.status isEqualToString:kResponseStatusFailure])
+        {
+            self.reason = [dictionary objectForKey:@"reason"];
+        }
+        else
+        {
+            @throw([NSException exceptionWithName:@"Unknown status" reason:@"Unknow status received from server: " userInfo:nil]);
+        }
     }
     return self;
 }

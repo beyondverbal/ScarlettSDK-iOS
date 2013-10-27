@@ -8,8 +8,7 @@
 
 #import "SCAEmotionsAnalyzerSession.h"
 
-//NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/recording/start?api_key=%@";
-NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/start?api_key=%@";
+NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_key=%@";
 
 @implementation SCAEmotionsAnalyzerSession
 
@@ -17,6 +16,7 @@ NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/s
                         apiKey:(NSString*)apiKey
                 requestTimeout:(NSTimeInterval)requestTimeout
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
+                          host:(NSString*)host
                       delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate
 {
     if(self = [super init])
@@ -35,6 +35,7 @@ NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/s
         
         self.requestTimeout = requestTimeout;
         self.getAnalysisTimeInterval = getAnalysisTimeInterval;
+        self.host = host;
     }
     return self;
 }
@@ -53,7 +54,7 @@ NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/s
     
     SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
     
-    NSString *url = [NSString stringWithFormat:SCAStartSessionUrlFormat, _apiKey];
+    NSString *url = [NSString stringWithFormat:SCAStartSessionUrlFormat, self.host, _apiKey];
     
     [request loadWithUrl:url body:bodyData timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"POST" delegate:self.startSessionResponder];
 }
@@ -86,6 +87,8 @@ NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/s
     [self.getAnalysisTimer invalidate];
     
     self.getAnalysisTimer = nil;
+    
+    _lastAnalysisResult = nil;
 }
 
 -(void)upStreamVoiceData:(NSData*)voiceData
@@ -135,6 +138,11 @@ NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/s
     
     NSString *url = _startSessionResult.followupActions.analysis;
     
+    if(_lastAnalysisResult)
+    {
+        url = _lastAnalysisResult.followupActions.analysis;
+    }
+    
     NSLog(@"getAnalysis %@", url);
     
     [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
@@ -142,14 +150,9 @@ NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/s
 
 -(void)getAnalysisSucceed:(NSData *)responseData
 {
-    //TODO: parse response
-    SCAAnalysisResult *analysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
+    _lastAnalysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
     
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
-    
-    NSLog(@"analysisSucceed %@", jsonObject);
-    
-    [self.delegate getAnalysisSucceed:analysisResult];
+    [self.delegate getAnalysisSucceed:_lastAnalysisResult];
 }
 
 -(void)getAnalysisFailed:(NSError *)error

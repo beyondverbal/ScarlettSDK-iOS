@@ -15,4 +15,6 @@
 @property (nonatomic) unsigned long duration;
 @property (nonatomic, strong) SCAAnalysisCollection *analysis;
 
+-(id)initWithDictionary:(NSDictionary*)dictionary;
+
 @end

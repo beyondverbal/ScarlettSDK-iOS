@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSString *value;
 
+-(id)initWithDictionary:(NSDictionary*)dictionary;
+
 @end

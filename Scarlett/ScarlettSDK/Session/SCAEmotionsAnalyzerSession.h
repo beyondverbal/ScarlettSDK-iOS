@@ -17,6 +17,7 @@
 #import "SCAStartSessionResult.h"
 #import "SCAAnalysisResult.h"
 #import "SCAStreamPostManager.h"
+#import "SCAEmotionAnalysisHosts.h"
 
 @interface SCAEmotionsAnalyzerSession : NSObject<SCAStartSessionResponderDelegate, SCAUpStreamVoiceResponderDelegate, SCAAnalysisResponderDelegate>
 {
@@ -24,6 +25,7 @@
     NSString *_apiKey;
     SCAFollowupActions *_actions;
     SCAStartSessionResult *_startSessionResult;
+    SCAAnalysisResult *_lastAnalysisResult;
 }
 
 @property (nonatomic, weak) id<SCAEmotionsAnalyzerSessionDelegate> delegate;
@@ -33,12 +35,14 @@
 @property (nonatomic, strong) SCAStreamPostManager *streamPostManager;
 @property (nonatomic) NSTimeInterval requestTimeout;
 @property (nonatomic) NSTimeInterval getAnalysisTimeInterval;
-@property (nonatomic, retain) NSTimer *getAnalysisTimer;
+@property (nonatomic, strong) NSTimer *getAnalysisTimer;
+@property (nonatomic, strong) NSString *host;
 
 -(id)initWithSessionParameters:(SCASessionParameters*)sessionParameters
                         apiKey:(NSString*)apiKey
                 requestTimeout:(NSTimeInterval)requestTimeout
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
+                          host:(NSString*)host
                       delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate;
 -(void)startSession;
 -(void)stopSession;

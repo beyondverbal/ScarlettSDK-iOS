@@ -10,4 +10,13 @@
 
 @implementation SCAStringAnalysis
 
+-(id)initWithDictionary:(NSDictionary*)dictionary
+{
+    if(self = [super init])
+    {
+        self.value = [dictionary objectForKey:@"value"];
+    }
+    return self;
+}
+
 @end

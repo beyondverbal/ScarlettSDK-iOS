@@ -8,6 +8,5 @@
 
 #import "SCAEmotionAnalysisHosts.h"
 
-@implementation SCAEmotionAnalysisHosts
-
-@end
+NSString* const kEmotionAnalysisHostBeta = @"beta.beyondverbal.com";
+NSString* const kEmotionAnalysisHostProduction = @"api.beyondverbal.com";

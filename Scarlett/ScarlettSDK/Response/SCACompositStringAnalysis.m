@@ -10,4 +10,13 @@
 
 @implementation SCACompositStringAnalysis
 
+-(id)initWithDictionary:(NSDictionary*)dictionary
+{
+    if(self = [super init])
+    {
+        self.value = [[SCAHeirarchyStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"value"]];
+    }
+    return self;
+}
+
 @end
