@@ -8,8 +8,8 @@
 
 #import "SCAEmotionsAnalyzerSession.h"
 
-NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/recording/start?api_key=%@";
-//NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/start?api_key=%@";
+//NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/recording/start?api_key=%@";
+NSString* const SCAStartSessionUrlFormat = @"http://172.16.10.139/v1/recording/start?api_key=%@";
 
 @implementation SCAEmotionsAnalyzerSession
 
