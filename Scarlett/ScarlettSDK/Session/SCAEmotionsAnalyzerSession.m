@@ -48,6 +48,9 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)startSession
 {
+    _sessionStarted = YES;
+    _lastAnalysisResult = nil;
+    
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:[_sessionParameters recorderInfoToDictionary] forKey:@"recorder_info"];
     [dictionary setObject:[_sessionParameters dataFormatToDictionary] forKey:@"data_format"];
@@ -56,7 +59,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     NSData *bodyData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
     
     NSString *jsonString =[[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
-    NSLog(@"jsonString: %@", jsonString);
+    
+    NSLog(@"startSession %@", jsonString);
     
     SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
     
@@ -67,49 +71,104 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)stopSession
 {
+    _sessionStarted = NO;
+    
     [self stopStreamPostManager];
     
     [self stopAnalysisTimer];
-    
-    _lastAnalysisResult = nil;
 }
 
 -(void)upStreamVoiceData:(NSData*)voiceData
 {
-    if(!self.streamPostManager)
+    if(_sessionStarted)
     {
-        self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
+        if(!self.streamPostManager)
+        {
+            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
+            
+            [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
+        }
         
-        [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
+        [self.streamPostManager appendPostData:voiceData];
         
-        [self startAnalysisTimer];
+        if(!self.getAnalysisTimer)
+        {
+            [self startAnalysisTimer];
+        }
     }
-    
-    [self.streamPostManager appendPostData:voiceData];
 }
 
--(void)getSummary:(SCAAnalysisResult*)analysisResults
+-(void)getSummary
 {
-    SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
-    
-    NSString *url = analysisResults.followupActions.summary;
-    
-    [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.];
+    if(_lastAnalysisResult)
+    {
+        SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
+        
+        NSString *url = _lastAnalysisResult.followupActions.summary;
+        
+        [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.summaryResponder];
+    }
+    else
+    {
+        [self.delegate getSummaryFailed:@"Must recieve at least one analysis"];
+    }
 }
 
--(void)vote:(SCAAnalysisResult*)analysisResults
+-(void)vote:(int)voteScore
 {
-    SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
-    
-    NSString *url = analysisResults.followupActions.vote;
-    
-    [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.];
+    [self vote:voteScore verbalVote:nil];
+}
+
+-(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote
+{
+    [self vote:voteScore verbalVote:verbalVote segment:nil];
+}
+
+-(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment
+{
+    if(_lastAnalysisResult)
+    {
+        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+        
+        if(segment)
+        {
+            [dictionary setObject:[NSNumber numberWithUnsignedLong:segment.offset] forKey:@"offset"];
+            [dictionary setObject:[NSNumber numberWithUnsignedLong:segment.duration] forKey:@"duration"];
+        }
+        
+        [dictionary setObject:[NSNumber numberWithInt:voteScore] forKey:@"vote"];
+        
+        if(verbalVote)
+        {
+            [dictionary setObject:verbalVote forKey:@"verbalVote"];
+        }
+        
+        NSData *bodyData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+        
+        NSString *jsonString =[[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"vote %@", jsonString);
+        
+        SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
+        
+        NSString *url = _lastAnalysisResult.followupActions.vote;
+        
+        [request loadWithUrl:url body:bodyData timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"POST" delegate:self.voteResponder];
+    }
+    else
+    {
+        [self.delegate getSummaryFailed:@"Must recieve at least one analysis"];
+    }
 }
 
 #pragma mark - Response
 
 -(void)startSessionSucceed:(NSData *)responseData
 {
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    
+    NSLog(@"startSessionSucceed %@", jsonObject);
+    
     _startSessionResult = [[SCAStartSessionResult alloc] initWithResponseData:responseData];
     
     if([_startSessionResult isSucceed])
@@ -142,11 +201,17 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 {
     NSLog(@"upStreamVoiceFailed %@", errorDescription);
     
+    [self stopSession];
+    
     [self.delegate upStreamVoiceDataFailed:errorDescription];
 }
 
 -(void)getAnalysisSucceed:(NSData *)responseData
 {
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    
+    NSLog(@"getAnalysisSucceed %@", jsonObject);
+    
     _lastAnalysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
     
     if([_lastAnalysisResult isSessionStatusDone])
@@ -166,22 +231,38 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)getSummarySucceed:(NSData *)responseData
 {
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
+    NSLog(@"getSummarySucceed %@", jsonObject);
+    
+    SCAAnalysisResult *analysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
+    
+    [self.delegate getSummarySucceed:analysisResult];
 }
 
 -(void)getSummaryFailed:(NSError *)error
 {
+    NSLog(@"getSummaryFailed %@", [error localizedDescription]);
     
+    [self.delegate getSummaryFailed:[error localizedDescription]];
 }
 
 -(void)voteSucceed:(NSData *)responseData
 {
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
+    NSLog(@"voteSucceed %@", jsonObject);
+    
+    SCAVoteResult *voteResult = [[SCAVoteResult alloc] initWithResponseData:responseData];
+    
+    [self.delegate voteSucceed:voteResult];
 }
 
 -(void)voteFailed:(NSError *)error
 {
+    NSLog(@"voteFailed %@", [error localizedDescription]);
     
+    [self.delegate voteFailed:[error localizedDescription]];
 }
 
 #pragma mark - Private methods

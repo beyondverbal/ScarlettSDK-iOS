@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SCAResponseStatuses.h"
 
 @interface SCAVoteResult : NSObject
+
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *reason;
+@property (nonatomic, strong) NSString *result;
+
+-(id)initWithResponseData:(NSData*)responseData;
 
 @end

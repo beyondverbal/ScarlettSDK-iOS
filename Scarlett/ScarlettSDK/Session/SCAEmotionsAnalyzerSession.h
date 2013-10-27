@@ -32,6 +32,7 @@
     SCAFollowupActions *_actions;
     SCAStartSessionResult *_startSessionResult;
     SCAAnalysisResult *_lastAnalysisResult;
+    BOOL _sessionStarted;
 }
 
 @property (nonatomic, weak) id<SCAEmotionsAnalyzerSessionDelegate> delegate;
@@ -55,7 +56,9 @@
 -(void)startSession;
 -(void)stopSession;
 -(void)upStreamVoiceData:(NSData*)voiceData;
--(void)getSummary:(SCAAnalysisResult*)analysisResults;
--(void)vote:(SCAAnalysisResult*)analysisResults;
+-(void)getSummary;
+-(void)vote:(int)voteScore;
+-(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote;
+-(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment;
 
 @end

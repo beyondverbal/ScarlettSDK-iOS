@@ -24,6 +24,8 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
         
         self.bufferOffset = 0;
         self.bufferLimit  = 0;
+        
+        self.isSending = NO;
     }
     return self;
 }
@@ -50,6 +52,8 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 -(void)startSend:(NSString*)url
 {
+    self.isSending = YES;
+    
     NSURL *                 myURL = [NSURL URLWithString:url];
     NSMutableURLRequest *   request;
     NSInputStream *         consStream;
@@ -77,6 +81,8 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 -(void)stopSend
 {
+    self.isSending = NO;
+    
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkForNewPostDataToWrite) object:nil];
     
     if (self.bufferOnHeap)
@@ -139,6 +145,7 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
             
         case NSStreamEventEndEncountered:
             //assert(NO);     // should never happen for the output stream
+            NSLog(@"producer stream ended");
             break;
             
         default:
@@ -149,6 +156,11 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
                  
 -(void)checkForNewPostDataToWrite
 {
+    if(!self.isSending)
+    {
+        return;
+    }
+    
     if (self.bufferOffset == self.bufferLimit)
     {
         NSUInteger postDataLength = [self.postData length];

@@ -20,7 +20,7 @@ enum
 
 @interface SCAStreamPostManager : NSObject<NSStreamDelegate>
 
-@property (nonatomic, assign, readonly ) BOOL isSending;
+@property (nonatomic) BOOL isSending;
 @property (nonatomic, strong, readwrite) NSURLConnection *connection;
 @property (nonatomic, copy,   readwrite) NSData *bodyPrefixData;
 @property (nonatomic, strong, readwrite) NSInputStream *fileStream;
