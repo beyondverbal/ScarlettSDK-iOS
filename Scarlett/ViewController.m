@@ -140,11 +140,6 @@ void AudioOutputCallback(void * inUserData,
     [self.emotionsAnalyzerSession upStreamVoiceData:newVoiceData];
 }
 
--(IBAction)getAnalysisClicked:(id)sender
-{
-    [self.emotionsAnalyzerSession getAnalysis];
-}
-
 -(void)getAnalysisSucceed:(SCAAnalysisResult *)analysisResult
 {
     //TODO: display results

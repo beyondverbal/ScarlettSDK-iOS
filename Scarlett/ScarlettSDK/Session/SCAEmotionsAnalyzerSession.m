@@ -29,6 +29,10 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
         self.upStreamVoiceResponder.delegate = self;
         self.analysisResponder = [[SCAAnalysisResponder alloc] init];
         self.analysisResponder.delegate = self;
+        self.summaryResponder = [[SCASummaryResponder alloc] init];
+        self.summaryResponder.delegate = self;
+        self.voteResponder = [[SCAVoteResponder alloc] init];
+        self.voteResponder.delegate = self;
         
         _sessionParameters = sessionParameters;
         _apiKey = apiKey;
@@ -39,6 +43,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     }
     return self;
 }
+
+#pragma mark - Public methods
 
 -(void)startSession
 {
@@ -59,6 +65,49 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     [request loadWithUrl:url body:bodyData timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"POST" delegate:self.startSessionResponder];
 }
 
+-(void)stopSession
+{
+    [self stopStreamPostManager];
+    
+    [self stopAnalysisTimer];
+    
+    _lastAnalysisResult = nil;
+}
+
+-(void)upStreamVoiceData:(NSData*)voiceData
+{
+    if(!self.streamPostManager)
+    {
+        self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
+        
+        [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
+        
+        [self startAnalysisTimer];
+    }
+    
+    [self.streamPostManager appendPostData:voiceData];
+}
+
+-(void)getSummary:(SCAAnalysisResult*)analysisResults
+{
+    SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
+    
+    NSString *url = analysisResults.followupActions.summary;
+    
+    [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.];
+}
+
+-(void)vote:(SCAAnalysisResult*)analysisResults
+{
+    SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
+    
+    NSString *url = analysisResults.followupActions.vote;
+    
+    [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.];
+}
+
+#pragma mark - Response
+
 -(void)startSessionSucceed:(NSData *)responseData
 {
     _startSessionResult = [[SCAStartSessionResult alloc] initWithResponseData:responseData];
@@ -76,42 +125,6 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 -(void)startSessionFailed:(NSError*)error
 {
     [self.delegate startSessionFailed:[error localizedDescription]];
-}
-
--(void)stopSession
-{
-    [self.streamPostManager stopSend];
-    
-    self.streamPostManager = nil;
-    
-    [self.getAnalysisTimer invalidate];
-    
-    self.getAnalysisTimer = nil;
-    
-    _lastAnalysisResult = nil;
-}
-
--(void)upStreamVoiceData:(NSData*)voiceData
-{
-    if(!self.streamPostManager)
-    {
-        self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
-        
-        [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
-        
-        self.getAnalysisTimer = [NSTimer scheduledTimerWithTimeInterval:self.getAnalysisTimeInterval
-                                                                 target:self
-                                                               selector:@selector(getAnalysisExecute:)
-                                                               userInfo:nil
-                                                                repeats:YES];
-    }
-    
-    [self.streamPostManager appendPostData:voiceData];
-}
-
--(void)getAnalysisExecute:(NSTimer *)timer
-{
-    [self getAnalysis];
 }
 
 -(void)upStreamVoiceSucceed:(NSData *)responseData
@@ -132,6 +145,52 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     [self.delegate upStreamVoiceDataFailed:errorDescription];
 }
 
+-(void)getAnalysisSucceed:(NSData *)responseData
+{
+    _lastAnalysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
+    
+    if([_lastAnalysisResult isSessionStatusDone])
+    {
+        [self stopSession];
+    }
+    
+    [self.delegate getAnalysisSucceed:_lastAnalysisResult];
+}
+
+-(void)getAnalysisFailed:(NSError *)error
+{
+    NSLog(@"analysisFailed %@", [error localizedDescription]);
+    
+    [self.delegate getAnalysisFailed:[error localizedDescription]];
+}
+
+-(void)getSummarySucceed:(NSData *)responseData
+{
+    
+}
+
+-(void)getSummaryFailed:(NSError *)error
+{
+    
+}
+
+-(void)voteSucceed:(NSData *)responseData
+{
+    
+}
+
+-(void)voteFailed:(NSError *)error
+{
+    
+}
+
+#pragma mark - Private methods
+
+-(void)getAnalysisExecute:(NSTimer *)timer
+{
+    [self getAnalysis];
+}
+
 -(void)getAnalysis
 {    
     SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
@@ -148,18 +207,33 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
 }
 
--(void)getAnalysisSucceed:(NSData *)responseData
+-(void)startAnalysisTimer
 {
-    _lastAnalysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
-    
-    [self.delegate getAnalysisSucceed:_lastAnalysisResult];
+    self.getAnalysisTimer = [NSTimer scheduledTimerWithTimeInterval:self.getAnalysisTimeInterval
+                                                             target:self
+                                                           selector:@selector(getAnalysisExecute:)
+                                                           userInfo:nil
+                                                            repeats:YES];
 }
 
--(void)getAnalysisFailed:(NSError *)error
+-(void)stopAnalysisTimer
 {
-    NSLog(@"analysisFailed %@", [error localizedDescription]);
+    if(self.getAnalysisTimer)
+    {
+        [self.getAnalysisTimer invalidate];
+    }
     
-    [self.delegate getAnalysisFailed:[error localizedDescription]];
+    self.getAnalysisTimer = nil;
+}
+
+-(void)stopStreamPostManager
+{
+    if(self.streamPostManager)
+    {
+        [self.streamPostManager stopSend];
+    }
+    
+    self.streamPostManager = nil;
 }
 
 @end

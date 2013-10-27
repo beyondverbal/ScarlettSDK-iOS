@@ -32,7 +32,7 @@
             
             self.durationProcessed = [[resultDictionary objectForKey:@"duration"] unsignedLongValue];
             
-            //TODO: ask sharon about session statuses if needed (sessionStatus)
+            self.sessionStatus = [resultDictionary objectForKey:@"sessionStatus"];
             
             self.analysisSegments = [[NSMutableArray alloc] init];
             
@@ -55,6 +55,11 @@
         }
     }
     return self;
+}
+
+-(BOOL)isSessionStatusDone
+{
+    return [self.sessionStatus isEqualToString:kSessionStatusDone];
 }
 
 @end

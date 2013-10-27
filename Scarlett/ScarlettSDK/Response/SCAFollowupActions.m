@@ -14,9 +14,10 @@
 {
     if(self = [super init])
     {
+        self.upStream = [dictionary objectForKey:@"upStream"];
         self.analysis = [dictionary objectForKey:@"analysis"];
         self.summary = [dictionary objectForKey:@"summary"];
-        self.upStream = [dictionary objectForKey:@"upStream"];
+        self.vote = [dictionary objectForKey:@"vote"];
     }
     return self;
 }

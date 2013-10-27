@@ -10,6 +10,7 @@
 #import "SCAAnalysisResult.h"
 
 @protocol SCAEmotionsAnalyzerSessionDelegate <NSObject>
+
 @optional
 -(void)startSessionSucceed;
 -(void)startSessionFailed:(NSString*)errorDescription;
@@ -19,5 +20,5 @@
 -(void)getAnalysisFailed:(NSString*)errorDescription;
 -(void)voteSucceed;
 -(void)voteFailed;
--(void)newAnalysisRecieved;
+
 @end

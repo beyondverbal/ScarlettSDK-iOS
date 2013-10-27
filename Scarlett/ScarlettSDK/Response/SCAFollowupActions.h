@@ -10,9 +10,10 @@
 
 @interface SCAFollowupActions : NSObject
 
+@property (nonatomic, strong) NSString *upStream;
 @property (nonatomic, strong) NSString *analysis;
 @property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *upStream;
+@property (nonatomic, strong) NSString *vote;
 
 -(id)initWithDictionary:(NSDictionary*)dictionary;
 

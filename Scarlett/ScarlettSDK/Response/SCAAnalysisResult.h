@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SCAFollowupActions.h"
 #import "SCAResponseStatuses.h"
+#import "SCASessionStatuses.h"
 #import "SCASegment.h"
 
 @interface SCAAnalysisResult : NSObject
@@ -17,8 +18,10 @@
 @property (nonatomic, strong) NSString *reason;
 @property (nonatomic, strong) SCAFollowupActions *followupActions;
 @property (nonatomic) unsigned long durationProcessed;
+@property (nonatomic, strong) NSString *sessionStatus;
 @property (nonatomic, strong) NSMutableArray *analysisSegments;
 
 -(id)initWithResponseData:(NSData*)responseData;
+-(BOOL)isSessionStatusDone;
 
 @end

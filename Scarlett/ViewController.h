@@ -61,7 +61,6 @@ typedef struct
 -(IBAction)stopPlayingClicked:(id)sender;
 -(IBAction)sendRecordedFileClicked:(id)sender;
 -(IBAction)sendCollectedVoiceDataClicked:(id)sender;
--(IBAction)getAnalysisClicked:(id)sender;
 -(IBAction)compareFileWithCollectedDataClicked:(id)sender;
 
 

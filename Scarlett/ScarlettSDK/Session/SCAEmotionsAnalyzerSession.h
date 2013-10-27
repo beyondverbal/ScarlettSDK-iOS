@@ -14,12 +14,18 @@
 #import "SCAStartSessionResponder.h"
 #import "SCAUpStreamVoiceResponder.h"
 #import "SCAAnalysisResponder.h"
+#import "SCASummaryResponder.h"
+#import "SCAVoteResponder.h"
 #import "SCAStartSessionResult.h"
 #import "SCAAnalysisResult.h"
 #import "SCAStreamPostManager.h"
 #import "SCAEmotionAnalysisHosts.h"
 
-@interface SCAEmotionsAnalyzerSession : NSObject<SCAStartSessionResponderDelegate, SCAUpStreamVoiceResponderDelegate, SCAAnalysisResponderDelegate>
+@interface SCAEmotionsAnalyzerSession : NSObject<SCAStartSessionResponderDelegate,
+                                                 SCAUpStreamVoiceResponderDelegate,
+                                                 SCAAnalysisResponderDelegate,
+                                                 SCASummaryResponderDelegate,
+                                                 SCAVoteResponderDelegate>
 {
     SCASessionParameters *_sessionParameters;
     NSString *_apiKey;
@@ -32,6 +38,8 @@
 @property (nonatomic, strong) SCAStartSessionResponder *startSessionResponder;
 @property (nonatomic, strong) SCAUpStreamVoiceResponder *upStreamVoiceResponder;
 @property (nonatomic, strong) SCAAnalysisResponder *analysisResponder;
+@property (nonatomic, strong) SCASummaryResponder *summaryResponder;
+@property (nonatomic, strong) SCAVoteResponder *voteResponder;
 @property (nonatomic, strong) SCAStreamPostManager *streamPostManager;
 @property (nonatomic) NSTimeInterval requestTimeout;
 @property (nonatomic) NSTimeInterval getAnalysisTimeInterval;
@@ -47,7 +55,7 @@
 -(void)startSession;
 -(void)stopSession;
 -(void)upStreamVoiceData:(NSData*)voiceData;
--(void)getAnalysis;
--(void)vote;
+-(void)getSummary:(SCAAnalysisResult*)analysisResults;
+-(void)vote:(SCAAnalysisResult*)analysisResults;
 
 @end
