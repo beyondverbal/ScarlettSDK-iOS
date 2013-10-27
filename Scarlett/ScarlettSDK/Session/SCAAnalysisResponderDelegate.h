@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol SCAAnalysisResponderDelegate <NSObject>
--(void)analysisSucceed:(NSData*)responseData;
--(void)analysisFailed:(NSError*)error;
+-(void)getAnalysisSucceed:(NSData*)responseData;
+-(void)getAnalysisFailed:(NSError*)error;
 @end

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		6527989618155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */; };
 		6527989718155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */; };
-		6527989A181563ED00D54EE4 /* MillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65279899181563ED00D54EE4 /* MillisecondsUtils.m */; };
-		6527989B181563ED00D54EE4 /* MillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65279899181563ED00D54EE4 /* MillisecondsUtils.m */; };
+		6527989A181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */; };
+		6527989B181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */; };
 		652798AD1816917600D54EE4 /* NSStream_BoundPairAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */; };
 		652798AE1816917800D54EE4 /* NSStream_BoundPairAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */; };
 		652798AF1816917800D54EE4 /* SCAStreamPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798AB1816917300D54EE4 /* SCAStreamPostManager.m */; };
@@ -25,7 +25,6 @@
 		65C5F58F1813B2BF0012328F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F58E1813B2BF0012328F /* AppDelegate.m */; };
 		65C5F5951813B2BF0012328F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F5941813B2BF0012328F /* ViewController.m */; };
 		65C5F5971813B2BF0012328F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F5961813B2BF0012328F /* Images.xcassets */; };
-		65C5F59E1813B2BF0012328F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F59D1813B2BF0012328F /* XCTest.framework */; };
 		65C5F59F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5A01813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
 		65C5F6F61813C5D10012328F /* SCAGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C11813C5D10012328F /* SCAGeoLocation.m */; };
@@ -87,8 +86,8 @@
 
 /* Begin PBXFileReference section */
 		6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV; sourceTree = "<group>"; };
-		65279898181563ED00D54EE4 /* MillisecondsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillisecondsUtils.h; sourceTree = "<group>"; };
-		65279899181563ED00D54EE4 /* MillisecondsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MillisecondsUtils.m; sourceTree = "<group>"; };
+		65279898181563ED00D54EE4 /* SCAMillisecondsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAMillisecondsUtils.h; sourceTree = "<group>"; };
+		65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAMillisecondsUtils.m; sourceTree = "<group>"; };
 		652798A81816917300D54EE4 /* NSStream_BoundPairAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStream_BoundPairAdditions.h; sourceTree = "<group>"; };
 		652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStream_BoundPairAdditions.m; sourceTree = "<group>"; };
 		652798AA1816917300D54EE4 /* SCAStreamPostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStreamPostManager.h; sourceTree = "<group>"; };
@@ -111,7 +110,6 @@
 		65C5F5941813B2BF0012328F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		65C5F5961813B2BF0012328F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65C5F59C1813B2BF0012328F /* ScarlettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScarlettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		65C5F59D1813B2BF0012328F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		65C5F6C01813C5D10012328F /* SCAGeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAGeoLocation.h; sourceTree = "<group>"; };
 		65C5F6C11813C5D10012328F /* SCAGeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAGeoLocation.m; sourceTree = "<group>"; };
 		65C5F6C21813C5D10012328F /* SCARecorderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCARecorderInfo.h; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65C5F59E1813B2BF0012328F /* XCTest.framework in Frameworks */,
 				65C5F5A01813B2BF0012328F /* UIKit.framework in Frameworks */,
 				65C5F59F1813B2BF0012328F /* Foundation.framework in Frameworks */,
 			);
@@ -213,7 +210,6 @@
 				65C5F57E1813B2BF0012328F /* Foundation.framework */,
 				65C5F5801813B2BF0012328F /* CoreGraphics.framework */,
 				65C5F5821813B2BF0012328F /* UIKit.framework */,
-				65C5F59D1813B2BF0012328F /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,8 +339,8 @@
 				65C5F784181412D20012328F /* SCAUrlRequest.h */,
 				65C5F785181412D20012328F /* SCAUrlRequest.m */,
 				65C5F788181416B90012328F /* SCAUrlRequestDelegate.h */,
-				65279898181563ED00D54EE4 /* MillisecondsUtils.h */,
-				65279899181563ED00D54EE4 /* MillisecondsUtils.m */,
+				65279898181563ED00D54EE4 /* SCAMillisecondsUtils.h */,
+				65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -467,7 +463,7 @@
 				65C5F7121813C5D10012328F /* SCAEmotionsAnalyzerSession.m in Sources */,
 				65C5F58F1813B2BF0012328F /* AppDelegate.m in Sources */,
 				65C5F7041813C5D10012328F /* SCACompositStringAnalysis.m in Sources */,
-				6527989A181563ED00D54EE4 /* MillisecondsUtils.m in Sources */,
+				6527989A181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */,
 				65C5F71F1813C9B70012328F /* SCAWavDataFormat.m in Sources */,
 				65C5F7061813C5D10012328F /* SCAFloatAnalysis.m in Sources */,
 				65C5F58B1813B2BF0012328F /* main.m in Sources */,
@@ -487,7 +483,7 @@
 				65C5F7111813C5D10012328F /* SCAStringAnalysis.m in Sources */,
 				652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
 				65C5F7011813C5D10012328F /* SCAAnalysisCollection.m in Sources */,
-				6527989B181563ED00D54EE4 /* MillisecondsUtils.m in Sources */,
+				6527989B181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */,
 				65C5F6F71813C5D10012328F /* SCAGeoLocation.m in Sources */,
 				652798AE1816917800D54EE4 /* NSStream_BoundPairAdditions.m in Sources */,
 				65C5F7071813C5D10012328F /* SCAFloatAnalysis.m in Sources */,

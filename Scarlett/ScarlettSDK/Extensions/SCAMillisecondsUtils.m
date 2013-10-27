@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 BeyondVerbals. All rights reserved.
 //
 
-#import "MillisecondsUtils.h"
+#import "SCAMillisecondsUtils.h"
 
-@implementation MillisecondsUtils
+@implementation SCAMillisecondsUtils
 
 +(float)getMilliseconds
 {

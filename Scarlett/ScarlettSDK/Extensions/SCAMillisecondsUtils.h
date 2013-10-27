@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <mach/mach_time.h>
 
-@interface MillisecondsUtils : NSObject
+@interface SCAMillisecondsUtils : NSObject
 
 +(float)getMilliseconds;
 

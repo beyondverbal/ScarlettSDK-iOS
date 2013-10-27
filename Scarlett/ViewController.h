@@ -13,7 +13,7 @@
 #import "SCAEmotionsAnalyzerSession.h"
 #import "SCAPcmDataFormat.h"
 #import "SCAWavDataFormat.h"
-#import "MillisecondsUtils.h"
+#import "SCAMillisecondsUtils.h"
 
 #define NUM_BUFFERS 3
 //#define SECONDS_TO_RECORD 10

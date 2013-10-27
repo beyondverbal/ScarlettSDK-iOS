@@ -12,12 +12,12 @@
 
 -(void)loadUrlSucceed:(NSData *)responseData
 {
-    [self.delegate analysisSucceed:responseData];
+    [self.delegate getAnalysisSucceed:responseData];
 }
 
 -(void)loadUrlFailed:(NSError *)error
 {
-    [self.delegate analysisFailed:error];
+    [self.delegate getAnalysisFailed:error];
 }
 
 @end

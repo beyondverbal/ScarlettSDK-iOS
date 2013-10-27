@@ -118,7 +118,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     [request loadWithUrl:url body:nil timeoutInterval:self.timeoutInterval isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
 }
 
--(void)analysisSucceed:(NSData *)responseData
+-(void)getAnalysisSucceed:(NSData *)responseData
 {
     //TODO: parse response
     
@@ -129,7 +129,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://beta.beyondverbal.com/v1/re
     [self.delegate analysisSucceed];
 }
 
--(void)analysisFailed:(NSError *)error
+-(void)getAnalysisFailed:(NSError *)error
 {
     NSLog(@"analysisFailed %@", [error localizedDescription]);
     

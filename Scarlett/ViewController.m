@@ -52,11 +52,11 @@ void AudioOutputCallback(void * inUserData,
     
     if(collectedVoiceDataMilliseconds > 0)
     {
-        float currentMillisecond = [MillisecondsUtils getMilliseconds];
+        float currentMillisecond = [SCAMillisecondsUtils getMilliseconds];
         
         if(currentMillisecond - collectedVoiceDataMilliseconds >= kCollectedVoiceDataMilliseconds)
         {
-            collectedVoiceDataMilliseconds = [MillisecondsUtils getMilliseconds];
+            collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
             
             NSData *newVoiceData = [NSData dataWithData:self.collectedVoiceData];
             
@@ -67,7 +67,7 @@ void AudioOutputCallback(void * inUserData,
     }
     else
     {
-        collectedVoiceDataMilliseconds = [MillisecondsUtils getMilliseconds];
+        collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
     }
 }
 
