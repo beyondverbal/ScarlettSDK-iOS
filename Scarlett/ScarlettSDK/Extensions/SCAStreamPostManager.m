@@ -60,8 +60,7 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     NSOutputStream *        prodStream;
     
     [NSStream createBoundInputStream:&consStream outputStream:&prodStream bufferSize:kPostBufferSize];
-    assert(consStream != nil);
-    assert(prodStream != nil);
+
     self.consumerStream = consStream;
     self.producerStream = prodStream;
     
@@ -76,7 +75,6 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     [request setHTTPBodyStream:self.consumerStream];
     
     self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
-    assert(self.connection != nil);
 }
 
 -(void)stopSend
