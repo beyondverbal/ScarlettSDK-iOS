@@ -22,6 +22,7 @@ getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
         _requestTimeout = requestTimeout;
         _getAnalysisTimeInterval = getAnalysisTimeInterval;
         _host = host;
+        _delegate = delegate;
     }
     return self;
 }

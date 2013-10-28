@@ -29,13 +29,18 @@
 		657FCAA2181D5B34002DA371 /* SCAVoteResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA9D181D5B34002DA371 /* SCAVoteResponder.m */; };
 		657FCAA9181D5D99002DA371 /* SCAVoteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAA8181D5D99002DA371 /* SCAVoteResult.m */; };
 		657FCAAA181D5D99002DA371 /* SCAVoteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAA8181D5D99002DA371 /* SCAVoteResult.m */; };
+		657FCAAD181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */; };
+		657FCAAE181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */; };
+		657FCAB6181EAFC1002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAB4181EAFC1002DA371 /* MainViewController.m */; };
+		657FCAB7181EAFC1002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAB4181EAFC1002DA371 /* MainViewController.m */; };
+		657FCAB8181EAFC1002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCAB5181EAFC1002DA371 /* MainViewController.xib */; };
+		657FCAB9181EAFC1002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCAB5181EAFC1002DA371 /* MainViewController.xib */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
 		65C5F5891813B2BF0012328F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F5871813B2BF0012328F /* InfoPlist.strings */; };
 		65C5F58B1813B2BF0012328F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F58A1813B2BF0012328F /* main.m */; };
 		65C5F58F1813B2BF0012328F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F58E1813B2BF0012328F /* AppDelegate.m */; };
-		65C5F5951813B2BF0012328F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F5941813B2BF0012328F /* ViewController.m */; };
 		65C5F5971813B2BF0012328F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F5961813B2BF0012328F /* Images.xcassets */; };
 		65C5F59F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5A01813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -75,8 +80,6 @@
 		65C5F71C1813C9A30012328F /* SCAPcmDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71A1813C9A30012328F /* SCAPcmDataFormat.m */; };
 		65C5F71F1813C9B70012328F /* SCAWavDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */; };
 		65C5F7201813C9B70012328F /* SCAWavDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */; };
-		65C5F72C1813E5030012328F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F72B1813E5030012328F /* ViewController.xib */; };
-		65C5F72D1813E5030012328F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F72B1813E5030012328F /* ViewController.xib */; };
 		65C5F78218140C0A0012328F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F78118140C090012328F /* AudioToolbox.framework */; };
 		65C5F786181412D30012328F /* SCAUrlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F785181412D20012328F /* SCAUrlRequest.m */; };
 		65C5F787181412D30012328F /* SCAUrlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F785181412D20012328F /* SCAUrlRequest.m */; };
@@ -122,6 +125,11 @@
 		657FCA9E181D5B34002DA371 /* SCAVoteResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResponderDelegate.h; sourceTree = "<group>"; };
 		657FCAA7181D5D99002DA371 /* SCAVoteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResult.h; sourceTree = "<group>"; };
 		657FCAA8181D5D99002DA371 /* SCAVoteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVoteResult.m; sourceTree = "<group>"; };
+		657FCAAB181E6134002DA371 /* SCAEmotionsAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzer.h; sourceTree = "<group>"; };
+		657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionsAnalyzer.m; sourceTree = "<group>"; };
+		657FCAB3181EAFC1002DA371 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		657FCAB4181EAFC1002DA371 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		657FCAB5181EAFC1002DA371 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,8 +140,6 @@
 		65C5F58C1813B2BF0012328F /* Scarlett-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scarlett-Prefix.pch"; sourceTree = "<group>"; };
 		65C5F58D1813B2BF0012328F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65C5F58E1813B2BF0012328F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		65C5F5931813B2BF0012328F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		65C5F5941813B2BF0012328F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		65C5F5961813B2BF0012328F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65C5F59C1813B2BF0012328F /* ScarlettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScarlettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F6C01813C5D10012328F /* SCAGeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAGeoLocation.h; sourceTree = "<group>"; };
@@ -174,7 +180,6 @@
 		65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAWavDataFormat.m; sourceTree = "<group>"; };
 		65C5F7211813CA850012328F /* SCAAudioEncodingFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAudioEncodingFormat.h; sourceTree = "<group>"; };
 		65C5F72A1813DB700012328F /* SCAEmotionsAnalyzerSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSessionDelegate.h; sourceTree = "<group>"; };
-		65C5F72B1813E5030012328F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		65C5F78118140C090012328F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		65C5F784181412D20012328F /* SCAUrlRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUrlRequest.h; sourceTree = "<group>"; };
 		65C5F785181412D20012328F /* SCAUrlRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAUrlRequest.m; sourceTree = "<group>"; };
@@ -246,9 +251,9 @@
 				65C5F6A11813C5D10012328F /* ScarlettSDK */,
 				65C5F58D1813B2BF0012328F /* AppDelegate.h */,
 				65C5F58E1813B2BF0012328F /* AppDelegate.m */,
-				65C5F5931813B2BF0012328F /* ViewController.h */,
-				65C5F5941813B2BF0012328F /* ViewController.m */,
-				65C5F72B1813E5030012328F /* ViewController.xib */,
+				657FCAB3181EAFC1002DA371 /* MainViewController.h */,
+				657FCAB4181EAFC1002DA371 /* MainViewController.m */,
+				657FCAB5181EAFC1002DA371 /* MainViewController.xib */,
 				6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */,
 				65C5F5961813B2BF0012328F /* Images.xcassets */,
 				65C5F5851813B2BF0012328F /* Supporting Files */,
@@ -270,6 +275,8 @@
 		65C5F6A11813C5D10012328F /* ScarlettSDK */ = {
 			isa = PBXGroup;
 			children = (
+				657FCAAB181E6134002DA371 /* SCAEmotionsAnalyzer.h */,
+				657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */,
 				65C5F783181412AA0012328F /* Extensions */,
 				65C5F7141813C9140012328F /* DataFormat */,
 				65C5F6BF1813C5D10012328F /* Request */,
@@ -463,7 +470,7 @@
 			files = (
 				6527989618155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */,
 				65C5F5971813B2BF0012328F /* Images.xcassets in Resources */,
-				65C5F72C1813E5030012328F /* ViewController.xib in Resources */,
+				657FCAB8181EAFC1002DA371 /* MainViewController.xib in Resources */,
 				65C5F5891813B2BF0012328F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,7 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6527989718155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */,
-				65C5F72D1813E5030012328F /* ViewController.xib in Resources */,
+				657FCAB9181EAFC1002DA371 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +506,6 @@
 				65C5F6FC1813C5D10012328F /* SCASessionParameters.m in Sources */,
 				65C5F78B181424A70012328F /* SCAStartSessionResponder.m in Sources */,
 				657FCAA1181D5B34002DA371 /* SCAVoteResponder.m in Sources */,
-				65C5F5951813B2BF0012328F /* ViewController.m in Sources */,
 				65C5F6F81813C5D10012328F /* SCARecorderInfo.m in Sources */,
 				65C5F70E1813C5D10012328F /* SCASegment.m in Sources */,
 				65C5F70A1813C5D10012328F /* SCAHeirarchyStringAnalysis.m in Sources */,
@@ -515,6 +521,8 @@
 				65C5F58B1813B2BF0012328F /* main.m in Sources */,
 				65C5F7081813C5D10012328F /* SCAFollowupActions.m in Sources */,
 				65C5F786181412D30012328F /* SCAUrlRequest.m in Sources */,
+				657FCAB6181EAFC1002DA371 /* MainViewController.m in Sources */,
+				657FCAAD181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
 				65C5F79118151FC40012328F /* SCAUpStreamVoiceResponder.m in Sources */,
 				652798AF1816917800D54EE4 /* SCAStreamPostManager.m in Sources */,
 				65C5F71B1813C9A30012328F /* SCAPcmDataFormat.m in Sources */,
@@ -526,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C5F7051813C5D10012328F /* SCACompositStringAnalysis.m in Sources */,
+				657FCAAE181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
 				65C5F7111813C5D10012328F /* SCAStringAnalysis.m in Sources */,
 				657FCA98181D54BC002DA371 /* SCASessionStatuses.m in Sources */,
 				652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
@@ -546,6 +555,7 @@
 				657FCAA0181D5B34002DA371 /* SCASummaryResponder.m in Sources */,
 				65C5F7201813C9B70012328F /* SCAWavDataFormat.m in Sources */,
 				657FCAA2181D5B34002DA371 /* SCAVoteResponder.m in Sources */,
+				657FCAB7181EAFC1002DA371 /* MainViewController.m in Sources */,
 				65C5F6FF1813C5D10012328F /* SCAVote.m in Sources */,
 				65C5F70B1813C5D10012328F /* SCAHeirarchyStringAnalysis.m in Sources */,
 				65C5F78C181424A70012328F /* SCAStartSessionResponder.m in Sources */,

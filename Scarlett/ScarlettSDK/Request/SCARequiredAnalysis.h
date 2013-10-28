@@ -21,4 +21,6 @@ extern NSString* const SCARequiredAnalysisMoodGroupSummary;
 
 @property (nonatomic, retain) NSArray *requiredAnalisys;
 
+-(id)initWithRequiredAnalysis:(NSArray*)requiredAnalysis;
+
 @end

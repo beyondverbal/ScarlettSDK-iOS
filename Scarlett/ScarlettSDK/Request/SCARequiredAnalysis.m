@@ -19,4 +19,13 @@ NSString* const SCARequiredAnalysisMoodGroupSummary = @"MoodGroupSummary";
 
 @implementation SCARequiredAnalysis
 
+-(id)initWithRequiredAnalysis:(NSArray*)requiredAnalysis
+{
+    if(self = [super init])
+    {
+        self.requiredAnalisys = requiredAnalysis;
+    }
+    return self;
+}
+
 @end

@@ -163,7 +163,7 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     {
         NSUInteger postDataLength = [self.postData length];
         
-        NSLog(@"222 ---------- postDataLength %d --------------", postDataLength);
+        NSLog(@"---------- postDataLength %d --------------", postDataLength);
         
         if(postDataLength > 0)
         {
@@ -178,14 +178,14 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
             
             NSUInteger bytesLeft = postDataLength - bytesRead;
             
-            NSLog(@"222 ---------- bytesRead-bytesLeft %d-%d", bytesRead, bytesLeft);
-            NSLog(@"222 ---------- postData %d", [self.postData length]);
+            NSLog(@"---------- bytesRead-bytesLeft %d-%d", bytesRead, bytesLeft);
+            NSLog(@"---------- postData %d", [self.postData length]);
             
             NSData *subData = [self.postData subdataWithRange:NSMakeRange(bytesRead, bytesLeft)];
             
             self.postData = [NSMutableData dataWithData:subData];
             
-            NSLog(@"222 ---------- postData %d", [self.postData length]);
+            NSLog(@"---------- postData %d", [self.postData length]);
             
             self.bufferOffset = 0;
             self.bufferLimit  = bytesRead;
@@ -197,7 +197,7 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     {
         NSInteger bytesWritten = [self.producerStream write:&self.buffer[self.bufferOffset] maxLength:self.bufferLimit - self.bufferOffset];
         
-        NSLog(@"222 ---------- bytesWritten %d --------------", bytesWritten);
+        NSLog(@"---------- bytesWritten %d --------------", bytesWritten);
         
         if (bytesWritten <= 0)
         {
