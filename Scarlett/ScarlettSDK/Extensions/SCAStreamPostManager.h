@@ -21,6 +21,7 @@ enum
 @interface SCAStreamPostManager : NSObject<NSStreamDelegate>
 
 @property (nonatomic) BOOL isSending;
+@property (nonatomic) NSTimeInterval requestTimeout;
 @property (nonatomic, strong, readwrite) NSURLConnection *connection;
 @property (nonatomic, copy,   readwrite) NSData *bodyPrefixData;
 @property (nonatomic, strong, readwrite) NSInputStream *fileStream;
@@ -35,8 +36,9 @@ enum
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) id<SCAStreamPostManagerDelegate> delegate;
 
--(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate;
+-(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout;
 -(void)startSend:(NSString*)url;
+-(void)startSend:(NSString *)url inputStream:(NSInputStream*)inputStream;
 -(void)stopSend;
 -(void)appendPostData:(NSData*)data;
 

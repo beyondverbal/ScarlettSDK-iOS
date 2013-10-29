@@ -74,8 +74,6 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     _sessionStarted = NO;
     
     [self stopStreamPostManager];
-    
-    [self stopAnalysisTimer];
 }
 
 -(void)upStreamVoiceData:(NSData*)voiceData
@@ -84,12 +82,30 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     {
         if(!self.streamPostManager)
         {
-            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder];
+            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder requestTimeout:self.requestTimeout];
             
             [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
         }
         
         [self.streamPostManager appendPostData:voiceData];
+        
+        if(!self.getAnalysisTimer)
+        {
+            [self startAnalysisTimer];
+        }
+    }
+}
+
+-(void)upStreamInputStream:(NSInputStream*)inputStream
+{
+    if(_sessionStarted)
+    {
+        if(!self.streamPostManager)
+        {
+            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder requestTimeout:self.requestTimeout];
+            
+            [self.streamPostManager startSend:_startSessionResult.followupActions.upStream inputStream:inputStream];
+        }
         
         if(!self.getAnalysisTimer)
         {
@@ -198,6 +214,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     NSLog(@"upStreamVoiceSucceed %@", jsonObject);
     
+    [self stopSession];
+    
     [self.sessionDelegate upStreamVoiceDataSucceed];
 }
 
@@ -221,6 +239,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     if([_lastAnalysisResult isSessionStatusDone])
     {
         [self stopSession];
+        
+        [self stopAnalysisTimer];
     }
     
     [self.sessionDelegate getAnalysisSucceed:_lastAnalysisResult];

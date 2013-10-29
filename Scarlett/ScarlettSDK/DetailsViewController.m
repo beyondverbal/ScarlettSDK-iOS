@@ -107,15 +107,15 @@
 {
     self.getSummaryInProgress = NO;
     
-    if(summaryResult.analysisItems && [summaryResult.analysisItems count] > 0)
+    if(summaryResult.summaryCollection)
     {
         NSMutableString *summaryText = [[NSMutableString alloc] init];
         
-        SCASummaryCollection *summaryCollection = [summaryResult.analysisItems objectAtIndex:0];
+        SCASummaryCollection *summaryCollection = summaryResult.summaryCollection;
         
         if(summaryCollection.moodGroupSummary)
         {
-            [summaryText appendFormat:@"MoodGroupSummary Primary: %@, Secondary: %@", summaryCollection.moodGroupSummary.value.primary, summaryCollection.moodGroupSummary.value.secondary];
+            [summaryText appendFormat:@"Primary: %@\n Secondary: %@", summaryCollection.moodGroupSummary.value.primary, summaryCollection.moodGroupSummary.value.secondary];
         }
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:summaryText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -123,7 +123,7 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:@"No analysis segments recieved" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:@"No summary recieved" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
 }

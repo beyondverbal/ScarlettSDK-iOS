@@ -50,6 +50,7 @@ typedef struct
 @property (nonatomic, strong) IBOutlet UIButton *btnStartStopSession;
 @property (nonatomic, strong) IBOutlet UILabel *lblStatus;
 @property (nonatomic, strong) IBOutlet UITableView *tblAnalysisList;
+@property (nonatomic, strong) IBOutlet UISwitch *swcFormat;
 
 @property (nonatomic) BOOL sessionStarted;
 @property (nonatomic, strong) SCAEmotionsAnalyzer *emotionsAnalyzer;

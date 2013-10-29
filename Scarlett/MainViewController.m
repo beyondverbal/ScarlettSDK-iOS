@@ -11,7 +11,7 @@
 NSString* const kApiKey = @"66c7581c48b54589b046e489fafab19e";
 NSString* const kUpStreamVoiceDataNotification = @"UpStreamVoiceDataNotification";
 NSString* const kUpStreamVoiceDataKey = @"UpStreamVoiceDataKey";
-NSTimeInterval const kRequestTimeout = 120.0;
+NSTimeInterval const kRequestTimeout = 30.0;
 NSTimeInterval const kGetAnalysisTimeInterval = 5.0;
 float const kCollectedVoiceDataMilliseconds = 2000;
 
@@ -40,36 +40,52 @@ void AudioOutputCallback(void * inUserData,
     return self;
 }
 
-- (void)upStreamVoiceDataNotification:(NSNotification*)notification
+-(void)upStreamVoiceDataNotification:(NSNotification*)notification
 {
-    NSData *voiceData = [notification.userInfo objectForKey:kUpStreamVoiceDataKey];
-    
-    NSLog(@"............collectedVoiceData %d", [self.collectedVoiceData length]);
-    NSLog(@"............voiceData %d", [voiceData length]);
-    
-    [self.collectedVoiceData appendData:voiceData];
-    
-    NSLog(@"............collectedVoiceData %d", [self.collectedVoiceData length]);
-    
-    if(collectedVoiceDataMilliseconds > 0)
+    if(self.swcFormat.on)
     {
-        float currentMillisecond = [SCAMillisecondsUtils getMilliseconds];
+        NSData *voiceData = [notification.userInfo objectForKey:kUpStreamVoiceDataKey];
         
-        if(currentMillisecond - collectedVoiceDataMilliseconds >= kCollectedVoiceDataMilliseconds)
+        NSLog(@"............collectedVoiceData %d", [self.collectedVoiceData length]);
+        NSLog(@"............voiceData %d", [voiceData length]);
+        
+        [self.collectedVoiceData appendData:voiceData];
+        
+        NSLog(@"............collectedVoiceData %d", [self.collectedVoiceData length]);
+        
+        if(collectedVoiceDataMilliseconds > 0)
+        {
+            float currentMillisecond = [SCAMillisecondsUtils getMilliseconds];
+            
+            if(currentMillisecond - collectedVoiceDataMilliseconds >= kCollectedVoiceDataMilliseconds)
+            {
+                collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
+                
+                NSData *newVoiceData = [NSData dataWithData:self.collectedVoiceData];
+                
+                [self.emotionsAnalyzerSession upStreamVoiceData:newVoiceData];
+                
+                self.collectedVoiceData = [[NSMutableData alloc] init];
+            }
+        }
+        else
         {
             collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
-            
-            NSData *newVoiceData = [NSData dataWithData:self.collectedVoiceData];
-            
-            [self.emotionsAnalyzerSession upStreamVoiceData:newVoiceData];
-            
-            self.collectedVoiceData = [[NSMutableData alloc] init];
         }
     }
-    else
-    {
-        collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
-    }
+}
+
+-(void)sendRecordedFile
+{
+    self.lblStatus.text = @"Sending recorded file";
+    
+    NSString *path = [self getAudioFilePath];
+    
+    NSInputStream *inputStream = [[NSInputStream alloc] initWithFileAtPath:path];
+    
+    NSLog(@":::::::::::::::: sendRecordedFile %@", path);
+    
+    [self.emotionsAnalyzerSession upStreamInputStream:inputStream];
 }
 
 -(IBAction)btnStartStopSession_Pressed:(id)sender
@@ -102,10 +118,20 @@ void AudioOutputCallback(void * inUserData,
 -(void)startSession
 {
     self.btnStartStopSession.enabled = NO;
+    self.swcFormat.enabled = NO;
     
     self.lblStatus.text = @"Starting session...";
     
-    SCABaseDataFormat *dataFormat = [[SCAPcmDataFormat alloc] initWithSampleRate:8000 bitsPerSample:16 channels:1];
+    SCABaseDataFormat *dataFormat;
+    
+    if(self.swcFormat.on)
+    {
+        dataFormat = [[SCAPcmDataFormat alloc] initWithSampleRate:8000 bitsPerSample:16 channels:1];
+    }
+    else
+    {
+        dataFormat = [[SCAWavDataFormat alloc] initWithSampleRate:8000 bitsPerSample:16 channels:1];
+    }
     
     SCARecorderInfo *recorderInfo = [[SCARecorderInfo alloc] init];
     
@@ -142,8 +168,11 @@ void AudioOutputCallback(void * inUserData,
     self.sessionStarted = NO;
     
     [self stopRecording];
-    
-    [self.emotionsAnalyzerSession stopSession];
+
+    if(self.swcFormat.on)
+    {
+        [self.emotionsAnalyzerSession stopSession];
+    }
 }
 
 //-(IBAction)sendFileClicked:(id)sender
@@ -187,6 +216,7 @@ void AudioOutputCallback(void * inUserData,
 -(void)startSessionFailed:(NSString*)errorDescription
 {
     self.btnStartStopSession.enabled = YES;
+    self.swcFormat.enabled = YES;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error starting session" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
@@ -194,14 +224,16 @@ void AudioOutputCallback(void * inUserData,
 
 -(void)upStreamVoiceDataSucceed
 {
-    //TODO:
+    self.btnStartStopSession.enabled = YES;
+    self.swcFormat.enabled = YES;
     
     [self stopRecording];
 }
 
 -(void)upStreamVoiceDataFailed:(NSString *)errorDescription
 {
-    //TODO:
+    self.btnStartStopSession.enabled = YES;
+    self.swcFormat.enabled = YES;
     
     [self stopRecording];
 }
@@ -225,6 +257,11 @@ void AudioOutputCallback(void * inUserData,
     if([analysisResult isSessionStatusDone])
     {
         [self stopSession];
+        
+        self.lblStatus.text = @"Finished recieving analysis";
+        self.btnStartStopSession.enabled = YES;
+        self.swcFormat.enabled = YES;
+        self.btnStartStopSession.titleLabel.text = @"Start";
     }
 }
 
@@ -328,8 +365,14 @@ void AudioOutputCallback(void * inUserData,
 - (void)setupAudioFormat:(AudioStreamBasicDescription*)format
 {
 	format->mSampleRate = 8000.0;
-	format->mFormatID = kAudioFormatLinearPCM;
-    //format->mFormatID = kAudioFormatULaw;
+    if(self.swcFormat.on)
+    {
+        format->mFormatID = kAudioFormatLinearPCM;
+    }
+    else
+    {
+        format->mFormatID = kAudioFormatULaw;
+    }
 	format->mFramesPerPacket = 1;
 	format->mChannelsPerFrame = 1;
 	format->mBytesPerFrame = 2;
@@ -377,17 +420,23 @@ void AudioOutputCallback(void * inUserData,
             AudioQueueEnqueueBuffer (recordState.queue, recordState.buffers[i], 0, NULL);
         }
         
-        status = AudioFileCreateWithURL(fileURL,
-                                        kAudioFileAIFFType,
-                                        &recordState.dataFormat,
-                                        kAudioFileFlags_EraseFile,
-                                        &recordState.audioFile);
-        
-        //        status = AudioFileCreateWithURL(fileURL,
-        //                                        kAudioFileWAVEType,
-        //                                        &recordState.dataFormat,
-        //                                        kAudioFileFlags_EraseFile,
-        //                                        &recordState.audioFile);
+        if(self.swcFormat.on)
+        {
+            status = AudioFileCreateWithURL(fileURL,
+                                            kAudioFileAIFFType,
+                                            &recordState.dataFormat,
+                                            kAudioFileFlags_EraseFile,
+                                            &recordState.audioFile);
+        }
+        else
+        {
+            status = AudioFileCreateWithURL(fileURL,
+                                            kAudioFileWAVEType,
+                                            &recordState.dataFormat,
+                                            kAudioFileFlags_EraseFile,
+                                            &recordState.audioFile);
+        }
+
         
         if (status == 0)
         {
@@ -397,6 +446,7 @@ void AudioOutputCallback(void * inUserData,
             {
                 self.lblStatus.text = @"Recording";
                 self.btnStartStopSession.enabled = YES;
+                self.swcFormat.enabled = NO;
                 self.btnStartStopSession.titleLabel.text = @"Stop";
             }
         }
@@ -407,25 +457,38 @@ void AudioOutputCallback(void * inUserData,
         [self stopRecording];
         self.lblStatus.text = @"Record Failed";
         self.btnStartStopSession.enabled = YES;
+        self.swcFormat.enabled = YES;
         self.btnStartStopSession.titleLabel.text = @"Start";
     }
 }
 
 - (void)stopRecording
 {
-    recordState.recording = false;
-    
-    AudioQueueStop(recordState.queue, true);
-    for(int i = 0; i < NUM_BUFFERS; i++)
+    if(recordState.recording)
     {
-        AudioQueueFreeBuffer(recordState.queue, recordState.buffers[i]);
+        recordState.recording = false;
+        
+        AudioQueueStop(recordState.queue, true);
+        for(int i = 0; i < NUM_BUFFERS; i++)
+        {
+            AudioQueueFreeBuffer(recordState.queue, recordState.buffers[i]);
+        }
+        
+        AudioQueueDispose(recordState.queue, true);
+        AudioFileClose(recordState.audioFile);
+        
+        if(self.swcFormat.on)
+        {
+            self.lblStatus.text = @"Recording stopped";
+            self.btnStartStopSession.enabled = YES;
+            self.swcFormat.enabled = YES;
+            self.btnStartStopSession.titleLabel.text = @"Start";
+        }
+        else
+        {
+            [self sendRecordedFile];
+        }
     }
-    
-    AudioQueueDispose(recordState.queue, true);
-    AudioFileClose(recordState.audioFile);
-    self.lblStatus.text = @"Recording stopped";
-    self.btnStartStopSession.enabled = YES;
-    self.btnStartStopSession.titleLabel.text = @"Start";
 }
 
 
@@ -436,8 +499,16 @@ void AudioOutputCallback(void * inUserData,
     [self setupAudioFormat:&playState.dataFormat];
     
     OSStatus status;
-    status = AudioFileOpenURL(fileURL, kAudioFileReadPermission, kAudioFileAIFFType, &playState.audioFile);
-    //status = AudioFileOpenURL(fileURL, kAudioFileReadPermission, kAudioFileWAVEType, &playState.audioFile);
+    
+    if(self.swcFormat.on)
+    {
+        status = AudioFileOpenURL(fileURL, kAudioFileReadPermission, kAudioFileAIFFType, &playState.audioFile);
+    }
+    else
+    {
+        status = AudioFileOpenURL(fileURL, kAudioFileReadPermission, kAudioFileWAVEType, &playState.audioFile);
+    }
+    
     if (status == 0)
     {
         status = AudioQueueNewOutput(&playState.dataFormat,

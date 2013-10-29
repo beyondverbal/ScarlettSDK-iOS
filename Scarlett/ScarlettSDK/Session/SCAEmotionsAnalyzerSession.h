@@ -61,6 +61,7 @@
 -(void)startSession;
 -(void)stopSession;
 -(void)upStreamVoiceData:(NSData*)voiceData;
+-(void)upStreamInputStream:(NSInputStream*)inputStream;
 -(void)getSummary:(id<SCAEmotionsAnalyzerSummaryDelegate>)summaryDelegate;
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore;
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote;

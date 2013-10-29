@@ -34,16 +34,9 @@
             
             self.sessionStatus = [resultDictionary objectForKey:@"sessionStatus"];
             
-            self.analysisItems = [[NSMutableArray alloc] init];
+            NSDictionary *analysisItemsDictionary = [resultDictionary objectForKey:@"analysisItems"];
             
-            NSArray *analysisItemsArray = [resultDictionary objectForKey:@"analysisItems"];
-            
-            for (NSDictionary *analysisItemDictionary in analysisItemsArray)
-            {
-                SCASummaryCollection *summaryCollection = [[SCASummaryCollection alloc] initWithDictionary:analysisItemDictionary];
-                
-                [self.analysisItems addObject:summaryCollection];
-            }
+            self.summaryCollection = [[SCASummaryCollection alloc] initWithDictionary:analysisItemsDictionary];
         }
         else if ([self.status isEqualToString:kResponseStatusFailure])
         {

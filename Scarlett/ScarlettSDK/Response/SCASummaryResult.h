@@ -19,7 +19,7 @@
 @property (nonatomic, strong) SCAFollowupActions *followupActions;
 @property (nonatomic) unsigned long durationProcessed;
 @property (nonatomic, strong) NSString *sessionStatus;
-@property (nonatomic, strong) NSMutableArray *analysisItems;
+@property (nonatomic, strong) SCASummaryCollection *summaryCollection;
 
 -(id)initWithResponseData:(NSData*)responseData;
 

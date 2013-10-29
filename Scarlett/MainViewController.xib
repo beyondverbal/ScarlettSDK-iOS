@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="btnStartStopSession" destination="Q5k-Rv-ekX" id="LYt-1F-ZvS"/>
                 <outlet property="lblStatus" destination="yh7-oO-GRY" id="SuI-Zb-BN5"/>
+                <outlet property="swcFormat" destination="6fq-kv-84b" id="E5G-oQ-Hva"/>
                 <outlet property="tblAnalysisList" destination="4VS-b9-hpE" id="SqP-QB-6j7"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -25,7 +26,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5k-Rv-ekX">
-                    <rect key="frame" x="137" y="396" width="46" height="30"/>
+                    <rect key="frame" x="254" y="396" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Start">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,6 +44,16 @@
                         <outlet property="delegate" destination="-1" id="zEu-eo-CEp"/>
                     </connections>
                 </tableView>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fq-kv-84b">
+                    <rect key="frame" x="136" y="395" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </switch>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voice/File" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjR-9B-f9B">
+                    <rect key="frame" x="20" y="400" width="108" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

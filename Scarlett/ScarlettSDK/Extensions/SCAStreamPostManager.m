@@ -12,11 +12,12 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 @implementation SCAStreamPostManager
 
--(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate
+-(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout
 {
     if(self = [super init])
     {
         self.delegate = delegate;
+        self.requestTimeout = requestTimeout;
         self.postData = [[NSMutableData alloc] init];
 
         self.bufferOnHeap = malloc(kPostBufferSize);
@@ -52,29 +53,51 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 -(void)startSend:(NSString*)url
 {
+    [self startSend:url inputStream:nil];
+}
+
+-(void)startSend:(NSString *)url inputStream:(NSInputStream*)inputStream
+{
     self.isSending = YES;
     
     NSURL *                 myURL = [NSURL URLWithString:url];
     NSMutableURLRequest *   request;
-    NSInputStream *         consStream;
-    NSOutputStream *        prodStream;
     
-    [NSStream createBoundInputStream:&consStream outputStream:&prodStream bufferSize:kPostBufferSize];
-
-    self.consumerStream = consStream;
-    self.producerStream = prodStream;
-    
-    self.producerStream.delegate = self;
-    [self.producerStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [self.producerStream open];
+    if(!inputStream)
+    {
+        NSInputStream *         consStream;
+        NSOutputStream *        prodStream;
+        
+        [NSStream createBoundInputStream:&consStream outputStream:&prodStream bufferSize:kPostBufferSize];
+        
+        self.consumerStream = consStream;
+        self.producerStream = prodStream;
+        
+        self.producerStream.delegate = self;
+        [self.producerStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [self.producerStream open];
+    }
     
     request = [NSMutableURLRequest requestWithURL:myURL];
-    request.timeoutInterval = 100000; //TODO: check how to make infinite timeout
+    request.timeoutInterval = self.requestTimeout;
     
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBodyStream:self.consumerStream];
+    
+    if(!inputStream)
+    {
+        [request setHTTPBodyStream:self.consumerStream];
+    }
+    else
+    {
+        [request setHTTPBodyStream:inputStream];
+    }
     
     self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    if(inputStream)
+    {
+        [self.connection start];
+    }
 }
 
 -(void)stopSend
