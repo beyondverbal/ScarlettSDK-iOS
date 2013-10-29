@@ -7,20 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SCAAnalysisResult.h"
 #import "SCAVoteResult.h"
 
-@protocol SCAEmotionsAnalyzerSessionDelegate <NSObject>
+@protocol SCAEmotionsAnalyzerVoteDelegate <NSObject>
 
-@optional
--(void)startSessionSucceed;
--(void)startSessionFailed:(NSString*)errorDescription;
--(void)upStreamVoiceDataSucceed;
--(void)upStreamVoiceDataFailed:(NSString*)errorDescription;
--(void)getAnalysisSucceed:(SCAAnalysisResult*)analysisResult;
--(void)getAnalysisFailed:(NSString*)errorDescription;
--(void)getSummarySucceed:(SCAAnalysisResult*)summaryResult;
--(void)getSummaryFailed:(NSString*)errorDescription;
 -(void)voteSucceed:(SCAVoteResult*)voteResult;
 -(void)voteFailed:(NSString*)errorDescription;
 

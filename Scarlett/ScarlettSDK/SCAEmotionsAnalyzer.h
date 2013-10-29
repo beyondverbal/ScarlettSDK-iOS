@@ -17,14 +17,14 @@
     NSTimeInterval _requestTimeout;
     NSTimeInterval _getAnalysisTimeInterval;
     NSString *_host;
-    id<SCAEmotionsAnalyzerSessionDelegate> _delegate;
+    id<SCAEmotionsAnalyzerSessionDelegate> _sessionDelegate;
 }
 
 -(id)initWithApiKey:(NSString*)apiKey
      requestTimeout:(NSTimeInterval)requestTimeout
 getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                host:(NSString*)host
-           delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate;
+    sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
 
 -(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters;
 

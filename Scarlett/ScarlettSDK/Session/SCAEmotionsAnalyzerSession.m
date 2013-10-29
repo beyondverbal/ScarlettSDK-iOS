@@ -17,11 +17,11 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
                 requestTimeout:(NSTimeInterval)requestTimeout
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                           host:(NSString*)host
-                      delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate
+               sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate
 {
     if(self = [super init])
     {
-        self.delegate = delegate;
+        self.sessionDelegate = sessionDelegate;
         
         self.startSessionResponder = [[SCAStartSessionResponder alloc] init];
         self.startSessionResponder.delegate = self;
@@ -98,8 +98,10 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     }
 }
 
--(void)getSummary
+-(void)getSummary:(id<SCAEmotionsAnalyzerSummaryDelegate>)summaryDelegate
 {
+    self.summaryDelegate = summaryDelegate;
+    
     if(_lastAnalysisResult)
     {
         SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
@@ -110,22 +112,24 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     }
     else
     {
-        [self.delegate getSummaryFailed:@"Must recieve at least one analysis"];
+        [self.summaryDelegate getSummaryFailed:@"Must recieve at least one analysis"];
     }
 }
 
--(void)vote:(int)voteScore
+-(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore
 {
-    [self vote:voteScore verbalVote:nil];
+    [self vote:voteDelegate voteScore:voteScore verbalVote:nil];
 }
 
--(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote
+-(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote
 {
-    [self vote:voteScore verbalVote:verbalVote segment:nil];
+    [self vote:voteDelegate voteScore:voteScore verbalVote:verbalVote segment:nil];
 }
 
--(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment
+-(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment
 {
+    self.voteDelegate = voteDelegate;
+    
     if(_lastAnalysisResult)
     {
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
@@ -157,7 +161,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     }
     else
     {
-        [self.delegate getSummaryFailed:@"Must recieve at least one analysis"];
+        [self.voteDelegate voteFailed:@"Must recieve at least one analysis"];
     }
 }
 
@@ -173,17 +177,17 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     if([_startSessionResult isSucceed])
     {
-        [self.delegate startSessionSucceed];
+        [self.sessionDelegate startSessionSucceed];
     }
     else
     {
-        [self.delegate startSessionFailed:_startSessionResult.reason];
+        [self.sessionDelegate startSessionFailed:_startSessionResult.reason];
     }
 }
 
 -(void)startSessionFailed:(NSError*)error
 {
-    [self.delegate startSessionFailed:[error localizedDescription]];
+    [self.sessionDelegate startSessionFailed:[error localizedDescription]];
 }
 
 -(void)upStreamVoiceSucceed:(NSData *)responseData
@@ -194,7 +198,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     NSLog(@"upStreamVoiceSucceed %@", jsonObject);
     
-    [self.delegate upStreamVoiceDataSucceed];
+    [self.sessionDelegate upStreamVoiceDataSucceed];
 }
 
 -(void)upStreamVoiceFailed:(NSString *)errorDescription
@@ -203,7 +207,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     [self stopSession];
     
-    [self.delegate upStreamVoiceDataFailed:errorDescription];
+    [self.sessionDelegate upStreamVoiceDataFailed:errorDescription];
 }
 
 -(void)getAnalysisSucceed:(NSData *)responseData
@@ -219,7 +223,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
         [self stopSession];
     }
     
-    [self.delegate getAnalysisSucceed:_lastAnalysisResult];
+    [self.sessionDelegate getAnalysisSucceed:_lastAnalysisResult];
     
     _getAnalysisInProgress = NO;
 }
@@ -228,7 +232,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 {
     NSLog(@"analysisFailed %@", [error localizedDescription]);
     
-    [self.delegate getAnalysisFailed:[error localizedDescription]];
+    [self.sessionDelegate getAnalysisFailed:[error localizedDescription]];
     
     _getAnalysisInProgress = NO;
 }
@@ -241,14 +245,14 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     SCAAnalysisResult *analysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
     
-    [self.delegate getSummarySucceed:analysisResult];
+    [self.summaryDelegate getSummarySucceed:analysisResult];
 }
 
 -(void)getSummaryFailed:(NSError *)error
 {
     NSLog(@"getSummaryFailed %@", [error localizedDescription]);
     
-    [self.delegate getSummaryFailed:[error localizedDescription]];
+    [self.summaryDelegate getSummaryFailed:[error localizedDescription]];
 }
 
 -(void)voteSucceed:(NSData *)responseData
@@ -259,14 +263,14 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     SCAVoteResult *voteResult = [[SCAVoteResult alloc] initWithResponseData:responseData];
     
-    [self.delegate voteSucceed:voteResult];
+    [self.voteDelegate voteSucceed:voteResult];
 }
 
 -(void)voteFailed:(NSError *)error
 {
     NSLog(@"voteFailed %@", [error localizedDescription]);
     
-    [self.delegate voteFailed:[error localizedDescription]];
+    [self.voteDelegate voteFailed:[error localizedDescription]];
 }
 
 #pragma mark - Private methods

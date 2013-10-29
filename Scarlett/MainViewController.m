@@ -130,7 +130,7 @@ void AudioOutputCallback(void * inUserData,
     
     SCASessionParameters *sessionParameters = [[SCASessionParameters alloc] initWithDataFormat:dataFormat recorderInfo:recorderInfo requiredAnalysisTypes:requiredAnalysis];
     
-    self.emotionsAnalyzer = [[SCAEmotionsAnalyzer alloc] initWithApiKey:kApiKey requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta delegate:self];
+    self.emotionsAnalyzer = [[SCAEmotionsAnalyzer alloc] initWithApiKey:kApiKey requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta sessionDelegate:self];
     
     self.emotionsAnalyzerSession = [self.emotionsAnalyzer initializeSession:sessionParameters];
     

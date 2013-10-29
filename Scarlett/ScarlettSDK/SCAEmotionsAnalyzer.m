@@ -14,7 +14,7 @@
      requestTimeout:(NSTimeInterval)requestTimeout
 getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                host:(NSString*)host
-           delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate
+    sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate
 {
     if(self = [super init])
     {
@@ -22,14 +22,14 @@ getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
         _requestTimeout = requestTimeout;
         _getAnalysisTimeInterval = getAnalysisTimeInterval;
         _host = host;
-        _delegate = delegate;
+        _sessionDelegate = sessionDelegate;
     }
     return self;
 }
 
 -(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters
 {
-    SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:_apiKey requestTimeout:_requestTimeout getAnalysisTimeInterval:_getAnalysisTimeInterval host:_host delegate:_delegate];
+    SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:_apiKey requestTimeout:_requestTimeout getAnalysisTimeInterval:_getAnalysisTimeInterval host:_host sessionDelegate:_sessionDelegate];
     
     return emotionsAnalyzerSession;
 }

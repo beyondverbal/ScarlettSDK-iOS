@@ -73,34 +73,88 @@
 
 -(IBAction)btnGetSummary_Pressed:(id)sender
 {
+    if(!self.getSummaryInProgress)
+    {
+        self.getSummaryInProgress = YES;
     
+        [self.emotionsAnalyzerSession getSummary:self];
+    }
 }
 
 -(IBAction)btnVote_Pressed:(id)sender
 {
-    
+    if(!self.voteInProgress)
+    {
+        self.voteInProgress = YES;
+        
+        int voteScore = [self.txtVoteScore.text intValue];
+        NSString *verbalVote = self.txtVerbalVote.text;
+        
+        [self.emotionsAnalyzerSession vote:self voteScore:voteScore verbalVote:verbalVote segment:self.segment];
+    }
 }
 
 #pragma mark - Response delegates
 
 -(void)getSummarySucceed:(SCAAnalysisResult*)summaryResult
 {
+    self.getSummaryInProgress = NO;
     
+    NSMutableString *summaryText = [[NSMutableString alloc] init];
+    
+    SCAAnalysisCollection *analysis = [summaryResult.analysisSegments objectAtIndex:0];
+    
+    if(analysis.compositMood)
+    {
+        [summaryText appendFormat:@"CompositMood Primary: %@ Secondary: %@\n", analysis.compositMood.value.primary, analysis.compositMood.value.secondary];
+    }
+    
+    if(analysis.composureMeter)
+    {
+        [summaryText appendFormat:@"ComposureMeter %f\n", analysis.composureMeter.value];
+    }
+    
+    if(analysis.moodGroup)
+    {
+        [summaryText appendFormat:@"MoodGroup Primary: %@ Secondary: %@\n", analysis.moodGroup.value.primary, analysis.moodGroup.value.secondary];
+    }
+    
+    if(analysis.temperMeter)
+    {
+        [summaryText appendFormat:@"TemperMeter %@\n", analysis.temperMeter.value];
+    }
+    
+    if(analysis.temperValue)
+    {
+        [summaryText appendFormat:@"ComposureMeter %f\n", analysis.temperValue.value];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:summaryText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 -(void)getSummaryFailed:(NSString*)errorDescription
 {
+    self.getSummaryInProgress = NO;
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error getting summary" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 -(void)voteSucceed:(SCAVoteResult*)voteResult
 {
+    self.voteInProgress = NO;
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vote succeed" message:voteResult.result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 -(void)voteFailed:(NSString*)errorDescription
 {
+    self.voteInProgress = NO;
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error voting" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 @end

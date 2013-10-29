@@ -10,6 +10,8 @@
 #import "SCASessionParameters.h"
 #import "SCAFollowupActions.h"
 #import "SCAEmotionsAnalyzerSessionDelegate.h"
+#import "SCAEmotionsAnalyzerSummaryDelegate.h"
+#import "SCAEmotionsAnalyzerVoteDelegate.h"
 #import "SCAUrlRequest.h"
 #import "SCAStartSessionResponder.h"
 #import "SCAUpStreamVoiceResponder.h"
@@ -36,7 +38,9 @@
     BOOL _getAnalysisInProgress;
 }
 
-@property (nonatomic, weak) id<SCAEmotionsAnalyzerSessionDelegate> delegate;
+@property (nonatomic, weak) id<SCAEmotionsAnalyzerSessionDelegate> sessionDelegate;
+@property (nonatomic, weak) id<SCAEmotionsAnalyzerSummaryDelegate> summaryDelegate;
+@property (nonatomic, weak) id<SCAEmotionsAnalyzerVoteDelegate> voteDelegate;
 @property (nonatomic, strong) SCAStartSessionResponder *startSessionResponder;
 @property (nonatomic, strong) SCAUpStreamVoiceResponder *upStreamVoiceResponder;
 @property (nonatomic, strong) SCAAnalysisResponder *analysisResponder;
@@ -53,13 +57,13 @@
                 requestTimeout:(NSTimeInterval)requestTimeout
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                           host:(NSString*)host
-                      delegate:(id<SCAEmotionsAnalyzerSessionDelegate>)delegate;
+               sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
 -(void)startSession;
 -(void)stopSession;
 -(void)upStreamVoiceData:(NSData*)voiceData;
--(void)getSummary;
--(void)vote:(int)voteScore;
--(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote;
--(void)vote:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment;
+-(void)getSummary:(id<SCAEmotionsAnalyzerSummaryDelegate>)summaryDelegate;
+-(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore;
+-(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote;
+-(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment;
 
 @end
