@@ -41,6 +41,10 @@
 		657FCAC0181FBF5E002DA371 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCABC181FBF5D002DA371 /* DetailsViewController.xib */; };
 		657FCAC3181FC17D002DA371 /* SCATemperMeterValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */; };
 		657FCAC4181FC17D002DA371 /* SCATemperMeterValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */; };
+		657FCAC9181FE487002DA371 /* SCASummaryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC8181FE487002DA371 /* SCASummaryResult.m */; };
+		657FCACA181FE487002DA371 /* SCASummaryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC8181FE487002DA371 /* SCASummaryResult.m */; };
+		657FCAD1181FE665002DA371 /* SCASummaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAD0181FE665002DA371 /* SCASummaryCollection.m */; };
+		657FCAD2181FE665002DA371 /* SCASummaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAD0181FE665002DA371 /* SCASummaryCollection.m */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -143,6 +147,10 @@
 		657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCATemperMeterValues.m; sourceTree = "<group>"; };
 		657FCAC5181FCB06002DA371 /* SCAEmotionsAnalyzerSummaryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSummaryDelegate.h; sourceTree = "<group>"; };
 		657FCAC6181FCB06002DA371 /* SCAEmotionsAnalyzerVoteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerVoteDelegate.h; sourceTree = "<group>"; };
+		657FCAC7181FE487002DA371 /* SCASummaryResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResult.h; sourceTree = "<group>"; };
+		657FCAC8181FE487002DA371 /* SCASummaryResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryResult.m; sourceTree = "<group>"; };
+		657FCACF181FE665002DA371 /* SCASummaryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryCollection.h; sourceTree = "<group>"; };
+		657FCAD0181FE665002DA371 /* SCASummaryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryCollection.m; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -324,6 +332,8 @@
 			children = (
 				65C5F6CB1813C5D10012328F /* SCAAnalysisCollection.h */,
 				65C5F6CC1813C5D10012328F /* SCAAnalysisCollection.m */,
+				657FCACF181FE665002DA371 /* SCASummaryCollection.h */,
+				657FCAD0181FE665002DA371 /* SCASummaryCollection.m */,
 				65C5F6CF1813C5D10012328F /* SCACompositStringAnalysis.h */,
 				65C5F6D01813C5D10012328F /* SCACompositStringAnalysis.m */,
 				65C5F6D11813C5D10012328F /* SCAFloatAnalysis.h */,
@@ -340,6 +350,8 @@
 				65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */,
 				65C5F6CD1813C5D10012328F /* SCAAnalysisResult.h */,
 				65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */,
+				657FCAC7181FE487002DA371 /* SCASummaryResult.h */,
+				657FCAC8181FE487002DA371 /* SCASummaryResult.m */,
 				657FCAA7181D5D99002DA371 /* SCAVoteResult.h */,
 				657FCAA8181D5D99002DA371 /* SCAVoteResult.m */,
 				657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */,
@@ -515,6 +527,7 @@
 			files = (
 				65C5F7001813C5D10012328F /* SCAAnalysisCollection.m in Sources */,
 				65C5F6FA1813C5D10012328F /* SCARequiredAnalysis.m in Sources */,
+				657FCAD1181FE665002DA371 /* SCASummaryCollection.m in Sources */,
 				65C5F7021813C5D10012328F /* SCAAnalysisResult.m in Sources */,
 				657FCAC3181FC17D002DA371 /* SCATemperMeterValues.m in Sources */,
 				657FCA93181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
@@ -524,6 +537,7 @@
 				657FCA9F181D5B34002DA371 /* SCASummaryResponder.m in Sources */,
 				652798B41816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
 				65C5F70C1813C5D10012328F /* SCAStartSessionResult.m in Sources */,
+				657FCAC9181FE487002DA371 /* SCASummaryResult.m in Sources */,
 				657FCA8F181D27DE002DA371 /* SCAResponseStatuses.m in Sources */,
 				652798AD1816917600D54EE4 /* NSStream_BoundPairAdditions.m in Sources */,
 				65C5F6FC1813C5D10012328F /* SCASessionParameters.m in Sources */,
@@ -557,11 +571,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657FCAD2181FE665002DA371 /* SCASummaryCollection.m in Sources */,
 				65C5F7051813C5D10012328F /* SCACompositStringAnalysis.m in Sources */,
 				657FCAAE181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
 				65C5F7111813C5D10012328F /* SCAStringAnalysis.m in Sources */,
 				657FCA98181D54BC002DA371 /* SCASessionStatuses.m in Sources */,
 				652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
+				657FCACA181FE487002DA371 /* SCASummaryResult.m in Sources */,
 				65C5F7011813C5D10012328F /* SCAAnalysisCollection.m in Sources */,
 				6527989B181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */,
 				65C5F6F71813C5D10012328F /* SCAGeoLocation.m in Sources */,

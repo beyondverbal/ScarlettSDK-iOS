@@ -10,7 +10,7 @@
 #import "SCAFollowupActions.h"
 #import "SCAResponseStatuses.h"
 #import "SCASessionStatuses.h"
-#import "SCASegment.h"
+#import "SCASummaryCollection.h"
 
 @interface SCASummaryResult : NSObject
 

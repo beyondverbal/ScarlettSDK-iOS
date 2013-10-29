@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SCACompositStringAnalysis.h"
 
 @interface SCASummaryCollection : NSObject
+
+@property (nonatomic, strong) SCACompositStringAnalysis *moodGroupSummary;
+
+-(id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

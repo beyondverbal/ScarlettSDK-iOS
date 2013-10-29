@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SCAAnalysisResult.h"
+#import "SCASummaryResult.h"
 
 @protocol SCAEmotionsAnalyzerSummaryDelegate <NSObject>
 
--(void)getSummarySucceed:(SCAAnalysisResult*)summaryResult;
+-(void)getSummarySucceed:(SCASummaryResult*)summaryResult;
 -(void)getSummaryFailed:(NSString*)errorDescription;
 
 @end

@@ -243,9 +243,9 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     NSLog(@"getSummarySucceed %@", jsonObject);
     
-    SCAAnalysisResult *analysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
+    SCASummaryResult *summaryResult = [[SCASummaryResult alloc] initWithResponseData:responseData];
     
-    [self.summaryDelegate getSummarySucceed:analysisResult];
+    [self.summaryDelegate getSummarySucceed:summaryResult];
 }
 
 -(void)getSummaryFailed:(NSError *)error

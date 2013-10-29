@@ -10,4 +10,16 @@
 
 @implementation SCASummaryCollection
 
+-(id)initWithDictionary:(NSDictionary*)dictionary
+{
+    if(self = [super init])
+    {
+        if([dictionary objectForKey:@"MoodGroupSummary"])
+        {
+            self.moodGroupSummary = [[SCACompositStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"MoodGroupSummary"]];
+        }
+    }
+    return self;
+}
+
 @end

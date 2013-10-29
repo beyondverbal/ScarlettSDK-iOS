@@ -40,10 +40,9 @@
             
             for (NSDictionary *analysisItemDictionary in analysisItemsArray)
             {
+                SCASummaryCollection *summaryCollection = [[SCASummaryCollection alloc] initWithDictionary:analysisItemDictionary];
                 
-                //SCASegment *segment = [[SCASegment alloc] initWithDictionary:analysisSegmentDictionary];
-                
-                //[self.analysisSegments addObject:segment];
+                [self.analysisItems addObject:summaryCollection];
             }
         }
         else if ([self.status isEqualToString:kResponseStatusFailure])

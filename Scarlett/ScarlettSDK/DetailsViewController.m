@@ -103,39 +103,19 @@
 
 #pragma mark - Response delegates
 
--(void)getSummarySucceed:(SCAAnalysisResult*)summaryResult
+-(void)getSummarySucceed:(SCASummaryResult*)summaryResult
 {
     self.getSummaryInProgress = NO;
     
-    if(summaryResult.analysisSegments && [summaryResult.analysisSegments count] > 0)
+    if(summaryResult.analysisItems && [summaryResult.analysisItems count] > 0)
     {
         NSMutableString *summaryText = [[NSMutableString alloc] init];
         
-        SCAAnalysisCollection *analysis = [summaryResult.analysisSegments objectAtIndex:0];
+        SCASummaryCollection *summaryCollection = [summaryResult.analysisItems objectAtIndex:0];
         
-        if(analysis.compositMood)
+        if(summaryCollection.moodGroupSummary)
         {
-            [summaryText appendFormat:@"CompositMood Primary: %@ Secondary: %@\n", analysis.compositMood.value.primary, analysis.compositMood.value.secondary];
-        }
-        
-        if(analysis.composureMeter)
-        {
-            [summaryText appendFormat:@"ComposureMeter %f\n", analysis.composureMeter.value];
-        }
-        
-        if(analysis.moodGroup)
-        {
-            [summaryText appendFormat:@"MoodGroup Primary: %@ Secondary: %@\n", analysis.moodGroup.value.primary, analysis.moodGroup.value.secondary];
-        }
-        
-        if(analysis.temperMeter)
-        {
-            [summaryText appendFormat:@"TemperMeter %@\n", analysis.temperMeter.value];
-        }
-        
-        if(analysis.temperValue)
-        {
-            [summaryText appendFormat:@"ComposureMeter %f\n", analysis.temperValue.value];
+            [summaryText appendFormat:@"MoodGroupSummary Primary: %@, Secondary: %@", summaryCollection.moodGroupSummary.value.primary, summaryCollection.moodGroupSummary.value.secondary];
         }
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:summaryText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
