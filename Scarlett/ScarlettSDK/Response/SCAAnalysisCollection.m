@@ -14,11 +14,30 @@
 {
     if(self = [super init])
     {
-        self.temperValue = [[SCAFloatAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"TemperValue"]];
-        self.composureMeter = [[SCAFloatAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"ComposureMeter"]];
-        self.temperMeter = [[SCAStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"TemperMeter"]];
-        self.compositMood = [[SCACompositStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"CompositMood"]];
-        self.moodGroup = [[SCACompositStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"MetaGroup"]];
+        if([dictionary objectForKey:@"TemperValue"])
+        {
+            self.temperValue = [[SCAFloatAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"TemperValue"]];
+        }
+        
+        if([dictionary objectForKey:@"ComposureMeter"])
+        {
+            self.composureMeter = [[SCAFloatAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"ComposureMeter"]];
+        }
+        
+        if([dictionary objectForKey:@"TemperMeter"])
+        {
+            self.temperMeter = [[SCAStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"TemperMeter"]];
+        }
+        
+        if([dictionary objectForKey:@"CompositMood"])
+        {
+            self.compositMood = [[SCACompositStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"CompositMood"]];
+        }
+        
+        if([dictionary objectForKey:@"MoodGroup"])
+        {
+            self.moodGroup = [[SCACompositStringAnalysis alloc] initWithDictionary:[dictionary objectForKey:@"MoodGroup"]];
+        }
     }
     return self;
 }

@@ -220,6 +220,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     }
     
     [self.delegate getAnalysisSucceed:_lastAnalysisResult];
+    
+    _getAnalysisInProgress = NO;
 }
 
 -(void)getAnalysisFailed:(NSError *)error
@@ -227,6 +229,8 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     NSLog(@"analysisFailed %@", [error localizedDescription]);
     
     [self.delegate getAnalysisFailed:[error localizedDescription]];
+    
+    _getAnalysisInProgress = NO;
 }
 
 -(void)getSummarySucceed:(NSData *)responseData
@@ -273,19 +277,24 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 }
 
 -(void)getAnalysis
-{    
-    SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
-    
-    NSString *url = _startSessionResult.followupActions.analysis;
-    
-    if(_lastAnalysisResult)
+{
+    if(!_getAnalysisInProgress)
     {
-        url = _lastAnalysisResult.followupActions.analysis;
+        _getAnalysisInProgress = YES;
+        
+        SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
+        
+        NSString *url = _startSessionResult.followupActions.analysis;
+        
+        if(_lastAnalysisResult)
+        {
+            url = _lastAnalysisResult.followupActions.analysis;
+        }
+        
+        NSLog(@"getAnalysis %@", url);
+        
+        [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
     }
-    
-    NSLog(@"getAnalysis %@", url);
-    
-    [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
 }
 
 -(void)startAnalysisTimer

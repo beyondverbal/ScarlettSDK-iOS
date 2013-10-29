@@ -10,7 +10,6 @@
 #import <AudioToolbox/AudioQueue.h>
 #import <AudioToolbox/AudioFile.h>
 #import "SCAEmotionsAnalyzer.h"
-#import "SCAEmotionsAnalyzerSession.h"
 #import "SCAPcmDataFormat.h"
 #import "SCAWavDataFormat.h"
 #import "SCAMillisecondsUtils.h"
@@ -55,7 +54,7 @@ typedef struct
 @property (nonatomic, strong) SCAEmotionsAnalyzer *emotionsAnalyzer;
 @property (nonatomic, strong) SCAEmotionsAnalyzerSession *emotionsAnalyzerSession;
 @property (nonatomic, strong) NSMutableData *collectedVoiceData;
-@property (nonatomic, strong) NSMutableArray *analysisResults;
+@property (nonatomic, strong) NSMutableArray *analysisSegments;
 
 -(IBAction)btnStartStopSession_Pressed:(id)sender;
 

@@ -12,7 +12,7 @@ NSString* const kApiKey = @"66c7581c48b54589b046e489fafab19e";
 NSString* const kUpStreamVoiceDataNotification = @"UpStreamVoiceDataNotification";
 NSString* const kUpStreamVoiceDataKey = @"UpStreamVoiceDataKey";
 NSTimeInterval const kRequestTimeout = 120.0;
-NSTimeInterval const kGetAnalysisTimeInterval = 2.0;
+NSTimeInterval const kGetAnalysisTimeInterval = 5.0;
 float const kCollectedVoiceDataMilliseconds = 2000;
 
 void AudioInputCallback(void * inUserData,
@@ -90,7 +90,7 @@ void AudioOutputCallback(void * inUserData,
 
 -(void)initData
 {
-    self.analysisResults = [[NSMutableArray alloc] init];
+    self.analysisSegments = [[NSMutableArray alloc] init];
     self.collectedVoiceData = [[NSMutableData alloc] init];
 }
 
@@ -119,7 +119,14 @@ void AudioOutputCallback(void * inUserData,
     recorderInfo.device_info = @"iPhone";
     recorderInfo.device_id = @"3333333"; //TODO: init with OpenID
     
-    SCARequiredAnalysis *requiredAnalysis = [[SCARequiredAnalysis alloc] initWithRequiredAnalysis:@[SCARequiredAnalysisComposureMeter, SCARequiredAnalysisTemperValue]];
+    SCARequiredAnalysis *requiredAnalysis = [[SCARequiredAnalysis alloc] initWithRequiredAnalysis:@[SCARequiredAnalysisTemperValue,
+                                                                                                    SCARequiredAnalysisTemperMeter,
+                                                                                                    SCARequiredAnalysisComposureMeter,
+                                                                                                    SCARequiredAnalysisCooperationLevel,
+                                                                                                    SCARequiredAnalysisServiceScore,
+                                                                                                    SCARequiredAnalysisCompositMood,
+                                                                                                    SCARequiredAnalysisMoodGroup,
+                                                                                                    SCARequiredAnalysisMoodGroupSummary]];
     
     SCASessionParameters *sessionParameters = [[SCASessionParameters alloc] initWithDataFormat:dataFormat recorderInfo:recorderInfo requiredAnalysisTypes:requiredAnalysis];
     
@@ -201,15 +208,30 @@ void AudioOutputCallback(void * inUserData,
 
 -(void)getAnalysisSucceed:(SCAAnalysisResult *)analysisResult
 {
-    //TODO:
+    NSLog(@"getAnalysisSucceed %@", analysisResult);
     
-    [self.analysisResults addObject:analysisResult];
+    if(analysisResult.analysisSegments && [analysisResult.analysisSegments count] > 0)
+    {
+        NSArray *analysisSegments = analysisResult.analysisSegments;
+        
+        for (SCASegment *segment in analysisSegments)
+        {
+            [self.analysisSegments addObject:segment];
+        }
+        
+        [self.tblAnalysisList reloadData];
+    }
     
-    [self.tblAnalysisList reloadData];
+    if([analysisResult isSessionStatusDone])
+    {
+        [self stopSession];
+    }
 }
 
 -(void)getAnalysisFailed:(NSString *)errorDescription
 {
+    NSLog(@"getAnalysisFailed %@", errorDescription);
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error getting analysis" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
 }
@@ -486,7 +508,7 @@ void AudioOutputCallback(void * inUserData,
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.analysisResults count];
+    return [self.analysisSegments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -499,8 +521,10 @@ void AudioOutputCallback(void * inUserData,
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    SCAAnalysisResult *analysisResult = [self.analysisResults objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"Processed: %lu (%lu)", analysisResult.durationProcessed, (unsigned long)[analysisResult.analysisSegments count]];
+    SCASegment *segment = [self.analysisSegments objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = segment.analysis.compositMood.value.primary;
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
     
     return cell;
 }

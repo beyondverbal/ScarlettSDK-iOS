@@ -19,4 +19,19 @@
     return self;
 }
 
+-(BOOL)isLow
+{
+    return [self.value isEqualToString:kTemperMeterLow];
+}
+
+-(BOOL)isMed
+{
+    return [self.value isEqualToString:kTemperMeterMed];
+}
+
+-(BOOL)isHigh
+{
+    return [self.value isEqualToString:kTemperMeterHigh];
+}
+
 @end

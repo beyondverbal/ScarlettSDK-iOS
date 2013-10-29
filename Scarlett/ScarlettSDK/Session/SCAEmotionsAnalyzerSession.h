@@ -33,6 +33,7 @@
     SCAStartSessionResult *_startSessionResult;
     SCAAnalysisResult *_lastAnalysisResult;
     BOOL _sessionStarted;
+    BOOL _getAnalysisInProgress;
 }
 
 @property (nonatomic, weak) id<SCAEmotionsAnalyzerSessionDelegate> delegate;
