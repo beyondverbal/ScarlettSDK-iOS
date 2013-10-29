@@ -13,6 +13,7 @@
 #import "SCAPcmDataFormat.h"
 #import "SCAWavDataFormat.h"
 #import "SCAMillisecondsUtils.h"
+#import "DetailsViewController.h"
 
 #define NUM_BUFFERS 3
 

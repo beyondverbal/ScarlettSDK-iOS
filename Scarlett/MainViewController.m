@@ -529,9 +529,13 @@ void AudioOutputCallback(void * inUserData,
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO:
+    SCASegment *segment = [self.analysisSegments objectAtIndex:indexPath.row];
+    
+    DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithEmotionsAnalyzerSession:self.emotionsAnalyzerSession segment:segment];
+    
+    [self presentViewController:detailsViewController animated:YES completion:nil];
 }
 
 @end

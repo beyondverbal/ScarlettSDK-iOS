@@ -24,11 +24,10 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblMoodGroupSecondary;
 @property (nonatomic, strong) IBOutlet UILabel *lblTemperMeter;
 @property (nonatomic, strong) IBOutlet UILabel *lblTemperValue;
-@property (nonatomic, strong) IBOutlet UITextField *txtVoteScore;
-@property (nonatomic, strong) IBOutlet UITextField *txtVerbalVote;
 
 -(id)initWithEmotionsAnalyzerSession:(SCAEmotionsAnalyzerSession*)emotionsAnalyzerSession segment:(SCASegment*)segment;
 
+-(IBAction)btnClose_Pressed:(id)sender;
 -(IBAction)btnGetSummary_Pressed:(id)sender;
 -(IBAction)btnVote_Pressed:(id)sender;
 

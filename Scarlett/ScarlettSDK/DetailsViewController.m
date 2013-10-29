@@ -71,6 +71,13 @@
     }
 }
 
+#pragma mark - IBActions
+
+-(IBAction)btnClose_Pressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(IBAction)btnGetSummary_Pressed:(id)sender
 {
     if(!self.getSummaryInProgress)
@@ -87,8 +94,8 @@
     {
         self.voteInProgress = YES;
         
-        int voteScore = [self.txtVoteScore.text intValue];
-        NSString *verbalVote = self.txtVerbalVote.text;
+        int voteScore = 1;
+        NSString *verbalVote = @"I like this stuff";
         
         [self.emotionsAnalyzerSession vote:self voteScore:voteScore verbalVote:verbalVote segment:self.segment];
     }
@@ -100,37 +107,45 @@
 {
     self.getSummaryInProgress = NO;
     
-    NSMutableString *summaryText = [[NSMutableString alloc] init];
-    
-    SCAAnalysisCollection *analysis = [summaryResult.analysisSegments objectAtIndex:0];
-    
-    if(analysis.compositMood)
+    if(summaryResult.analysisSegments && [summaryResult.analysisSegments count] > 0)
     {
-        [summaryText appendFormat:@"CompositMood Primary: %@ Secondary: %@\n", analysis.compositMood.value.primary, analysis.compositMood.value.secondary];
+        NSMutableString *summaryText = [[NSMutableString alloc] init];
+        
+        SCAAnalysisCollection *analysis = [summaryResult.analysisSegments objectAtIndex:0];
+        
+        if(analysis.compositMood)
+        {
+            [summaryText appendFormat:@"CompositMood Primary: %@ Secondary: %@\n", analysis.compositMood.value.primary, analysis.compositMood.value.secondary];
+        }
+        
+        if(analysis.composureMeter)
+        {
+            [summaryText appendFormat:@"ComposureMeter %f\n", analysis.composureMeter.value];
+        }
+        
+        if(analysis.moodGroup)
+        {
+            [summaryText appendFormat:@"MoodGroup Primary: %@ Secondary: %@\n", analysis.moodGroup.value.primary, analysis.moodGroup.value.secondary];
+        }
+        
+        if(analysis.temperMeter)
+        {
+            [summaryText appendFormat:@"TemperMeter %@\n", analysis.temperMeter.value];
+        }
+        
+        if(analysis.temperValue)
+        {
+            [summaryText appendFormat:@"ComposureMeter %f\n", analysis.temperValue.value];
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:summaryText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
     }
-    
-    if(analysis.composureMeter)
+    else
     {
-        [summaryText appendFormat:@"ComposureMeter %f\n", analysis.composureMeter.value];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:@"No analysis segments recieved" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
     }
-    
-    if(analysis.moodGroup)
-    {
-        [summaryText appendFormat:@"MoodGroup Primary: %@ Secondary: %@\n", analysis.moodGroup.value.primary, analysis.moodGroup.value.secondary];
-    }
-    
-    if(analysis.temperMeter)
-    {
-        [summaryText appendFormat:@"TemperMeter %@\n", analysis.temperMeter.value];
-    }
-    
-    if(analysis.temperValue)
-    {
-        [summaryText appendFormat:@"ComposureMeter %f\n", analysis.temperValue.value];
-    }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Summary" message:summaryText delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
 }
 
 -(void)getSummaryFailed:(NSString*)errorDescription
