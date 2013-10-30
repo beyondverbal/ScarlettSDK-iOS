@@ -142,7 +142,6 @@ void AudioOutputCallback(void * inUserData,
     recorderInfo.facebook_id = @"1111111";
     recorderInfo.twitter_id = @"2222222";
     recorderInfo.device_info = @"iPhone";
-    recorderInfo.device_id = @"3333333"; //TODO: init with OpenID
     
     SCARequiredAnalysis *requiredAnalysis = [[SCARequiredAnalysis alloc] initWithRequiredAnalysis:@[SCARequiredAnalysisTemperValue,
                                                                                                     SCARequiredAnalysisTemperMeter,

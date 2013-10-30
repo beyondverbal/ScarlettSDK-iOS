@@ -63,7 +63,7 @@
 {
     if(!_deviceId)
     {
-        //TODO: get open id
+        _deviceId = [OpenUDID value];
     }
     
     return _deviceId;

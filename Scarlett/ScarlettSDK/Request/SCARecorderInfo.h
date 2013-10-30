@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SCAGeoLocation.h"
-
+#import "OpenUDID.h"
 
 @interface SCARecorderInfo : NSObject
 {
