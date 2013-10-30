@@ -8,11 +8,10 @@
 
 #import "MainViewController.h"
 
-NSString* const kUpStreamVoiceDataNotification = @"UpStreamVoiceDataNotification";
-NSString* const kUpStreamVoiceDataKey = @"UpStreamVoiceDataKey";
+NSString * const kSampleWavFileName = @"Sample.WAV";
 NSTimeInterval const kRequestTimeout = 30.0;
 NSTimeInterval const kGetAnalysisTimeInterval = 5.0;
-float const kCollectedVoiceDataMilliseconds = 2000;
+float const kCollectedVoiceDataIntervalMilliseconds = 2000;
 
 void AudioInputCallback(void * inUserData,
                         AudioQueueRef inAQ,
@@ -27,62 +26,13 @@ void AudioOutputCallback(void * inUserData,
 
 @implementation MainViewController
 
--(id)init
+-(void)sendSampleFile
 {
-    if(self = [super init])
-    {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(upStreamVoiceDataNotification:)
-                                                     name:kUpStreamVoiceDataNotification
-                                                   object:nil];
-    }
-    return self;
-}
-
--(void)upStreamVoiceDataNotification:(NSNotification*)notification
-{
-    if(self.swcFormat.on)
-    {
-        NSData *voiceData = [notification.userInfo objectForKey:kUpStreamVoiceDataKey];
-        
-        NSLog(@"............collectedVoiceData %d", [self.collectedVoiceData length]);
-        NSLog(@"............voiceData %d", [voiceData length]);
-        
-        [self.collectedVoiceData appendData:voiceData];
-        
-        NSLog(@"............collectedVoiceData %d", [self.collectedVoiceData length]);
-        
-        if(collectedVoiceDataMilliseconds > 0)
-        {
-            float currentMillisecond = [SCAMillisecondsUtils getMilliseconds];
-            
-            if(currentMillisecond - collectedVoiceDataMilliseconds >= kCollectedVoiceDataMilliseconds)
-            {
-                collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
-                
-                NSData *newVoiceData = [NSData dataWithData:self.collectedVoiceData];
-                
-                [self.emotionsAnalyzerSession analyzeVoiceData:newVoiceData];
-                
-                self.collectedVoiceData = [[NSMutableData alloc] init];
-            }
-        }
-        else
-        {
-            collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
-        }
-    }
-}
-
--(void)sendRecordedFile
-{
-    self.lblStatus.text = @"Sending recorded file";
+    self.lblStatus.text = @"Sending Sample.wav file";
     
-    NSString *path = [self getAudioFilePath];
+    NSString *path = [[NSBundle mainBundle] pathForResource:kSampleWavFileName ofType:nil];
     
     NSInputStream *inputStream = [[NSInputStream alloc] initWithFileAtPath:path];
-    
-    NSLog(@":::::::::::::::: sendRecordedFile %@", path);
     
     [self.emotionsAnalyzerSession analyzeInputStream:inputStream];
 }
@@ -91,6 +41,8 @@ void AudioOutputCallback(void * inUserData,
 {
     if(!self.sessionStarted)
     {
+        self.streamingVoiceData = YES;
+        
         [self initData];
         
         [self initView];
@@ -103,10 +55,23 @@ void AudioOutputCallback(void * inUserData,
     }
 }
 
+-(IBAction)btnSendSampleFile_Pressed:(id)sender
+{
+    if(!self.sessionStarted)
+    {
+        self.streamingVoiceData = NO;
+        
+        [self initData];
+        
+        [self initView];
+        
+        [self startSession];
+    }
+}
+
 -(void)initData
 {
     self.analysisSegments = [[NSMutableArray alloc] init];
-    self.collectedVoiceData = [[NSMutableData alloc] init];
 }
 
 -(void)initView
@@ -116,14 +81,14 @@ void AudioOutputCallback(void * inUserData,
 
 -(void)startSession
 {
+    self.btnSendSampleFile.enabled = NO;
     self.btnStartStopSession.enabled = NO;
-    self.swcFormat.enabled = NO;
     
     self.lblStatus.text = @"Starting session...";
     
     SCABaseDataFormat *dataFormat;
     
-    if(self.swcFormat.on)
+    if(self.streamingVoiceData)
     {
         dataFormat = [[SCAPcmDataFormat alloc] initWithSampleRate:8000 bitsPerSample:16 channels:1];
     }
@@ -165,7 +130,7 @@ void AudioOutputCallback(void * inUserData,
     
     [self stopRecording];
 
-    if(self.swcFormat.on)
+    if(self.streamingVoiceData)
     {
         [self.emotionsAnalyzerSession stopSession];
     }
@@ -177,13 +142,24 @@ void AudioOutputCallback(void * inUserData,
     
     self.lblStatus.text = @"Session started :)";
     
-    [self startRecording];
+    if(self.streamingVoiceData)
+    {
+        self.voiceDataStreamer = [[VoiceDataStreamer alloc] initWithEmotionsAnalyzerSession:self.emotionsAnalyzerSession collectedVoiceDataIntervalMilliseconds:kCollectedVoiceDataIntervalMilliseconds];
+        
+        [self startRecording];
+    }
+    else
+    {
+        self.voiceDataStreamer = nil;
+        
+        [self sendSampleFile];
+    }
 }
 
 -(void)startSessionFailed:(NSString*)errorDescription
 {
+    self.btnSendSampleFile.enabled = YES;
     self.btnStartStopSession.enabled = YES;
-    self.swcFormat.enabled = YES;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error starting session" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
@@ -191,8 +167,8 @@ void AudioOutputCallback(void * inUserData,
 
 -(void)processingDone
 {
+    self.btnSendSampleFile.enabled = YES;
     self.btnStartStopSession.enabled = YES;
-    self.swcFormat.enabled = YES;
     
     [self stopRecording];
 }
@@ -218,9 +194,9 @@ void AudioOutputCallback(void * inUserData,
         [self stopSession];
         
         self.lblStatus.text = @"Finished recieving analysis";
+        self.btnSendSampleFile.enabled = YES;
         self.btnStartStopSession.enabled = YES;
-        self.swcFormat.enabled = YES;
-        self.btnStartStopSession.titleLabel.text = @"Start";
+        self.btnStartStopSession.titleLabel.text = @"Start Stream";
     }
 }
 
@@ -240,83 +216,20 @@ void AudioInputCallback(void * inUserData,
         printf("Not recording, returning\n");
     }
     
-    printf("Writing buffer %lld\n", recordState->currentPacket);
-    OSStatus status = AudioFileWritePackets(recordState->audioFile,
-                                            false,
-                                            inBuffer->mAudioDataByteSize,
-                                            inPacketDescs,
-                                            recordState->currentPacket,
-                                            &inNumberPacketDescriptions,
-                                            inBuffer->mAudioData);
-    
     // send notification with recorded data
     NSData *data = [NSData dataWithBytes:inBuffer->mAudioData length:inBuffer->mAudioDataByteSize];
     
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:data forKey:kUpStreamVoiceDataKey];
     [[NSNotificationCenter defaultCenter] postNotificationName:kUpStreamVoiceDataNotification object:nil userInfo:userInfo];
     
-    if (status == 0)
-    {
-        recordState->currentPacket += inNumberPacketDescriptions;
-    }
-    
     AudioQueueEnqueueBuffer(recordState->queue, inBuffer, 0, NULL);
-}
-
-// Fills an empty buffer with data and sends it to the speaker
-void AudioOutputCallback(void * inUserData,
-                         AudioQueueRef outAQ,
-                         AudioQueueBufferRef outBuffer)
-{
-	PlayState* playState = (PlayState*)inUserData;
-    if(!playState->playing)
-    {
-        printf("Not playing, returning\n");
-        return;
-    }
-    
-	printf("Queuing buffer %lld for playback\n", playState->currentPacket);
-    
-    AudioStreamPacketDescription* packetDescs = NULL;
-    
-    UInt32 bytesRead;
-    UInt32 numPackets = 8000;
-    OSStatus status;
-    status = AudioFileReadPackets(playState->audioFile,
-                                  false,
-                                  &bytesRead,
-                                  packetDescs,
-                                  playState->currentPacket,
-                                  &numPackets,
-                                  outBuffer->mAudioData);
-    
-    if (numPackets)
-    {
-        outBuffer->mAudioDataByteSize = bytesRead;
-        status = AudioQueueEnqueueBuffer(playState->queue,
-                                         outBuffer,
-                                         0,
-                                         packetDescs);
-        
-        playState->currentPacket += numPackets;
-    }
-    else
-    {
-        if (playState->playing)
-        {
-            AudioQueueStop(playState->queue, false);
-            AudioFileClose(playState->audioFile);
-            playState->playing = false;
-        }
-        
-        AudioQueueFreeBuffer(playState->queue, outBuffer);
-    }
 }
 
 - (void)setupAudioFormat:(AudioStreamBasicDescription*)format
 {
 	format->mSampleRate = 8000.0;
-    if(self.swcFormat.on)
+    
+    if(self.streamingVoiceData)
     {
         format->mFormatID = kAudioFormatLinearPCM;
     }
@@ -337,13 +250,6 @@ void AudioOutputCallback(void * inUserData,
 
 - (void)startRecording
 {
-    self.collectedVoiceData = [[NSMutableData alloc] init];
-    
-    // Get audio file page
-    char path[256];
-    [self getAudioFileName:path maxLenth:sizeof path];
-    fileURL = CFURLCreateFromFileSystemRepresentation(NULL, (UInt8*)path, strlen(path), false);
-    
     // Init state variables
     recordState.recording = false;
     
@@ -371,45 +277,26 @@ void AudioOutputCallback(void * inUserData,
             AudioQueueEnqueueBuffer (recordState.queue, recordState.buffers[i], 0, NULL);
         }
         
-        if(self.swcFormat.on)
-        {
-            status = AudioFileCreateWithURL(fileURL,
-                                            kAudioFileAIFFType,
-                                            &recordState.dataFormat,
-                                            kAudioFileFlags_EraseFile,
-                                            &recordState.audioFile);
-        }
-        else
-        {
-            status = AudioFileCreateWithURL(fileURL,
-                                            kAudioFileWAVEType,
-                                            &recordState.dataFormat,
-                                            kAudioFileFlags_EraseFile,
-                                            &recordState.audioFile);
-        }
-
+        recordState.recording = true;
+        status = AudioQueueStart(recordState.queue, NULL);
         
         if (status == 0)
         {
-            recordState.recording = true;
-            status = AudioQueueStart(recordState.queue, NULL);
-            if (status == 0)
-            {
-                self.lblStatus.text = @"Recording";
-                self.btnStartStopSession.enabled = YES;
-                self.swcFormat.enabled = NO;
-                self.btnStartStopSession.titleLabel.text = @"Stop";
-            }
+            self.lblStatus.text = @"Recording";
+            self.btnSendSampleFile.enabled = YES;
+            self.btnStartStopSession.enabled = YES;
+            self.btnStartStopSession.titleLabel.text = @"Stop Stream";
         }
     }
     
     if (status != 0)
     {
         [self stopRecording];
+        
         self.lblStatus.text = @"Record Failed";
+        self.btnSendSampleFile.enabled = YES;
         self.btnStartStopSession.enabled = YES;
-        self.swcFormat.enabled = YES;
-        self.btnStartStopSession.titleLabel.text = @"Start";
+        self.btnStartStopSession.titleLabel.text = @"Start Stream";
     }
 }
 
@@ -426,104 +313,12 @@ void AudioOutputCallback(void * inUserData,
         }
         
         AudioQueueDispose(recordState.queue, true);
-        AudioFileClose(recordState.audioFile);
         
-        if(self.swcFormat.on)
-        {
-            self.lblStatus.text = @"Recording stopped";
-            self.btnStartStopSession.enabled = YES;
-            self.swcFormat.enabled = YES;
-            self.btnStartStopSession.titleLabel.text = @"Start";
-        }
-        else
-        {
-            [self sendRecordedFile];
-        }
+        self.lblStatus.text = @"Recording stopped";
+        self.btnSendSampleFile.enabled = YES;
+        self.btnStartStopSession.enabled = YES;
+        self.btnStartStopSession.titleLabel.text = @"Start";
     }
-}
-
-
-- (void)startPlayback
-{
-    playState.currentPacket = 0;
-    
-    [self setupAudioFormat:&playState.dataFormat];
-    
-    OSStatus status;
-    
-    if(self.swcFormat.on)
-    {
-        status = AudioFileOpenURL(fileURL, kAudioFileReadPermission, kAudioFileAIFFType, &playState.audioFile);
-    }
-    else
-    {
-        status = AudioFileOpenURL(fileURL, kAudioFileReadPermission, kAudioFileWAVEType, &playState.audioFile);
-    }
-    
-    if (status == 0)
-    {
-        status = AudioQueueNewOutput(&playState.dataFormat,
-                                     AudioOutputCallback,
-                                     &playState,
-                                     CFRunLoopGetCurrent(),
-                                     kCFRunLoopCommonModes,
-                                     0,
-                                     &playState.queue);
-        
-        if (status == 0)
-        {
-            // Allocate and prime playback buffers
-            playState.playing = true;
-            for (int i = 0; i < NUM_BUFFERS && playState.playing; i++)
-            {
-                AudioQueueAllocateBuffer(playState.queue, 16000, &playState.buffers[i]);
-                AudioOutputCallback(&playState, playState.queue, playState.buffers[i]);
-            }
-            
-            status = AudioQueueStart(playState.queue, NULL);
-            if (status == 0)
-            {
-                self.lblStatus.text = @"Playing";
-            }
-        }
-    }
-    
-    if (status != 0)
-    {
-        [self stopPlayback];
-        self.lblStatus.text = @"Play failed";
-    }
-}
-
-- (void)stopPlayback
-{
-    playState.playing = false;
-    
-    for(int i = 0; i < NUM_BUFFERS; i++)
-    {
-        AudioQueueFreeBuffer(playState.queue, playState.buffers[i]);
-    }
-    
-    AudioQueueDispose(playState.queue, true);
-    AudioFileClose(playState.audioFile);
-}
-
-- (BOOL)getAudioFileName:(char*)buffer maxLenth:(int)maxBufferLength
-{
-    NSString *file = [self getAudioFilePath];
-    
-    return [file getCString:buffer maxLength:maxBufferLength encoding:NSUTF8StringEncoding];
-}
-
--(NSString*)getAudioFilePath
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                         NSUserDomainMask, YES);
-    NSString* docDir = [paths objectAtIndex:0];
-    
-    NSString* file = [docDir stringByAppendingString:@"/recording.wav"];
-    
-    return file;
 }
 
 #pragma mark - UITableView delegates
