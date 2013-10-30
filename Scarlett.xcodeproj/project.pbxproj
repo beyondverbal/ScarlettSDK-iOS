@@ -7,96 +7,100 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6527989618155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */; };
-		6527989718155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */; };
-		6527989A181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */; };
-		6527989B181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */; };
-		652798AD1816917600D54EE4 /* NSStream_BoundPairAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */; };
-		652798AE1816917800D54EE4 /* NSStream_BoundPairAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */; };
-		652798AF1816917800D54EE4 /* SCAStreamPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798AB1816917300D54EE4 /* SCAStreamPostManager.m */; };
-		652798B01816917800D54EE4 /* SCAStreamPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798AB1816917300D54EE4 /* SCAStreamPostManager.m */; };
-		652798B41816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */; };
-		652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */; };
-		657FCA8F181D27DE002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */; };
-		657FCA90181D27DE002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */; };
-		657FCA93181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */; };
-		657FCA94181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */; };
-		657FCA97181D54BC002DA371 /* SCASessionStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA96181D54BC002DA371 /* SCASessionStatuses.m */; };
-		657FCA98181D54BC002DA371 /* SCASessionStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA96181D54BC002DA371 /* SCASessionStatuses.m */; };
-		657FCA9F181D5B34002DA371 /* SCASummaryResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA9A181D5B34002DA371 /* SCASummaryResponder.m */; };
-		657FCAA0181D5B34002DA371 /* SCASummaryResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA9A181D5B34002DA371 /* SCASummaryResponder.m */; };
-		657FCAA1181D5B34002DA371 /* SCAVoteResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA9D181D5B34002DA371 /* SCAVoteResponder.m */; };
-		657FCAA2181D5B34002DA371 /* SCAVoteResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCA9D181D5B34002DA371 /* SCAVoteResponder.m */; };
-		657FCAA9181D5D99002DA371 /* SCAVoteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAA8181D5D99002DA371 /* SCAVoteResult.m */; };
-		657FCAAA181D5D99002DA371 /* SCAVoteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAA8181D5D99002DA371 /* SCAVoteResult.m */; };
-		657FCAAD181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */; };
-		657FCAAE181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */; };
-		657FCAB6181EAFC1002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAB4181EAFC1002DA371 /* MainViewController.m */; };
-		657FCAB7181EAFC1002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAB4181EAFC1002DA371 /* MainViewController.m */; };
-		657FCAB8181EAFC1002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCAB5181EAFC1002DA371 /* MainViewController.xib */; };
-		657FCAB9181EAFC1002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCAB5181EAFC1002DA371 /* MainViewController.xib */; };
-		657FCAC3181FC17D002DA371 /* SCATemperMeterValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */; };
-		657FCAC4181FC17D002DA371 /* SCATemperMeterValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */; };
-		657FCAC9181FE487002DA371 /* SCASummaryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC8181FE487002DA371 /* SCASummaryResult.m */; };
-		657FCACA181FE487002DA371 /* SCASummaryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAC8181FE487002DA371 /* SCASummaryResult.m */; };
-		657FCAD1181FE665002DA371 /* SCASummaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAD0181FE665002DA371 /* SCASummaryCollection.m */; };
-		657FCAD2181FE665002DA371 /* SCASummaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAD0181FE665002DA371 /* SCASummaryCollection.m */; };
-		657FCADE182142A6002DA371 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCADC182142A6002DA371 /* DetailsViewController.m */; };
-		657FCADF182142A6002DA371 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCADC182142A6002DA371 /* DetailsViewController.m */; };
-		657FCAE0182142A6002DA371 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCADD182142A6002DA371 /* DetailsViewController.xib */; };
-		657FCAE1182142A6002DA371 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCADD182142A6002DA371 /* DetailsViewController.xib */; };
+		657FCB4D182149C8002DA371 /* SCABaseDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAEA182149C8002DA371 /* SCABaseDataFormat.m */; };
+		657FCB4E182149C8002DA371 /* SCABaseDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAEA182149C8002DA371 /* SCABaseDataFormat.m */; };
+		657FCB4F182149C8002DA371 /* SCAPcmDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAEC182149C8002DA371 /* SCAPcmDataFormat.m */; };
+		657FCB50182149C8002DA371 /* SCAPcmDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAEC182149C8002DA371 /* SCAPcmDataFormat.m */; };
+		657FCB51182149C8002DA371 /* SCAWavDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAEE182149C8002DA371 /* SCAWavDataFormat.m */; };
+		657FCB52182149C8002DA371 /* SCAWavDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAEE182149C8002DA371 /* SCAWavDataFormat.m */; };
+		657FCB53182149C8002DA371 /* NSStream_BoundPairAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF1182149C8002DA371 /* NSStream_BoundPairAdditions.m */; };
+		657FCB54182149C8002DA371 /* NSStream_BoundPairAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF1182149C8002DA371 /* NSStream_BoundPairAdditions.m */; };
+		657FCB55182149C8002DA371 /* SCAMillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF3182149C8002DA371 /* SCAMillisecondsUtils.m */; };
+		657FCB56182149C8002DA371 /* SCAMillisecondsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF3182149C8002DA371 /* SCAMillisecondsUtils.m */; };
+		657FCB57182149C8002DA371 /* SCAStreamPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF5182149C8002DA371 /* SCAStreamPostManager.m */; };
+		657FCB58182149C8002DA371 /* SCAStreamPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF5182149C8002DA371 /* SCAStreamPostManager.m */; };
+		657FCB59182149C8002DA371 /* SCAUrlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF8182149C8002DA371 /* SCAUrlRequest.m */; };
+		657FCB5A182149C8002DA371 /* SCAUrlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAF8182149C8002DA371 /* SCAUrlRequest.m */; };
+		657FCB5B182149C8002DA371 /* SCAGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAFC182149C8002DA371 /* SCAGeoLocation.m */; };
+		657FCB5C182149C8002DA371 /* SCAGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAFC182149C8002DA371 /* SCAGeoLocation.m */; };
+		657FCB5D182149C8002DA371 /* SCARecorderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAFE182149C8002DA371 /* SCARecorderInfo.m */; };
+		657FCB5E182149C8002DA371 /* SCARecorderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCAFE182149C8002DA371 /* SCARecorderInfo.m */; };
+		657FCB5F182149C8002DA371 /* SCARequiredAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB00182149C8002DA371 /* SCARequiredAnalysis.m */; };
+		657FCB60182149C8002DA371 /* SCARequiredAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB00182149C8002DA371 /* SCARequiredAnalysis.m */; };
+		657FCB61182149C8002DA371 /* SCASessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB02182149C8002DA371 /* SCASessionParameters.m */; };
+		657FCB62182149C8002DA371 /* SCASessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB02182149C8002DA371 /* SCASessionParameters.m */; };
+		657FCB63182149C8002DA371 /* SCAVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB04182149C8002DA371 /* SCAVote.m */; };
+		657FCB64182149C8002DA371 /* SCAVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB04182149C8002DA371 /* SCAVote.m */; };
+		657FCB65182149C8002DA371 /* SCAAnalysisCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB07182149C8002DA371 /* SCAAnalysisCollection.m */; };
+		657FCB66182149C8002DA371 /* SCAAnalysisCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB07182149C8002DA371 /* SCAAnalysisCollection.m */; };
+		657FCB67182149C8002DA371 /* SCAAnalysisResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB09182149C8002DA371 /* SCAAnalysisResult.m */; };
+		657FCB68182149C8002DA371 /* SCAAnalysisResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB09182149C8002DA371 /* SCAAnalysisResult.m */; };
+		657FCB69182149C8002DA371 /* SCACompositStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB0B182149C8002DA371 /* SCACompositStringAnalysis.m */; };
+		657FCB6A182149C8002DA371 /* SCACompositStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB0B182149C8002DA371 /* SCACompositStringAnalysis.m */; };
+		657FCB6B182149C8002DA371 /* SCAFloatAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB0D182149C8002DA371 /* SCAFloatAnalysis.m */; };
+		657FCB6C182149C8002DA371 /* SCAFloatAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB0D182149C8002DA371 /* SCAFloatAnalysis.m */; };
+		657FCB6D182149C8002DA371 /* SCAFollowupActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB0F182149C8002DA371 /* SCAFollowupActions.m */; };
+		657FCB6E182149C8002DA371 /* SCAFollowupActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB0F182149C8002DA371 /* SCAFollowupActions.m */; };
+		657FCB6F182149C8002DA371 /* SCAHeirarchyStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB11182149C8002DA371 /* SCAHeirarchyStringAnalysis.m */; };
+		657FCB70182149C8002DA371 /* SCAHeirarchyStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB11182149C8002DA371 /* SCAHeirarchyStringAnalysis.m */; };
+		657FCB71182149C8002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB13182149C8002DA371 /* SCAResponseStatuses.m */; };
+		657FCB72182149C8002DA371 /* SCAResponseStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB13182149C8002DA371 /* SCAResponseStatuses.m */; };
+		657FCB73182149C8002DA371 /* SCASegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB15182149C8002DA371 /* SCASegment.m */; };
+		657FCB74182149C8002DA371 /* SCASegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB15182149C8002DA371 /* SCASegment.m */; };
+		657FCB75182149C8002DA371 /* SCASessionStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB17182149C8002DA371 /* SCASessionStatuses.m */; };
+		657FCB76182149C8002DA371 /* SCASessionStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB17182149C8002DA371 /* SCASessionStatuses.m */; };
+		657FCB77182149C8002DA371 /* SCAStartSessionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB19182149C8002DA371 /* SCAStartSessionResult.m */; };
+		657FCB78182149C8002DA371 /* SCAStartSessionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB19182149C8002DA371 /* SCAStartSessionResult.m */; };
+		657FCB79182149C8002DA371 /* SCAStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB1B182149C8002DA371 /* SCAStringAnalysis.m */; };
+		657FCB7A182149C8002DA371 /* SCAStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB1B182149C8002DA371 /* SCAStringAnalysis.m */; };
+		657FCB7B182149C8002DA371 /* SCASummaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB1D182149C8002DA371 /* SCASummaryCollection.m */; };
+		657FCB7C182149C8002DA371 /* SCASummaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB1D182149C8002DA371 /* SCASummaryCollection.m */; };
+		657FCB7D182149C8002DA371 /* SCASummaryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB1F182149C8002DA371 /* SCASummaryResult.m */; };
+		657FCB7E182149C8002DA371 /* SCASummaryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB1F182149C8002DA371 /* SCASummaryResult.m */; };
+		657FCB7F182149C8002DA371 /* SCATemperMeterValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB21182149C8002DA371 /* SCATemperMeterValues.m */; };
+		657FCB80182149C8002DA371 /* SCATemperMeterValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB21182149C8002DA371 /* SCATemperMeterValues.m */; };
+		657FCB81182149C8002DA371 /* SCAVoteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB23182149C8002DA371 /* SCAVoteResult.m */; };
+		657FCB82182149C8002DA371 /* SCAVoteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB23182149C8002DA371 /* SCAVoteResult.m */; };
+		657FCB83182149C8002DA371 /* SCAEmotionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB25182149C8002DA371 /* SCAEmotionsAnalyzer.m */; };
+		657FCB84182149C8002DA371 /* SCAEmotionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB25182149C8002DA371 /* SCAEmotionsAnalyzer.m */; };
+		657FCB85182149C8002DA371 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB28182149C8002DA371 /* SCAAnalysisResponder.m */; };
+		657FCB86182149C8002DA371 /* SCAAnalysisResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB28182149C8002DA371 /* SCAAnalysisResponder.m */; };
+		657FCB87182149C8002DA371 /* SCAEmotionAnalysisHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB2B182149C8002DA371 /* SCAEmotionAnalysisHosts.m */; };
+		657FCB88182149C8002DA371 /* SCAEmotionAnalysisHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB2B182149C8002DA371 /* SCAEmotionAnalysisHosts.m */; };
+		657FCB89182149C8002DA371 /* SCAEmotionsAnalyzerSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB2D182149C8002DA371 /* SCAEmotionsAnalyzerSession.m */; };
+		657FCB8A182149C8002DA371 /* SCAEmotionsAnalyzerSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB2D182149C8002DA371 /* SCAEmotionsAnalyzerSession.m */; };
+		657FCB8B182149C8002DA371 /* SCAStartSessionResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB32182149C8002DA371 /* SCAStartSessionResponder.m */; };
+		657FCB8C182149C8002DA371 /* SCAStartSessionResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB32182149C8002DA371 /* SCAStartSessionResponder.m */; };
+		657FCB8D182149C8002DA371 /* SCASummaryResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB35182149C8002DA371 /* SCASummaryResponder.m */; };
+		657FCB8E182149C8002DA371 /* SCASummaryResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB35182149C8002DA371 /* SCASummaryResponder.m */; };
+		657FCB8F182149C8002DA371 /* SCAUpStreamVoiceResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB38182149C8002DA371 /* SCAUpStreamVoiceResponder.m */; };
+		657FCB90182149C8002DA371 /* SCAUpStreamVoiceResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB38182149C8002DA371 /* SCAUpStreamVoiceResponder.m */; };
+		657FCB91182149C8002DA371 /* SCAVoteResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB3B182149C8002DA371 /* SCAVoteResponder.m */; };
+		657FCB92182149C8002DA371 /* SCAVoteResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB3B182149C8002DA371 /* SCAVoteResponder.m */; };
+		657FCB93182149C8002DA371 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB3F182149C8002DA371 /* AppDelegate.m */; };
+		657FCB94182149C8002DA371 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB3F182149C8002DA371 /* AppDelegate.m */; };
+		657FCB95182149C8002DA371 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB41182149C8002DA371 /* DetailsViewController.m */; };
+		657FCB96182149C8002DA371 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB41182149C8002DA371 /* DetailsViewController.m */; };
+		657FCB97182149C8002DA371 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB42182149C8002DA371 /* DetailsViewController.xib */; };
+		657FCB98182149C8002DA371 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB42182149C8002DA371 /* DetailsViewController.xib */; };
+		657FCB99182149C8002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB44182149C8002DA371 /* MainViewController.m */; };
+		657FCB9A182149C8002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB44182149C8002DA371 /* MainViewController.m */; };
+		657FCB9B182149C8002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB45182149C8002DA371 /* MainViewController.xib */; };
+		657FCB9C182149C8002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB45182149C8002DA371 /* MainViewController.xib */; };
+		657FCB9D182149C8002DA371 /* Sample.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB46182149C8002DA371 /* Sample.WAV */; };
+		657FCB9E182149C8002DA371 /* Sample.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB46182149C8002DA371 /* Sample.WAV */; };
+		657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAA18214A6F002DA371 /* InfoPlist.strings */; };
+		657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAA18214A6F002DA371 /* InfoPlist.strings */; };
+		657FCBB118214A6F002DA371 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBAC18214A6F002DA371 /* main.m */; };
+		657FCBB218214A6F002DA371 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBAC18214A6F002DA371 /* main.m */; };
+		657FCBB318214A6F002DA371 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */; };
+		657FCBB418214A6F002DA371 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
-		65C5F5891813B2BF0012328F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F5871813B2BF0012328F /* InfoPlist.strings */; };
-		65C5F58B1813B2BF0012328F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F58A1813B2BF0012328F /* main.m */; };
-		65C5F58F1813B2BF0012328F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F58E1813B2BF0012328F /* AppDelegate.m */; };
-		65C5F5971813B2BF0012328F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C5F5961813B2BF0012328F /* Images.xcassets */; };
 		65C5F59F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5A01813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
-		65C5F6F61813C5D10012328F /* SCAGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C11813C5D10012328F /* SCAGeoLocation.m */; };
-		65C5F6F71813C5D10012328F /* SCAGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C11813C5D10012328F /* SCAGeoLocation.m */; };
-		65C5F6F81813C5D10012328F /* SCARecorderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C31813C5D10012328F /* SCARecorderInfo.m */; };
-		65C5F6F91813C5D10012328F /* SCARecorderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C31813C5D10012328F /* SCARecorderInfo.m */; };
-		65C5F6FA1813C5D10012328F /* SCARequiredAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C51813C5D10012328F /* SCARequiredAnalysis.m */; };
-		65C5F6FB1813C5D10012328F /* SCARequiredAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C51813C5D10012328F /* SCARequiredAnalysis.m */; };
-		65C5F6FC1813C5D10012328F /* SCASessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C71813C5D10012328F /* SCASessionParameters.m */; };
-		65C5F6FD1813C5D10012328F /* SCASessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C71813C5D10012328F /* SCASessionParameters.m */; };
-		65C5F6FE1813C5D10012328F /* SCAVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C91813C5D10012328F /* SCAVote.m */; };
-		65C5F6FF1813C5D10012328F /* SCAVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6C91813C5D10012328F /* SCAVote.m */; };
-		65C5F7001813C5D10012328F /* SCAAnalysisCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6CC1813C5D10012328F /* SCAAnalysisCollection.m */; };
-		65C5F7011813C5D10012328F /* SCAAnalysisCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6CC1813C5D10012328F /* SCAAnalysisCollection.m */; };
-		65C5F7021813C5D10012328F /* SCAAnalysisResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */; };
-		65C5F7031813C5D10012328F /* SCAAnalysisResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */; };
-		65C5F7041813C5D10012328F /* SCACompositStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D01813C5D10012328F /* SCACompositStringAnalysis.m */; };
-		65C5F7051813C5D10012328F /* SCACompositStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D01813C5D10012328F /* SCACompositStringAnalysis.m */; };
-		65C5F7061813C5D10012328F /* SCAFloatAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D21813C5D10012328F /* SCAFloatAnalysis.m */; };
-		65C5F7071813C5D10012328F /* SCAFloatAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D21813C5D10012328F /* SCAFloatAnalysis.m */; };
-		65C5F7081813C5D10012328F /* SCAFollowupActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D41813C5D10012328F /* SCAFollowupActions.m */; };
-		65C5F7091813C5D10012328F /* SCAFollowupActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D41813C5D10012328F /* SCAFollowupActions.m */; };
-		65C5F70A1813C5D10012328F /* SCAHeirarchyStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D61813C5D10012328F /* SCAHeirarchyStringAnalysis.m */; };
-		65C5F70B1813C5D10012328F /* SCAHeirarchyStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D61813C5D10012328F /* SCAHeirarchyStringAnalysis.m */; };
-		65C5F70C1813C5D10012328F /* SCAStartSessionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */; };
-		65C5F70D1813C5D10012328F /* SCAStartSessionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */; };
-		65C5F70E1813C5D10012328F /* SCASegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6DA1813C5D10012328F /* SCASegment.m */; };
-		65C5F70F1813C5D10012328F /* SCASegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6DA1813C5D10012328F /* SCASegment.m */; };
-		65C5F7101813C5D10012328F /* SCAStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6DC1813C5D10012328F /* SCAStringAnalysis.m */; };
-		65C5F7111813C5D10012328F /* SCAStringAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6DC1813C5D10012328F /* SCAStringAnalysis.m */; };
-		65C5F7121813C5D10012328F /* SCAEmotionsAnalyzerSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6DF1813C5D10012328F /* SCAEmotionsAnalyzerSession.m */; };
-		65C5F7131813C5D10012328F /* SCAEmotionsAnalyzerSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F6DF1813C5D10012328F /* SCAEmotionsAnalyzerSession.m */; };
-		65C5F7171813C9330012328F /* SCABaseDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F7161813C9330012328F /* SCABaseDataFormat.m */; };
-		65C5F7181813C9330012328F /* SCABaseDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F7161813C9330012328F /* SCABaseDataFormat.m */; };
-		65C5F71B1813C9A30012328F /* SCAPcmDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71A1813C9A30012328F /* SCAPcmDataFormat.m */; };
-		65C5F71C1813C9A30012328F /* SCAPcmDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71A1813C9A30012328F /* SCAPcmDataFormat.m */; };
-		65C5F71F1813C9B70012328F /* SCAWavDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */; };
-		65C5F7201813C9B70012328F /* SCAWavDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */; };
 		65C5F78218140C0A0012328F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F78118140C090012328F /* AudioToolbox.framework */; };
-		65C5F786181412D30012328F /* SCAUrlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F785181412D20012328F /* SCAUrlRequest.m */; };
-		65C5F787181412D30012328F /* SCAUrlRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F785181412D20012328F /* SCAUrlRequest.m */; };
-		65C5F78B181424A70012328F /* SCAStartSessionResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F78A181424A70012328F /* SCAStartSessionResponder.m */; };
-		65C5F78C181424A70012328F /* SCAStartSessionResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F78A181424A70012328F /* SCAStartSessionResponder.m */; };
-		65C5F79118151FC40012328F /* SCAUpStreamVoiceResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F78F18151FC40012328F /* SCAUpStreamVoiceResponder.m */; };
-		65C5F79218151FC40012328F /* SCAUpStreamVoiceResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5F78F18151FC40012328F /* SCAUpStreamVoiceResponder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,107 +114,106 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV; sourceTree = "<group>"; };
-		65279898181563ED00D54EE4 /* SCAMillisecondsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAMillisecondsUtils.h; sourceTree = "<group>"; };
-		65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAMillisecondsUtils.m; sourceTree = "<group>"; };
-		652798A81816917300D54EE4 /* NSStream_BoundPairAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStream_BoundPairAdditions.h; sourceTree = "<group>"; };
-		652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStream_BoundPairAdditions.m; sourceTree = "<group>"; };
-		652798AA1816917300D54EE4 /* SCAStreamPostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStreamPostManager.h; sourceTree = "<group>"; };
-		652798AB1816917300D54EE4 /* SCAStreamPostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStreamPostManager.m; sourceTree = "<group>"; };
-		652798AC1816917300D54EE4 /* SCAStreamPostManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStreamPostManagerDelegate.h; sourceTree = "<group>"; };
-		652798B11816A55D00D54EE4 /* SCAAnalysisResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponder.h; sourceTree = "<group>"; };
-		652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisResponder.m; sourceTree = "<group>"; };
-		652798B31816A55E00D54EE4 /* SCAAnalysisResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponderDelegate.h; sourceTree = "<group>"; };
-		657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAResponseStatuses.h; sourceTree = "<group>"; };
-		657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAResponseStatuses.m; sourceTree = "<group>"; };
-		657FCA91181D3113002DA371 /* SCAEmotionAnalysisHosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionAnalysisHosts.h; sourceTree = "<group>"; };
-		657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionAnalysisHosts.m; sourceTree = "<group>"; };
-		657FCA95181D54BC002DA371 /* SCASessionStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASessionStatuses.h; sourceTree = "<group>"; };
-		657FCA96181D54BC002DA371 /* SCASessionStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASessionStatuses.m; sourceTree = "<group>"; };
-		657FCA99181D5B34002DA371 /* SCASummaryResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResponder.h; sourceTree = "<group>"; };
-		657FCA9A181D5B34002DA371 /* SCASummaryResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryResponder.m; sourceTree = "<group>"; };
-		657FCA9B181D5B34002DA371 /* SCASummaryResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResponderDelegate.h; sourceTree = "<group>"; };
-		657FCA9C181D5B34002DA371 /* SCAVoteResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResponder.h; sourceTree = "<group>"; };
-		657FCA9D181D5B34002DA371 /* SCAVoteResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVoteResponder.m; sourceTree = "<group>"; };
-		657FCA9E181D5B34002DA371 /* SCAVoteResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResponderDelegate.h; sourceTree = "<group>"; };
-		657FCAA7181D5D99002DA371 /* SCAVoteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResult.h; sourceTree = "<group>"; };
-		657FCAA8181D5D99002DA371 /* SCAVoteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVoteResult.m; sourceTree = "<group>"; };
-		657FCAAB181E6134002DA371 /* SCAEmotionsAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzer.h; sourceTree = "<group>"; };
-		657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionsAnalyzer.m; sourceTree = "<group>"; };
-		657FCAB3181EAFC1002DA371 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		657FCAB4181EAFC1002DA371 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		657FCAB5181EAFC1002DA371 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		657FCAC1181FC17D002DA371 /* SCATemperMeterValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCATemperMeterValues.h; sourceTree = "<group>"; };
-		657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCATemperMeterValues.m; sourceTree = "<group>"; };
-		657FCAC5181FCB06002DA371 /* SCAEmotionsAnalyzerSummaryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSummaryDelegate.h; sourceTree = "<group>"; };
-		657FCAC6181FCB06002DA371 /* SCAEmotionsAnalyzerVoteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerVoteDelegate.h; sourceTree = "<group>"; };
-		657FCAC7181FE487002DA371 /* SCASummaryResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResult.h; sourceTree = "<group>"; };
-		657FCAC8181FE487002DA371 /* SCASummaryResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryResult.m; sourceTree = "<group>"; };
-		657FCACF181FE665002DA371 /* SCASummaryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryCollection.h; sourceTree = "<group>"; };
-		657FCAD0181FE665002DA371 /* SCASummaryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryCollection.m; sourceTree = "<group>"; };
-		657FCADB182142A6002DA371 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
-		657FCADC182142A6002DA371 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
-		657FCADD182142A6002DA371 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		657FCAE8182149C8002DA371 /* SCAAudioEncodingFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAudioEncodingFormat.h; sourceTree = "<group>"; };
+		657FCAE9182149C8002DA371 /* SCABaseDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCABaseDataFormat.h; sourceTree = "<group>"; };
+		657FCAEA182149C8002DA371 /* SCABaseDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCABaseDataFormat.m; sourceTree = "<group>"; };
+		657FCAEB182149C8002DA371 /* SCAPcmDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAPcmDataFormat.h; sourceTree = "<group>"; };
+		657FCAEC182149C8002DA371 /* SCAPcmDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAPcmDataFormat.m; sourceTree = "<group>"; };
+		657FCAED182149C8002DA371 /* SCAWavDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAWavDataFormat.h; sourceTree = "<group>"; };
+		657FCAEE182149C8002DA371 /* SCAWavDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAWavDataFormat.m; sourceTree = "<group>"; };
+		657FCAF0182149C8002DA371 /* NSStream_BoundPairAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStream_BoundPairAdditions.h; sourceTree = "<group>"; };
+		657FCAF1182149C8002DA371 /* NSStream_BoundPairAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStream_BoundPairAdditions.m; sourceTree = "<group>"; };
+		657FCAF2182149C8002DA371 /* SCAMillisecondsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAMillisecondsUtils.h; sourceTree = "<group>"; };
+		657FCAF3182149C8002DA371 /* SCAMillisecondsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAMillisecondsUtils.m; sourceTree = "<group>"; };
+		657FCAF4182149C8002DA371 /* SCAStreamPostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStreamPostManager.h; sourceTree = "<group>"; };
+		657FCAF5182149C8002DA371 /* SCAStreamPostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStreamPostManager.m; sourceTree = "<group>"; };
+		657FCAF6182149C8002DA371 /* SCAStreamPostManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStreamPostManagerDelegate.h; sourceTree = "<group>"; };
+		657FCAF7182149C8002DA371 /* SCAUrlRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUrlRequest.h; sourceTree = "<group>"; };
+		657FCAF8182149C8002DA371 /* SCAUrlRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAUrlRequest.m; sourceTree = "<group>"; };
+		657FCAF9182149C8002DA371 /* SCAUrlRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUrlRequestDelegate.h; sourceTree = "<group>"; };
+		657FCAFB182149C8002DA371 /* SCAGeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAGeoLocation.h; sourceTree = "<group>"; };
+		657FCAFC182149C8002DA371 /* SCAGeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAGeoLocation.m; sourceTree = "<group>"; };
+		657FCAFD182149C8002DA371 /* SCARecorderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCARecorderInfo.h; sourceTree = "<group>"; };
+		657FCAFE182149C8002DA371 /* SCARecorderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCARecorderInfo.m; sourceTree = "<group>"; };
+		657FCAFF182149C8002DA371 /* SCARequiredAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCARequiredAnalysis.h; sourceTree = "<group>"; };
+		657FCB00182149C8002DA371 /* SCARequiredAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCARequiredAnalysis.m; sourceTree = "<group>"; };
+		657FCB01182149C8002DA371 /* SCASessionParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASessionParameters.h; sourceTree = "<group>"; };
+		657FCB02182149C8002DA371 /* SCASessionParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASessionParameters.m; sourceTree = "<group>"; };
+		657FCB03182149C8002DA371 /* SCAVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVote.h; sourceTree = "<group>"; };
+		657FCB04182149C8002DA371 /* SCAVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVote.m; sourceTree = "<group>"; };
+		657FCB06182149C8002DA371 /* SCAAnalysisCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisCollection.h; sourceTree = "<group>"; };
+		657FCB07182149C8002DA371 /* SCAAnalysisCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisCollection.m; sourceTree = "<group>"; };
+		657FCB08182149C8002DA371 /* SCAAnalysisResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResult.h; sourceTree = "<group>"; };
+		657FCB09182149C8002DA371 /* SCAAnalysisResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisResult.m; sourceTree = "<group>"; };
+		657FCB0A182149C8002DA371 /* SCACompositStringAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCACompositStringAnalysis.h; sourceTree = "<group>"; };
+		657FCB0B182149C8002DA371 /* SCACompositStringAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCACompositStringAnalysis.m; sourceTree = "<group>"; };
+		657FCB0C182149C8002DA371 /* SCAFloatAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAFloatAnalysis.h; sourceTree = "<group>"; };
+		657FCB0D182149C8002DA371 /* SCAFloatAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAFloatAnalysis.m; sourceTree = "<group>"; };
+		657FCB0E182149C8002DA371 /* SCAFollowupActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAFollowupActions.h; sourceTree = "<group>"; };
+		657FCB0F182149C8002DA371 /* SCAFollowupActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAFollowupActions.m; sourceTree = "<group>"; };
+		657FCB10182149C8002DA371 /* SCAHeirarchyStringAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAHeirarchyStringAnalysis.h; sourceTree = "<group>"; };
+		657FCB11182149C8002DA371 /* SCAHeirarchyStringAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAHeirarchyStringAnalysis.m; sourceTree = "<group>"; };
+		657FCB12182149C8002DA371 /* SCAResponseStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAResponseStatuses.h; sourceTree = "<group>"; };
+		657FCB13182149C8002DA371 /* SCAResponseStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAResponseStatuses.m; sourceTree = "<group>"; };
+		657FCB14182149C8002DA371 /* SCASegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASegment.h; sourceTree = "<group>"; };
+		657FCB15182149C8002DA371 /* SCASegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASegment.m; sourceTree = "<group>"; };
+		657FCB16182149C8002DA371 /* SCASessionStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASessionStatuses.h; sourceTree = "<group>"; };
+		657FCB17182149C8002DA371 /* SCASessionStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASessionStatuses.m; sourceTree = "<group>"; };
+		657FCB18182149C8002DA371 /* SCAStartSessionResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStartSessionResult.h; sourceTree = "<group>"; };
+		657FCB19182149C8002DA371 /* SCAStartSessionResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStartSessionResult.m; sourceTree = "<group>"; };
+		657FCB1A182149C8002DA371 /* SCAStringAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStringAnalysis.h; sourceTree = "<group>"; };
+		657FCB1B182149C8002DA371 /* SCAStringAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStringAnalysis.m; sourceTree = "<group>"; };
+		657FCB1C182149C8002DA371 /* SCASummaryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryCollection.h; sourceTree = "<group>"; };
+		657FCB1D182149C8002DA371 /* SCASummaryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryCollection.m; sourceTree = "<group>"; };
+		657FCB1E182149C8002DA371 /* SCASummaryResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResult.h; sourceTree = "<group>"; };
+		657FCB1F182149C8002DA371 /* SCASummaryResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryResult.m; sourceTree = "<group>"; };
+		657FCB20182149C8002DA371 /* SCATemperMeterValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCATemperMeterValues.h; sourceTree = "<group>"; };
+		657FCB21182149C8002DA371 /* SCATemperMeterValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCATemperMeterValues.m; sourceTree = "<group>"; };
+		657FCB22182149C8002DA371 /* SCAVoteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResult.h; sourceTree = "<group>"; };
+		657FCB23182149C8002DA371 /* SCAVoteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVoteResult.m; sourceTree = "<group>"; };
+		657FCB24182149C8002DA371 /* SCAEmotionsAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzer.h; sourceTree = "<group>"; };
+		657FCB25182149C8002DA371 /* SCAEmotionsAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionsAnalyzer.m; sourceTree = "<group>"; };
+		657FCB27182149C8002DA371 /* SCAAnalysisResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponder.h; sourceTree = "<group>"; };
+		657FCB28182149C8002DA371 /* SCAAnalysisResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisResponder.m; sourceTree = "<group>"; };
+		657FCB29182149C8002DA371 /* SCAAnalysisResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResponderDelegate.h; sourceTree = "<group>"; };
+		657FCB2A182149C8002DA371 /* SCAEmotionAnalysisHosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionAnalysisHosts.h; sourceTree = "<group>"; };
+		657FCB2B182149C8002DA371 /* SCAEmotionAnalysisHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionAnalysisHosts.m; sourceTree = "<group>"; };
+		657FCB2C182149C8002DA371 /* SCAEmotionsAnalyzerSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSession.h; sourceTree = "<group>"; };
+		657FCB2D182149C8002DA371 /* SCAEmotionsAnalyzerSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionsAnalyzerSession.m; sourceTree = "<group>"; };
+		657FCB2E182149C8002DA371 /* SCAEmotionsAnalyzerSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSessionDelegate.h; sourceTree = "<group>"; };
+		657FCB2F182149C8002DA371 /* SCAEmotionsAnalyzerSummaryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSummaryDelegate.h; sourceTree = "<group>"; };
+		657FCB30182149C8002DA371 /* SCAEmotionsAnalyzerVoteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerVoteDelegate.h; sourceTree = "<group>"; };
+		657FCB31182149C8002DA371 /* SCAStartSessionResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStartSessionResponder.h; sourceTree = "<group>"; };
+		657FCB32182149C8002DA371 /* SCAStartSessionResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStartSessionResponder.m; sourceTree = "<group>"; };
+		657FCB33182149C8002DA371 /* SCAStartSessionResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStartSessionResponderDelegate.h; sourceTree = "<group>"; };
+		657FCB34182149C8002DA371 /* SCASummaryResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResponder.h; sourceTree = "<group>"; };
+		657FCB35182149C8002DA371 /* SCASummaryResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASummaryResponder.m; sourceTree = "<group>"; };
+		657FCB36182149C8002DA371 /* SCASummaryResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASummaryResponderDelegate.h; sourceTree = "<group>"; };
+		657FCB37182149C8002DA371 /* SCAUpStreamVoiceResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUpStreamVoiceResponder.h; sourceTree = "<group>"; };
+		657FCB38182149C8002DA371 /* SCAUpStreamVoiceResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAUpStreamVoiceResponder.m; sourceTree = "<group>"; };
+		657FCB39182149C8002DA371 /* SCAUpStreamVoiceResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUpStreamVoiceResponderDelegate.h; sourceTree = "<group>"; };
+		657FCB3A182149C8002DA371 /* SCAVoteResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResponder.h; sourceTree = "<group>"; };
+		657FCB3B182149C8002DA371 /* SCAVoteResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVoteResponder.m; sourceTree = "<group>"; };
+		657FCB3C182149C8002DA371 /* SCAVoteResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVoteResponderDelegate.h; sourceTree = "<group>"; };
+		657FCB3E182149C8002DA371 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		657FCB3F182149C8002DA371 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		657FCB40182149C8002DA371 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		657FCB41182149C8002DA371 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		657FCB42182149C8002DA371 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		657FCB43182149C8002DA371 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		657FCB44182149C8002DA371 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		657FCB45182149C8002DA371 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		657FCB46182149C8002DA371 /* Sample.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Sample.WAV; sourceTree = "<group>"; };
+		657FCBAB18214A6F002DA371 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		657FCBAC18214A6F002DA371 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Scarlett-Info.plist"; sourceTree = "<group>"; };
+		657FCBAE18214A6F002DA371 /* Scarlett-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Scarlett-Prefix.pch"; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		65C5F5821813B2BF0012328F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		65C5F5861813B2BF0012328F /* Scarlett-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Scarlett-Info.plist"; sourceTree = "<group>"; };
-		65C5F5881813B2BF0012328F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		65C5F58A1813B2BF0012328F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		65C5F58C1813B2BF0012328F /* Scarlett-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scarlett-Prefix.pch"; sourceTree = "<group>"; };
-		65C5F58D1813B2BF0012328F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		65C5F58E1813B2BF0012328F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		65C5F5961813B2BF0012328F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65C5F59C1813B2BF0012328F /* ScarlettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScarlettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		65C5F6C01813C5D10012328F /* SCAGeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAGeoLocation.h; sourceTree = "<group>"; };
-		65C5F6C11813C5D10012328F /* SCAGeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAGeoLocation.m; sourceTree = "<group>"; };
-		65C5F6C21813C5D10012328F /* SCARecorderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCARecorderInfo.h; sourceTree = "<group>"; };
-		65C5F6C31813C5D10012328F /* SCARecorderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCARecorderInfo.m; sourceTree = "<group>"; };
-		65C5F6C41813C5D10012328F /* SCARequiredAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCARequiredAnalysis.h; sourceTree = "<group>"; };
-		65C5F6C51813C5D10012328F /* SCARequiredAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCARequiredAnalysis.m; sourceTree = "<group>"; };
-		65C5F6C61813C5D10012328F /* SCASessionParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASessionParameters.h; sourceTree = "<group>"; };
-		65C5F6C71813C5D10012328F /* SCASessionParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASessionParameters.m; sourceTree = "<group>"; };
-		65C5F6C81813C5D10012328F /* SCAVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAVote.h; sourceTree = "<group>"; };
-		65C5F6C91813C5D10012328F /* SCAVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAVote.m; sourceTree = "<group>"; };
-		65C5F6CB1813C5D10012328F /* SCAAnalysisCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisCollection.h; sourceTree = "<group>"; };
-		65C5F6CC1813C5D10012328F /* SCAAnalysisCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisCollection.m; sourceTree = "<group>"; };
-		65C5F6CD1813C5D10012328F /* SCAAnalysisResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAnalysisResult.h; sourceTree = "<group>"; };
-		65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAAnalysisResult.m; sourceTree = "<group>"; };
-		65C5F6CF1813C5D10012328F /* SCACompositStringAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCACompositStringAnalysis.h; sourceTree = "<group>"; };
-		65C5F6D01813C5D10012328F /* SCACompositStringAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCACompositStringAnalysis.m; sourceTree = "<group>"; };
-		65C5F6D11813C5D10012328F /* SCAFloatAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAFloatAnalysis.h; sourceTree = "<group>"; };
-		65C5F6D21813C5D10012328F /* SCAFloatAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAFloatAnalysis.m; sourceTree = "<group>"; };
-		65C5F6D31813C5D10012328F /* SCAFollowupActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAFollowupActions.h; sourceTree = "<group>"; };
-		65C5F6D41813C5D10012328F /* SCAFollowupActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAFollowupActions.m; sourceTree = "<group>"; };
-		65C5F6D51813C5D10012328F /* SCAHeirarchyStringAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAHeirarchyStringAnalysis.h; sourceTree = "<group>"; };
-		65C5F6D61813C5D10012328F /* SCAHeirarchyStringAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAHeirarchyStringAnalysis.m; sourceTree = "<group>"; };
-		65C5F6D71813C5D10012328F /* SCAStartSessionResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStartSessionResult.h; sourceTree = "<group>"; };
-		65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStartSessionResult.m; sourceTree = "<group>"; };
-		65C5F6D91813C5D10012328F /* SCASegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCASegment.h; sourceTree = "<group>"; };
-		65C5F6DA1813C5D10012328F /* SCASegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCASegment.m; sourceTree = "<group>"; };
-		65C5F6DB1813C5D10012328F /* SCAStringAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStringAnalysis.h; sourceTree = "<group>"; };
-		65C5F6DC1813C5D10012328F /* SCAStringAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStringAnalysis.m; sourceTree = "<group>"; };
-		65C5F6DE1813C5D10012328F /* SCAEmotionsAnalyzerSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSession.h; sourceTree = "<group>"; };
-		65C5F6DF1813C5D10012328F /* SCAEmotionsAnalyzerSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAEmotionsAnalyzerSession.m; sourceTree = "<group>"; };
-		65C5F7151813C9330012328F /* SCABaseDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCABaseDataFormat.h; sourceTree = "<group>"; };
-		65C5F7161813C9330012328F /* SCABaseDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCABaseDataFormat.m; sourceTree = "<group>"; };
-		65C5F7191813C9A30012328F /* SCAPcmDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAPcmDataFormat.h; sourceTree = "<group>"; };
-		65C5F71A1813C9A30012328F /* SCAPcmDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAPcmDataFormat.m; sourceTree = "<group>"; };
-		65C5F71D1813C9B70012328F /* SCAWavDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAWavDataFormat.h; sourceTree = "<group>"; };
-		65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAWavDataFormat.m; sourceTree = "<group>"; };
-		65C5F7211813CA850012328F /* SCAAudioEncodingFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAAudioEncodingFormat.h; sourceTree = "<group>"; };
-		65C5F72A1813DB700012328F /* SCAEmotionsAnalyzerSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAEmotionsAnalyzerSessionDelegate.h; sourceTree = "<group>"; };
 		65C5F78118140C090012328F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		65C5F784181412D20012328F /* SCAUrlRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUrlRequest.h; sourceTree = "<group>"; };
-		65C5F785181412D20012328F /* SCAUrlRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAUrlRequest.m; sourceTree = "<group>"; };
-		65C5F788181416B90012328F /* SCAUrlRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUrlRequestDelegate.h; sourceTree = "<group>"; };
-		65C5F789181424A70012328F /* SCAStartSessionResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStartSessionResponder.h; sourceTree = "<group>"; };
-		65C5F78A181424A70012328F /* SCAStartSessionResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAStartSessionResponder.m; sourceTree = "<group>"; };
-		65C5F78D181424C90012328F /* SCAStartSessionResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAStartSessionResponderDelegate.h; sourceTree = "<group>"; };
-		65C5F78E18151FC40012328F /* SCAUpStreamVoiceResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUpStreamVoiceResponder.h; sourceTree = "<group>"; };
-		65C5F78F18151FC40012328F /* SCAUpStreamVoiceResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAUpStreamVoiceResponder.m; sourceTree = "<group>"; };
-		65C5F79018151FC40012328F /* SCAUpStreamVoiceResponderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAUpStreamVoiceResponderDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +240,169 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		657FCAE6182149C8002DA371 /* ScarlettSDK */ = {
+			isa = PBXGroup;
+			children = (
+				657FCB24182149C8002DA371 /* SCAEmotionsAnalyzer.h */,
+				657FCB25182149C8002DA371 /* SCAEmotionsAnalyzer.m */,
+				657FCAE7182149C8002DA371 /* DataFormat */,
+				657FCAEF182149C8002DA371 /* Extensions */,
+				657FCAFA182149C8002DA371 /* Request */,
+				657FCB05182149C8002DA371 /* Response */,
+				657FCB26182149C8002DA371 /* Session */,
+			);
+			path = ScarlettSDK;
+			sourceTree = "<group>";
+		};
+		657FCAE7182149C8002DA371 /* DataFormat */ = {
+			isa = PBXGroup;
+			children = (
+				657FCAE8182149C8002DA371 /* SCAAudioEncodingFormat.h */,
+				657FCAE9182149C8002DA371 /* SCABaseDataFormat.h */,
+				657FCAEA182149C8002DA371 /* SCABaseDataFormat.m */,
+				657FCAEB182149C8002DA371 /* SCAPcmDataFormat.h */,
+				657FCAEC182149C8002DA371 /* SCAPcmDataFormat.m */,
+				657FCAED182149C8002DA371 /* SCAWavDataFormat.h */,
+				657FCAEE182149C8002DA371 /* SCAWavDataFormat.m */,
+			);
+			path = DataFormat;
+			sourceTree = "<group>";
+		};
+		657FCAEF182149C8002DA371 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				657FCAF0182149C8002DA371 /* NSStream_BoundPairAdditions.h */,
+				657FCAF1182149C8002DA371 /* NSStream_BoundPairAdditions.m */,
+				657FCAF2182149C8002DA371 /* SCAMillisecondsUtils.h */,
+				657FCAF3182149C8002DA371 /* SCAMillisecondsUtils.m */,
+				657FCAF4182149C8002DA371 /* SCAStreamPostManager.h */,
+				657FCAF5182149C8002DA371 /* SCAStreamPostManager.m */,
+				657FCAF6182149C8002DA371 /* SCAStreamPostManagerDelegate.h */,
+				657FCAF7182149C8002DA371 /* SCAUrlRequest.h */,
+				657FCAF8182149C8002DA371 /* SCAUrlRequest.m */,
+				657FCAF9182149C8002DA371 /* SCAUrlRequestDelegate.h */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		657FCAFA182149C8002DA371 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				657FCAFB182149C8002DA371 /* SCAGeoLocation.h */,
+				657FCAFC182149C8002DA371 /* SCAGeoLocation.m */,
+				657FCAFD182149C8002DA371 /* SCARecorderInfo.h */,
+				657FCAFE182149C8002DA371 /* SCARecorderInfo.m */,
+				657FCAFF182149C8002DA371 /* SCARequiredAnalysis.h */,
+				657FCB00182149C8002DA371 /* SCARequiredAnalysis.m */,
+				657FCB01182149C8002DA371 /* SCASessionParameters.h */,
+				657FCB02182149C8002DA371 /* SCASessionParameters.m */,
+				657FCB03182149C8002DA371 /* SCAVote.h */,
+				657FCB04182149C8002DA371 /* SCAVote.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		657FCB05182149C8002DA371 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				657FCB06182149C8002DA371 /* SCAAnalysisCollection.h */,
+				657FCB07182149C8002DA371 /* SCAAnalysisCollection.m */,
+				657FCB08182149C8002DA371 /* SCAAnalysisResult.h */,
+				657FCB09182149C8002DA371 /* SCAAnalysisResult.m */,
+				657FCB0A182149C8002DA371 /* SCACompositStringAnalysis.h */,
+				657FCB0B182149C8002DA371 /* SCACompositStringAnalysis.m */,
+				657FCB0C182149C8002DA371 /* SCAFloatAnalysis.h */,
+				657FCB0D182149C8002DA371 /* SCAFloatAnalysis.m */,
+				657FCB0E182149C8002DA371 /* SCAFollowupActions.h */,
+				657FCB0F182149C8002DA371 /* SCAFollowupActions.m */,
+				657FCB10182149C8002DA371 /* SCAHeirarchyStringAnalysis.h */,
+				657FCB11182149C8002DA371 /* SCAHeirarchyStringAnalysis.m */,
+				657FCB12182149C8002DA371 /* SCAResponseStatuses.h */,
+				657FCB13182149C8002DA371 /* SCAResponseStatuses.m */,
+				657FCB14182149C8002DA371 /* SCASegment.h */,
+				657FCB15182149C8002DA371 /* SCASegment.m */,
+				657FCB16182149C8002DA371 /* SCASessionStatuses.h */,
+				657FCB17182149C8002DA371 /* SCASessionStatuses.m */,
+				657FCB18182149C8002DA371 /* SCAStartSessionResult.h */,
+				657FCB19182149C8002DA371 /* SCAStartSessionResult.m */,
+				657FCB1A182149C8002DA371 /* SCAStringAnalysis.h */,
+				657FCB1B182149C8002DA371 /* SCAStringAnalysis.m */,
+				657FCB1C182149C8002DA371 /* SCASummaryCollection.h */,
+				657FCB1D182149C8002DA371 /* SCASummaryCollection.m */,
+				657FCB1E182149C8002DA371 /* SCASummaryResult.h */,
+				657FCB1F182149C8002DA371 /* SCASummaryResult.m */,
+				657FCB20182149C8002DA371 /* SCATemperMeterValues.h */,
+				657FCB21182149C8002DA371 /* SCATemperMeterValues.m */,
+				657FCB22182149C8002DA371 /* SCAVoteResult.h */,
+				657FCB23182149C8002DA371 /* SCAVoteResult.m */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		657FCB26182149C8002DA371 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				657FCB27182149C8002DA371 /* SCAAnalysisResponder.h */,
+				657FCB28182149C8002DA371 /* SCAAnalysisResponder.m */,
+				657FCB29182149C8002DA371 /* SCAAnalysisResponderDelegate.h */,
+				657FCB2A182149C8002DA371 /* SCAEmotionAnalysisHosts.h */,
+				657FCB2B182149C8002DA371 /* SCAEmotionAnalysisHosts.m */,
+				657FCB2C182149C8002DA371 /* SCAEmotionsAnalyzerSession.h */,
+				657FCB2D182149C8002DA371 /* SCAEmotionsAnalyzerSession.m */,
+				657FCB2E182149C8002DA371 /* SCAEmotionsAnalyzerSessionDelegate.h */,
+				657FCB2F182149C8002DA371 /* SCAEmotionsAnalyzerSummaryDelegate.h */,
+				657FCB30182149C8002DA371 /* SCAEmotionsAnalyzerVoteDelegate.h */,
+				657FCB31182149C8002DA371 /* SCAStartSessionResponder.h */,
+				657FCB32182149C8002DA371 /* SCAStartSessionResponder.m */,
+				657FCB33182149C8002DA371 /* SCAStartSessionResponderDelegate.h */,
+				657FCB34182149C8002DA371 /* SCASummaryResponder.h */,
+				657FCB35182149C8002DA371 /* SCASummaryResponder.m */,
+				657FCB36182149C8002DA371 /* SCASummaryResponderDelegate.h */,
+				657FCB37182149C8002DA371 /* SCAUpStreamVoiceResponder.h */,
+				657FCB38182149C8002DA371 /* SCAUpStreamVoiceResponder.m */,
+				657FCB39182149C8002DA371 /* SCAUpStreamVoiceResponderDelegate.h */,
+				657FCB3A182149C8002DA371 /* SCAVoteResponder.h */,
+				657FCB3B182149C8002DA371 /* SCAVoteResponder.m */,
+				657FCB3C182149C8002DA371 /* SCAVoteResponderDelegate.h */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		657FCB3D182149C8002DA371 /* ScarlettTester */ = {
+			isa = PBXGroup;
+			children = (
+				657FCB3E182149C8002DA371 /* AppDelegate.h */,
+				657FCB3F182149C8002DA371 /* AppDelegate.m */,
+				657FCB40182149C8002DA371 /* DetailsViewController.h */,
+				657FCB41182149C8002DA371 /* DetailsViewController.m */,
+				657FCB42182149C8002DA371 /* DetailsViewController.xib */,
+				657FCB43182149C8002DA371 /* MainViewController.h */,
+				657FCB44182149C8002DA371 /* MainViewController.m */,
+				657FCB45182149C8002DA371 /* MainViewController.xib */,
+				657FCB46182149C8002DA371 /* Sample.WAV */,
+			);
+			path = ScarlettTester;
+			sourceTree = "<group>";
+		};
+		657FCBA818214A51002DA371 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				657FCBA918214A6F002DA371 /* en.lproj */,
+				657FCBAC18214A6F002DA371 /* main.m */,
+				657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */,
+				657FCBAE18214A6F002DA371 /* Scarlett-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		657FCBA918214A6F002DA371 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				657FCBAA18214A6F002DA371 /* InfoPlist.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
 		65C5F5721813B2BF0012328F = {
 			isa = PBXGroup;
 			children = (
@@ -269,159 +435,11 @@
 		65C5F5841813B2BF0012328F /* Scarlett */ = {
 			isa = PBXGroup;
 			children = (
-				65C5F6A11813C5D10012328F /* ScarlettSDK */,
-				65C5F58D1813B2BF0012328F /* AppDelegate.h */,
-				65C5F58E1813B2BF0012328F /* AppDelegate.m */,
-				657FCAB3181EAFC1002DA371 /* MainViewController.h */,
-				657FCAB4181EAFC1002DA371 /* MainViewController.m */,
-				657FCAB5181EAFC1002DA371 /* MainViewController.xib */,
-				657FCADB182142A6002DA371 /* DetailsViewController.h */,
-				657FCADC182142A6002DA371 /* DetailsViewController.m */,
-				657FCADD182142A6002DA371 /* DetailsViewController.xib */,
-				6527989518155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV */,
-				65C5F5961813B2BF0012328F /* Images.xcassets */,
-				65C5F5851813B2BF0012328F /* Supporting Files */,
+				657FCAE6182149C8002DA371 /* ScarlettSDK */,
+				657FCB3D182149C8002DA371 /* ScarlettTester */,
+				657FCBA818214A51002DA371 /* Supporting Files */,
 			);
 			path = Scarlett;
-			sourceTree = "<group>";
-		};
-		65C5F5851813B2BF0012328F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				65C5F5861813B2BF0012328F /* Scarlett-Info.plist */,
-				65C5F5871813B2BF0012328F /* InfoPlist.strings */,
-				65C5F58A1813B2BF0012328F /* main.m */,
-				65C5F58C1813B2BF0012328F /* Scarlett-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		65C5F6A11813C5D10012328F /* ScarlettSDK */ = {
-			isa = PBXGroup;
-			children = (
-				657FCAAB181E6134002DA371 /* SCAEmotionsAnalyzer.h */,
-				657FCAAC181E6134002DA371 /* SCAEmotionsAnalyzer.m */,
-				65C5F783181412AA0012328F /* Extensions */,
-				65C5F7141813C9140012328F /* DataFormat */,
-				65C5F6BF1813C5D10012328F /* Request */,
-				65C5F6CA1813C5D10012328F /* Response */,
-				65C5F6DD1813C5D10012328F /* Session */,
-			);
-			path = ScarlettSDK;
-			sourceTree = "<group>";
-		};
-		65C5F6BF1813C5D10012328F /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				65C5F6C01813C5D10012328F /* SCAGeoLocation.h */,
-				65C5F6C11813C5D10012328F /* SCAGeoLocation.m */,
-				65C5F6C21813C5D10012328F /* SCARecorderInfo.h */,
-				65C5F6C31813C5D10012328F /* SCARecorderInfo.m */,
-				65C5F6C41813C5D10012328F /* SCARequiredAnalysis.h */,
-				65C5F6C51813C5D10012328F /* SCARequiredAnalysis.m */,
-				65C5F6C61813C5D10012328F /* SCASessionParameters.h */,
-				65C5F6C71813C5D10012328F /* SCASessionParameters.m */,
-				65C5F6C81813C5D10012328F /* SCAVote.h */,
-				65C5F6C91813C5D10012328F /* SCAVote.m */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		65C5F6CA1813C5D10012328F /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				65C5F6CB1813C5D10012328F /* SCAAnalysisCollection.h */,
-				65C5F6CC1813C5D10012328F /* SCAAnalysisCollection.m */,
-				657FCACF181FE665002DA371 /* SCASummaryCollection.h */,
-				657FCAD0181FE665002DA371 /* SCASummaryCollection.m */,
-				65C5F6CF1813C5D10012328F /* SCACompositStringAnalysis.h */,
-				65C5F6D01813C5D10012328F /* SCACompositStringAnalysis.m */,
-				65C5F6D11813C5D10012328F /* SCAFloatAnalysis.h */,
-				65C5F6D21813C5D10012328F /* SCAFloatAnalysis.m */,
-				65C5F6D31813C5D10012328F /* SCAFollowupActions.h */,
-				65C5F6D41813C5D10012328F /* SCAFollowupActions.m */,
-				65C5F6D51813C5D10012328F /* SCAHeirarchyStringAnalysis.h */,
-				65C5F6D61813C5D10012328F /* SCAHeirarchyStringAnalysis.m */,
-				65C5F6D91813C5D10012328F /* SCASegment.h */,
-				65C5F6DA1813C5D10012328F /* SCASegment.m */,
-				65C5F6DB1813C5D10012328F /* SCAStringAnalysis.h */,
-				65C5F6DC1813C5D10012328F /* SCAStringAnalysis.m */,
-				65C5F6D71813C5D10012328F /* SCAStartSessionResult.h */,
-				65C5F6D81813C5D10012328F /* SCAStartSessionResult.m */,
-				65C5F6CD1813C5D10012328F /* SCAAnalysisResult.h */,
-				65C5F6CE1813C5D10012328F /* SCAAnalysisResult.m */,
-				657FCAC7181FE487002DA371 /* SCASummaryResult.h */,
-				657FCAC8181FE487002DA371 /* SCASummaryResult.m */,
-				657FCAA7181D5D99002DA371 /* SCAVoteResult.h */,
-				657FCAA8181D5D99002DA371 /* SCAVoteResult.m */,
-				657FCA8D181D27DE002DA371 /* SCAResponseStatuses.h */,
-				657FCA8E181D27DE002DA371 /* SCAResponseStatuses.m */,
-				657FCA95181D54BC002DA371 /* SCASessionStatuses.h */,
-				657FCA96181D54BC002DA371 /* SCASessionStatuses.m */,
-				657FCAC1181FC17D002DA371 /* SCATemperMeterValues.h */,
-				657FCAC2181FC17D002DA371 /* SCATemperMeterValues.m */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		65C5F6DD1813C5D10012328F /* Session */ = {
-			isa = PBXGroup;
-			children = (
-				65C5F6DE1813C5D10012328F /* SCAEmotionsAnalyzerSession.h */,
-				65C5F6DF1813C5D10012328F /* SCAEmotionsAnalyzerSession.m */,
-				65C5F72A1813DB700012328F /* SCAEmotionsAnalyzerSessionDelegate.h */,
-				657FCAC5181FCB06002DA371 /* SCAEmotionsAnalyzerSummaryDelegate.h */,
-				657FCAC6181FCB06002DA371 /* SCAEmotionsAnalyzerVoteDelegate.h */,
-				65C5F789181424A70012328F /* SCAStartSessionResponder.h */,
-				65C5F78A181424A70012328F /* SCAStartSessionResponder.m */,
-				65C5F78D181424C90012328F /* SCAStartSessionResponderDelegate.h */,
-				65C5F78E18151FC40012328F /* SCAUpStreamVoiceResponder.h */,
-				65C5F78F18151FC40012328F /* SCAUpStreamVoiceResponder.m */,
-				65C5F79018151FC40012328F /* SCAUpStreamVoiceResponderDelegate.h */,
-				652798B11816A55D00D54EE4 /* SCAAnalysisResponder.h */,
-				652798B21816A55E00D54EE4 /* SCAAnalysisResponder.m */,
-				652798B31816A55E00D54EE4 /* SCAAnalysisResponderDelegate.h */,
-				657FCA99181D5B34002DA371 /* SCASummaryResponder.h */,
-				657FCA9A181D5B34002DA371 /* SCASummaryResponder.m */,
-				657FCA9B181D5B34002DA371 /* SCASummaryResponderDelegate.h */,
-				657FCA9C181D5B34002DA371 /* SCAVoteResponder.h */,
-				657FCA9D181D5B34002DA371 /* SCAVoteResponder.m */,
-				657FCA9E181D5B34002DA371 /* SCAVoteResponderDelegate.h */,
-				657FCA91181D3113002DA371 /* SCAEmotionAnalysisHosts.h */,
-				657FCA92181D3113002DA371 /* SCAEmotionAnalysisHosts.m */,
-			);
-			path = Session;
-			sourceTree = "<group>";
-		};
-		65C5F7141813C9140012328F /* DataFormat */ = {
-			isa = PBXGroup;
-			children = (
-				65C5F7151813C9330012328F /* SCABaseDataFormat.h */,
-				65C5F7161813C9330012328F /* SCABaseDataFormat.m */,
-				65C5F7191813C9A30012328F /* SCAPcmDataFormat.h */,
-				65C5F71A1813C9A30012328F /* SCAPcmDataFormat.m */,
-				65C5F71D1813C9B70012328F /* SCAWavDataFormat.h */,
-				65C5F71E1813C9B70012328F /* SCAWavDataFormat.m */,
-				65C5F7211813CA850012328F /* SCAAudioEncodingFormat.h */,
-			);
-			path = DataFormat;
-			sourceTree = "<group>";
-		};
-		65C5F783181412AA0012328F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				652798A81816917300D54EE4 /* NSStream_BoundPairAdditions.h */,
-				652798A91816917300D54EE4 /* NSStream_BoundPairAdditions.m */,
-				652798AA1816917300D54EE4 /* SCAStreamPostManager.h */,
-				652798AB1816917300D54EE4 /* SCAStreamPostManager.m */,
-				652798AC1816917300D54EE4 /* SCAStreamPostManagerDelegate.h */,
-				65C5F784181412D20012328F /* SCAUrlRequest.h */,
-				65C5F785181412D20012328F /* SCAUrlRequest.m */,
-				65C5F788181416B90012328F /* SCAUrlRequestDelegate.h */,
-				65279898181563ED00D54EE4 /* SCAMillisecondsUtils.h */,
-				65279899181563ED00D54EE4 /* SCAMillisecondsUtils.m */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -500,11 +518,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6527989618155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */,
-				65C5F5971813B2BF0012328F /* Images.xcassets in Resources */,
-				657FCAE0182142A6002DA371 /* DetailsViewController.xib in Resources */,
-				657FCAB8181EAFC1002DA371 /* MainViewController.xib in Resources */,
-				65C5F5891813B2BF0012328F /* InfoPlist.strings in Resources */,
+				657FCBB318214A6F002DA371 /* Scarlett-Info.plist in Resources */,
+				657FCB9D182149C8002DA371 /* Sample.WAV in Resources */,
+				657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */,
+				657FCB97182149C8002DA371 /* DetailsViewController.xib in Resources */,
+				657FCB9B182149C8002DA371 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,9 +530,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6527989718155D4F00D54EE4 /* SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV in Resources */,
-				657FCAB9181EAFC1002DA371 /* MainViewController.xib in Resources */,
-				657FCAE1182142A6002DA371 /* DetailsViewController.xib in Resources */,
+				657FCBB418214A6F002DA371 /* Scarlett-Info.plist in Resources */,
+				657FCB9E182149C8002DA371 /* Sample.WAV in Resources */,
+				657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */,
+				657FCB98182149C8002DA371 /* DetailsViewController.xib in Resources */,
+				657FCB9C182149C8002DA371 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,45 +545,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65C5F7001813C5D10012328F /* SCAAnalysisCollection.m in Sources */,
-				65C5F6FA1813C5D10012328F /* SCARequiredAnalysis.m in Sources */,
-				657FCAD1181FE665002DA371 /* SCASummaryCollection.m in Sources */,
-				65C5F7021813C5D10012328F /* SCAAnalysisResult.m in Sources */,
-				657FCAC3181FC17D002DA371 /* SCATemperMeterValues.m in Sources */,
-				657FCA93181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
-				65C5F7101813C5D10012328F /* SCAStringAnalysis.m in Sources */,
-				65C5F7171813C9330012328F /* SCABaseDataFormat.m in Sources */,
-				65C5F6F61813C5D10012328F /* SCAGeoLocation.m in Sources */,
-				657FCA9F181D5B34002DA371 /* SCASummaryResponder.m in Sources */,
-				652798B41816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
-				65C5F70C1813C5D10012328F /* SCAStartSessionResult.m in Sources */,
-				657FCAC9181FE487002DA371 /* SCASummaryResult.m in Sources */,
-				657FCA8F181D27DE002DA371 /* SCAResponseStatuses.m in Sources */,
-				652798AD1816917600D54EE4 /* NSStream_BoundPairAdditions.m in Sources */,
-				65C5F6FC1813C5D10012328F /* SCASessionParameters.m in Sources */,
-				65C5F78B181424A70012328F /* SCAStartSessionResponder.m in Sources */,
-				657FCAA1181D5B34002DA371 /* SCAVoteResponder.m in Sources */,
-				65C5F6F81813C5D10012328F /* SCARecorderInfo.m in Sources */,
-				65C5F70E1813C5D10012328F /* SCASegment.m in Sources */,
-				65C5F70A1813C5D10012328F /* SCAHeirarchyStringAnalysis.m in Sources */,
-				657FCAA9181D5D99002DA371 /* SCAVoteResult.m in Sources */,
-				65C5F6FE1813C5D10012328F /* SCAVote.m in Sources */,
-				65C5F7121813C5D10012328F /* SCAEmotionsAnalyzerSession.m in Sources */,
-				65C5F58F1813B2BF0012328F /* AppDelegate.m in Sources */,
-				65C5F7041813C5D10012328F /* SCACompositStringAnalysis.m in Sources */,
-				6527989A181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */,
-				65C5F71F1813C9B70012328F /* SCAWavDataFormat.m in Sources */,
-				65C5F7061813C5D10012328F /* SCAFloatAnalysis.m in Sources */,
-				657FCA97181D54BC002DA371 /* SCASessionStatuses.m in Sources */,
-				657FCADE182142A6002DA371 /* DetailsViewController.m in Sources */,
-				65C5F58B1813B2BF0012328F /* main.m in Sources */,
-				65C5F7081813C5D10012328F /* SCAFollowupActions.m in Sources */,
-				65C5F786181412D30012328F /* SCAUrlRequest.m in Sources */,
-				657FCAB6181EAFC1002DA371 /* MainViewController.m in Sources */,
-				657FCAAD181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
-				65C5F79118151FC40012328F /* SCAUpStreamVoiceResponder.m in Sources */,
-				652798AF1816917800D54EE4 /* SCAStreamPostManager.m in Sources */,
-				65C5F71B1813C9A30012328F /* SCAPcmDataFormat.m in Sources */,
+				657FCB69182149C8002DA371 /* SCACompositStringAnalysis.m in Sources */,
+				657FCB7F182149C8002DA371 /* SCATemperMeterValues.m in Sources */,
+				657FCB63182149C8002DA371 /* SCAVote.m in Sources */,
+				657FCB71182149C8002DA371 /* SCAResponseStatuses.m in Sources */,
+				657FCB4F182149C8002DA371 /* SCAPcmDataFormat.m in Sources */,
+				657FCB79182149C8002DA371 /* SCAStringAnalysis.m in Sources */,
+				657FCB6B182149C8002DA371 /* SCAFloatAnalysis.m in Sources */,
+				657FCB65182149C8002DA371 /* SCAAnalysisCollection.m in Sources */,
+				657FCB95182149C8002DA371 /* DetailsViewController.m in Sources */,
+				657FCB99182149C8002DA371 /* MainViewController.m in Sources */,
+				657FCB8F182149C8002DA371 /* SCAUpStreamVoiceResponder.m in Sources */,
+				657FCB4D182149C8002DA371 /* SCABaseDataFormat.m in Sources */,
+				657FCB5B182149C8002DA371 /* SCAGeoLocation.m in Sources */,
+				657FCBB118214A6F002DA371 /* main.m in Sources */,
+				657FCB81182149C8002DA371 /* SCAVoteResult.m in Sources */,
+				657FCB67182149C8002DA371 /* SCAAnalysisResult.m in Sources */,
+				657FCB77182149C8002DA371 /* SCAStartSessionResult.m in Sources */,
+				657FCB93182149C8002DA371 /* AppDelegate.m in Sources */,
+				657FCB7B182149C8002DA371 /* SCASummaryCollection.m in Sources */,
+				657FCB55182149C8002DA371 /* SCAMillisecondsUtils.m in Sources */,
+				657FCB57182149C8002DA371 /* SCAStreamPostManager.m in Sources */,
+				657FCB91182149C8002DA371 /* SCAVoteResponder.m in Sources */,
+				657FCB6D182149C8002DA371 /* SCAFollowupActions.m in Sources */,
+				657FCB8B182149C8002DA371 /* SCAStartSessionResponder.m in Sources */,
+				657FCB89182149C8002DA371 /* SCAEmotionsAnalyzerSession.m in Sources */,
+				657FCB61182149C8002DA371 /* SCASessionParameters.m in Sources */,
+				657FCB75182149C8002DA371 /* SCASessionStatuses.m in Sources */,
+				657FCB5F182149C8002DA371 /* SCARequiredAnalysis.m in Sources */,
+				657FCB87182149C8002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
+				657FCB53182149C8002DA371 /* NSStream_BoundPairAdditions.m in Sources */,
+				657FCB83182149C8002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
+				657FCB6F182149C8002DA371 /* SCAHeirarchyStringAnalysis.m in Sources */,
+				657FCB7D182149C8002DA371 /* SCASummaryResult.m in Sources */,
+				657FCB51182149C8002DA371 /* SCAWavDataFormat.m in Sources */,
+				657FCB59182149C8002DA371 /* SCAUrlRequest.m in Sources */,
+				657FCB5D182149C8002DA371 /* SCARecorderInfo.m in Sources */,
+				657FCB8D182149C8002DA371 /* SCASummaryResponder.m in Sources */,
+				657FCB73182149C8002DA371 /* SCASegment.m in Sources */,
+				657FCB85182149C8002DA371 /* SCAAnalysisResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,43 +591,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657FCAD2181FE665002DA371 /* SCASummaryCollection.m in Sources */,
-				65C5F7051813C5D10012328F /* SCACompositStringAnalysis.m in Sources */,
-				657FCAAE181E6134002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
-				65C5F7111813C5D10012328F /* SCAStringAnalysis.m in Sources */,
-				657FCADF182142A6002DA371 /* DetailsViewController.m in Sources */,
-				657FCA98181D54BC002DA371 /* SCASessionStatuses.m in Sources */,
-				652798B51816A55E00D54EE4 /* SCAAnalysisResponder.m in Sources */,
-				657FCACA181FE487002DA371 /* SCASummaryResult.m in Sources */,
-				65C5F7011813C5D10012328F /* SCAAnalysisCollection.m in Sources */,
-				6527989B181563ED00D54EE4 /* SCAMillisecondsUtils.m in Sources */,
-				65C5F6F71813C5D10012328F /* SCAGeoLocation.m in Sources */,
-				652798AE1816917800D54EE4 /* NSStream_BoundPairAdditions.m in Sources */,
-				65C5F7071813C5D10012328F /* SCAFloatAnalysis.m in Sources */,
-				657FCA90181D27DE002DA371 /* SCAResponseStatuses.m in Sources */,
-				65C5F787181412D30012328F /* SCAUrlRequest.m in Sources */,
-				65C5F79218151FC40012328F /* SCAUpStreamVoiceResponder.m in Sources */,
-				65C5F6F91813C5D10012328F /* SCARecorderInfo.m in Sources */,
-				65C5F7031813C5D10012328F /* SCAAnalysisResult.m in Sources */,
-				657FCAC4181FC17D002DA371 /* SCATemperMeterValues.m in Sources */,
-				65C5F7131813C5D10012328F /* SCAEmotionsAnalyzerSession.m in Sources */,
-				65C5F70D1813C5D10012328F /* SCAStartSessionResult.m in Sources */,
-				652798B01816917800D54EE4 /* SCAStreamPostManager.m in Sources */,
-				65C5F6FB1813C5D10012328F /* SCARequiredAnalysis.m in Sources */,
-				657FCAA0181D5B34002DA371 /* SCASummaryResponder.m in Sources */,
-				65C5F7201813C9B70012328F /* SCAWavDataFormat.m in Sources */,
-				657FCAA2181D5B34002DA371 /* SCAVoteResponder.m in Sources */,
-				657FCAB7181EAFC1002DA371 /* MainViewController.m in Sources */,
-				65C5F6FF1813C5D10012328F /* SCAVote.m in Sources */,
-				65C5F70B1813C5D10012328F /* SCAHeirarchyStringAnalysis.m in Sources */,
-				65C5F78C181424A70012328F /* SCAStartSessionResponder.m in Sources */,
-				65C5F7091813C5D10012328F /* SCAFollowupActions.m in Sources */,
-				65C5F70F1813C5D10012328F /* SCASegment.m in Sources */,
-				65C5F7181813C9330012328F /* SCABaseDataFormat.m in Sources */,
-				657FCA94181D3113002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
-				65C5F6FD1813C5D10012328F /* SCASessionParameters.m in Sources */,
-				657FCAAA181D5D99002DA371 /* SCAVoteResult.m in Sources */,
-				65C5F71C1813C9A30012328F /* SCAPcmDataFormat.m in Sources */,
+				657FCB6A182149C8002DA371 /* SCACompositStringAnalysis.m in Sources */,
+				657FCB80182149C8002DA371 /* SCATemperMeterValues.m in Sources */,
+				657FCB64182149C8002DA371 /* SCAVote.m in Sources */,
+				657FCB72182149C8002DA371 /* SCAResponseStatuses.m in Sources */,
+				657FCB50182149C8002DA371 /* SCAPcmDataFormat.m in Sources */,
+				657FCB7A182149C8002DA371 /* SCAStringAnalysis.m in Sources */,
+				657FCB6C182149C8002DA371 /* SCAFloatAnalysis.m in Sources */,
+				657FCB66182149C8002DA371 /* SCAAnalysisCollection.m in Sources */,
+				657FCB96182149C8002DA371 /* DetailsViewController.m in Sources */,
+				657FCB9A182149C8002DA371 /* MainViewController.m in Sources */,
+				657FCB90182149C8002DA371 /* SCAUpStreamVoiceResponder.m in Sources */,
+				657FCB4E182149C8002DA371 /* SCABaseDataFormat.m in Sources */,
+				657FCB5C182149C8002DA371 /* SCAGeoLocation.m in Sources */,
+				657FCBB218214A6F002DA371 /* main.m in Sources */,
+				657FCB82182149C8002DA371 /* SCAVoteResult.m in Sources */,
+				657FCB68182149C8002DA371 /* SCAAnalysisResult.m in Sources */,
+				657FCB78182149C8002DA371 /* SCAStartSessionResult.m in Sources */,
+				657FCB94182149C8002DA371 /* AppDelegate.m in Sources */,
+				657FCB7C182149C8002DA371 /* SCASummaryCollection.m in Sources */,
+				657FCB56182149C8002DA371 /* SCAMillisecondsUtils.m in Sources */,
+				657FCB58182149C8002DA371 /* SCAStreamPostManager.m in Sources */,
+				657FCB92182149C8002DA371 /* SCAVoteResponder.m in Sources */,
+				657FCB6E182149C8002DA371 /* SCAFollowupActions.m in Sources */,
+				657FCB8C182149C8002DA371 /* SCAStartSessionResponder.m in Sources */,
+				657FCB8A182149C8002DA371 /* SCAEmotionsAnalyzerSession.m in Sources */,
+				657FCB62182149C8002DA371 /* SCASessionParameters.m in Sources */,
+				657FCB76182149C8002DA371 /* SCASessionStatuses.m in Sources */,
+				657FCB60182149C8002DA371 /* SCARequiredAnalysis.m in Sources */,
+				657FCB88182149C8002DA371 /* SCAEmotionAnalysisHosts.m in Sources */,
+				657FCB54182149C8002DA371 /* NSStream_BoundPairAdditions.m in Sources */,
+				657FCB84182149C8002DA371 /* SCAEmotionsAnalyzer.m in Sources */,
+				657FCB70182149C8002DA371 /* SCAHeirarchyStringAnalysis.m in Sources */,
+				657FCB7E182149C8002DA371 /* SCASummaryResult.m in Sources */,
+				657FCB52182149C8002DA371 /* SCAWavDataFormat.m in Sources */,
+				657FCB5A182149C8002DA371 /* SCAUrlRequest.m in Sources */,
+				657FCB5E182149C8002DA371 /* SCARecorderInfo.m in Sources */,
+				657FCB8E182149C8002DA371 /* SCASummaryResponder.m in Sources */,
+				657FCB74182149C8002DA371 /* SCASegment.m in Sources */,
+				657FCB86182149C8002DA371 /* SCAAnalysisResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,10 +644,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		65C5F5871813B2BF0012328F /* InfoPlist.strings */ = {
+		657FCBAA18214A6F002DA371 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				65C5F5881813B2BF0012328F /* en */,
+				657FCBAB18214A6F002DA371 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
