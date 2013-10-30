@@ -11,6 +11,9 @@
 
 
 @interface SCARecorderInfo : NSObject
+{
+    NSString *_deviceId;
+}
 
 @property (nonatomic, strong) NSString *ip;
 @property (nonatomic, strong) SCAGeoLocation *coordinates;
@@ -20,7 +23,6 @@
 @property (nonatomic, strong) NSString *facebook_id;
 @property (nonatomic, strong) NSString *twitter_id;
 @property (nonatomic, strong) NSString *device_info;
-@property (nonatomic, strong) NSString *device_id;
 
 -(NSMutableDictionary*)toDictionary;
 

@@ -54,16 +54,19 @@
         [dictionary setObject:self.device_info forKey:@"device_info"];
     }
     
-    if(self.device_id)
-    {
-        [dictionary setObject:self.device_id forKey:@"device_id"];
-    }
-    else
-    {
-        @throw([NSException exceptionWithName:@"Device ID Error" reason:@"Must provide device id" userInfo:nil]);
-    }
+    [dictionary setObject:[self getDeviceId] forKey:@"device_id"];
     
     return dictionary;
+}
+
+-(NSString*)getDeviceId
+{
+    if(!_deviceId)
+    {
+        //TODO: get open id
+    }
+    
+    return _deviceId;
 }
 
 @end

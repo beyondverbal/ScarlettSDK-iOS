@@ -8,30 +8,40 @@
 
 #import "SCAEmotionsAnalyzer.h"
 
+NSString* const kScarlettPlistFileName = @"Scarlett-Info.plist";
+NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
+
 @implementation SCAEmotionsAnalyzer
 
--(id)initWithApiKey:(NSString*)apiKey
-     requestTimeout:(NSTimeInterval)requestTimeout
-getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
-               host:(NSString*)host
-    sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate
++(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters
+                                         apiKey:(NSString*)apiKey
+                                 requestTimeout:(NSTimeInterval)requestTimeout
+                        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
+                                           host:(NSString*)host
+                                sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate
 {
-    if(self = [super init])
+    NSString *currentApiKey = apiKey;
+    
+    if(!currentApiKey)
     {
-        _apiKey = apiKey;
-        _requestTimeout = requestTimeout;
-        _getAnalysisTimeInterval = getAnalysisTimeInterval;
-        _host = host;
-        _sessionDelegate = sessionDelegate;
+        currentApiKey = [SCAEmotionsAnalyzer readApiKeyFromPlist];
     }
-    return self;
-}
-
--(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters
-{
-    SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:_apiKey requestTimeout:_requestTimeout getAnalysisTimeInterval:_getAnalysisTimeInterval host:_host sessionDelegate:_sessionDelegate];
+    
+    SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:currentApiKey requestTimeout:requestTimeout getAnalysisTimeInterval:getAnalysisTimeInterval host:host sessionDelegate:sessionDelegate];
     
     return emotionsAnalyzerSession;
+}
+
++(NSString*)readApiKeyFromPlist
+{
+    // read api key from plist ScarlettApiKey
+    NSString *plistFile = [[NSBundle mainBundle] pathForResource:kScarlettPlistFileName ofType:nil];
+    
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:plistFile];
+    
+    NSString *apiKey = [dictionary objectForKey:kScarlettPlistApiKeyName];
+    
+    return apiKey;
 }
 
 @end

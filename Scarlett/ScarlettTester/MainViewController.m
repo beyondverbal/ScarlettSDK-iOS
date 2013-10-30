@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 
-NSString* const kApiKey = @"66c7581c48b54589b046e489fafab19e";
 NSString* const kUpStreamVoiceDataNotification = @"UpStreamVoiceDataNotification";
 NSString* const kUpStreamVoiceDataKey = @"UpStreamVoiceDataKey";
 NSTimeInterval const kRequestTimeout = 30.0;
@@ -155,10 +154,8 @@ void AudioOutputCallback(void * inUserData,
                                                                                                     SCARequiredAnalysisMoodGroupSummary]];
     
     SCASessionParameters *sessionParameters = [[SCASessionParameters alloc] initWithDataFormat:dataFormat recorderInfo:recorderInfo requiredAnalysisTypes:requiredAnalysis];
-    
-    self.emotionsAnalyzer = [[SCAEmotionsAnalyzer alloc] initWithApiKey:kApiKey requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta sessionDelegate:self];
-    
-    self.emotionsAnalyzerSession = [self.emotionsAnalyzer initializeSession:sessionParameters];
+        
+    self.emotionsAnalyzerSession = [SCAEmotionsAnalyzer initializeSession:sessionParameters apiKey:nil requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta sessionDelegate:self];
     
     [self.emotionsAnalyzerSession startSession];
 }

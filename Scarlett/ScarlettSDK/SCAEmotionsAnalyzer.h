@@ -12,20 +12,12 @@
 #import "SCAEmotionsAnalyzerSession.h"
 
 @interface SCAEmotionsAnalyzer : NSObject
-{
-    NSString *_apiKey;
-    NSTimeInterval _requestTimeout;
-    NSTimeInterval _getAnalysisTimeInterval;
-    NSString *_host;
-    id<SCAEmotionsAnalyzerSessionDelegate> _sessionDelegate;
-}
 
--(id)initWithApiKey:(NSString*)apiKey
-     requestTimeout:(NSTimeInterval)requestTimeout
-getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
-               host:(NSString*)host
-    sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
-
--(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters;
++(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters
+                                         apiKey:(NSString*)apiKey
+                                 requestTimeout:(NSTimeInterval)requestTimeout
+                        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
+                                           host:(NSString*)host
+                                sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
 
 @end

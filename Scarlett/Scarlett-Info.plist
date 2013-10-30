@@ -34,5 +34,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>ScarlettApiKey</key>
+	<string>66c7581c48b54589b046e489fafab19e</string>
 </dict>
 </plist>

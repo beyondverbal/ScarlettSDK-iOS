@@ -53,7 +53,6 @@ typedef struct
 @property (nonatomic, strong) IBOutlet UISwitch *swcFormat;
 
 @property (nonatomic) BOOL sessionStarted;
-@property (nonatomic, strong) SCAEmotionsAnalyzer *emotionsAnalyzer;
 @property (nonatomic, strong) SCAEmotionsAnalyzerSession *emotionsAnalyzerSession;
 @property (nonatomic, strong) NSMutableData *collectedVoiceData;
 @property (nonatomic, strong) NSMutableArray *analysisSegments;
