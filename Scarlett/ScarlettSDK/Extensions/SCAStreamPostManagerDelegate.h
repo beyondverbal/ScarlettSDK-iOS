@@ -11,4 +11,5 @@
 @protocol SCAStreamPostManagerDelegate <NSObject>
 -(void)streamSucceed:(NSData*)responseData;
 -(void)streamFailed:(NSString*)errorDescription;
+-(void)streamStopped;
 @end

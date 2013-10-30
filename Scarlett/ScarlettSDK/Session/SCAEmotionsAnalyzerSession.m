@@ -76,7 +76,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     [self stopStreamPostManager];
 }
 
--(void)upStreamVoiceData:(NSData*)voiceData
+-(void)analyzeVoiceData:(NSData*)voiceData
 {
     if(_sessionStarted)
     {
@@ -96,7 +96,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     }
 }
 
--(void)upStreamInputStream:(NSInputStream*)inputStream
+-(void)analyzeInputStream:(NSInputStream*)inputStream
 {
     if(_sessionStarted)
     {
@@ -216,7 +216,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     [self stopSession];
     
-    [self.sessionDelegate upStreamVoiceDataSucceed];
+    [self.sessionDelegate processingDone];
 }
 
 -(void)upStreamVoiceFailed:(NSString *)errorDescription
@@ -225,7 +225,16 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     [self stopSession];
     
-    [self.sessionDelegate upStreamVoiceDataFailed:errorDescription];
+    [self.sessionDelegate processingDone];
+}
+
+-(void)upStreamVoiceStopped
+{
+    NSLog(@"upStreamVoiceStopped");
+    
+    [self stopSession];
+    
+    [self.sessionDelegate processingDone];
 }
 
 -(void)getAnalysisSucceed:(NSData *)responseData
@@ -243,7 +252,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
         [self stopAnalysisTimer];
     }
     
-    [self.sessionDelegate getAnalysisSucceed:_lastAnalysisResult];
+    [self.sessionDelegate newAnalysis:_lastAnalysisResult];
     
     _getAnalysisInProgress = NO;
 }
@@ -251,9 +260,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 -(void)getAnalysisFailed:(NSError *)error
 {
     NSLog(@"analysisFailed %@", [error localizedDescription]);
-    
-    [self.sessionDelegate getAnalysisFailed:[error localizedDescription]];
-    
+        
     _getAnalysisInProgress = NO;
 }
 

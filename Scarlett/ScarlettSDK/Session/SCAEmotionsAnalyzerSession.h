@@ -58,10 +58,11 @@
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                           host:(NSString*)host
                sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
+
 -(void)startSession;
 -(void)stopSession;
--(void)upStreamVoiceData:(NSData*)voiceData;
--(void)upStreamInputStream:(NSInputStream*)inputStream;
+-(void)analyzeVoiceData:(NSData*)voiceData;
+-(void)analyzeInputStream:(NSInputStream*)inputStream;
 -(void)getSummary:(id<SCAEmotionsAnalyzerSummaryDelegate>)summaryDelegate;
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore;
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote;

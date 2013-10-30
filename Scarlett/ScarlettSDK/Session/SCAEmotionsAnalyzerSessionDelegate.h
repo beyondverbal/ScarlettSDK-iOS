@@ -13,9 +13,7 @@
 
 -(void)startSessionSucceed;
 -(void)startSessionFailed:(NSString*)errorDescription;
--(void)upStreamVoiceDataSucceed;
--(void)upStreamVoiceDataFailed:(NSString*)errorDescription;
--(void)getAnalysisSucceed:(SCAAnalysisResult*)analysisResult;
--(void)getAnalysisFailed:(NSString*)errorDescription;
+-(void)processingDone;
+-(void)newAnalysis:(SCAAnalysisResult*)analysisResult;
 
 @end

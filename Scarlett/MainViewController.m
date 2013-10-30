@@ -63,7 +63,7 @@ void AudioOutputCallback(void * inUserData,
                 
                 NSData *newVoiceData = [NSData dataWithData:self.collectedVoiceData];
                 
-                [self.emotionsAnalyzerSession upStreamVoiceData:newVoiceData];
+                [self.emotionsAnalyzerSession analyzeVoiceData:newVoiceData];
                 
                 self.collectedVoiceData = [[NSMutableData alloc] init];
             }
@@ -85,7 +85,7 @@ void AudioOutputCallback(void * inUserData,
     
     NSLog(@":::::::::::::::: sendRecordedFile %@", path);
     
-    [self.emotionsAnalyzerSession upStreamInputStream:inputStream];
+    [self.emotionsAnalyzerSession analyzeInputStream:inputStream];
 }
 
 -(IBAction)btnStartStopSession_Pressed:(id)sender
@@ -175,35 +175,6 @@ void AudioOutputCallback(void * inUserData,
     }
 }
 
-//-(IBAction)sendFileClicked:(id)sender
-//{
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"SUPER_test1_LPCM_Mono_VBR_8SS_24000Hz.WAV" ofType:nil];
-//    
-//    NSData *voiceData = [NSData dataWithContentsOfFile:path];
-//    
-//    [self.emotionsAnalyzerSession upStreamVoiceData:voiceData];
-//}
-//
-//-(IBAction)sendRecordedFileClicked:(id)sender
-//{
-//    NSString *path = [self getAudioFilePath];
-//    
-//    NSData *newVoiceData = [NSData dataWithContentsOfFile:path];
-//    
-//    NSLog(@":::::::::::::::: sendRecordedFileClicked %d", [newVoiceData length]);
-//    
-//    [self.emotionsAnalyzerSession upStreamVoiceData:newVoiceData];
-//}
-//
-//-(IBAction)sendCollectedVoiceDataClicked:(id)sender
-//{
-//    NSData *newVoiceData = [NSData dataWithData:self.collectedVoiceData];
-//    
-//    NSLog(@",,,,,,,,,,,,,,,, sendCollectedVoiceDataClicked %d", [newVoiceData length]);
-//    
-//    [self.emotionsAnalyzerSession upStreamVoiceData:newVoiceData];
-//}
-
 -(void)startSessionSucceed
 {
     self.sessionStarted = YES;
@@ -222,7 +193,7 @@ void AudioOutputCallback(void * inUserData,
     [alert show];
 }
 
--(void)upStreamVoiceDataSucceed
+-(void)processingDone
 {
     self.btnStartStopSession.enabled = YES;
     self.swcFormat.enabled = YES;
@@ -230,17 +201,9 @@ void AudioOutputCallback(void * inUserData,
     [self stopRecording];
 }
 
--(void)upStreamVoiceDataFailed:(NSString *)errorDescription
+-(void)newAnalysis:(SCAAnalysisResult *)analysisResult
 {
-    self.btnStartStopSession.enabled = YES;
-    self.swcFormat.enabled = YES;
-    
-    [self stopRecording];
-}
-
--(void)getAnalysisSucceed:(SCAAnalysisResult *)analysisResult
-{
-    NSLog(@"getAnalysisSucceed %@", analysisResult);
+    NSLog(@"newAnalysis %@", analysisResult);
     
     if(analysisResult.analysisSegments && [analysisResult.analysisSegments count] > 0)
     {
@@ -263,14 +226,6 @@ void AudioOutputCallback(void * inUserData,
         self.swcFormat.enabled = YES;
         self.btnStartStopSession.titleLabel.text = @"Start";
     }
-}
-
--(void)getAnalysisFailed:(NSString *)errorDescription
-{
-    NSLog(@"getAnalysisFailed %@", errorDescription);
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error getting analysis" message:errorDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
 }
 
 #pragma mark - audio recording

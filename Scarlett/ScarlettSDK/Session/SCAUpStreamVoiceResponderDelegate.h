@@ -11,4 +11,5 @@
 @protocol SCAUpStreamVoiceResponderDelegate <NSObject>
 -(void)upStreamVoiceSucceed:(NSData*)responseData;
 -(void)upStreamVoiceFailed:(NSString*)errorDescription;
+-(void)upStreamVoiceStopped;
 @end

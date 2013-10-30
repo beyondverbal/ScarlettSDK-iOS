@@ -20,4 +20,9 @@
     [self.delegate upStreamVoiceFailed:errorDescription];
 }
 
+-(void)streamStopped
+{
+    [self.delegate upStreamVoiceStopped];
+}
+
 @end

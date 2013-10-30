@@ -102,34 +102,39 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 -(void)stopSend
 {
-    self.isSending = NO;
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkForNewPostDataToWrite) object:nil];
-    
-    if (self.bufferOnHeap)
+    if(self.isSending)
     {
-        free(self.bufferOnHeap);
-        self.bufferOnHeap = NULL;
+        self.isSending = NO;
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkForNewPostDataToWrite) object:nil];
+        
+        if (self.bufferOnHeap)
+        {
+            free(self.bufferOnHeap);
+            self.bufferOnHeap = NULL;
+        }
+        
+        self.buffer = NULL;
+        self.bufferOffset = 0;
+        self.bufferLimit  = 0;
+        
+        if (self.connection != nil)
+        {
+            [self.connection cancel];
+            self.connection = nil;
+        }
+        
+        if (self.producerStream != nil)
+        {
+            self.producerStream.delegate = nil;
+            [self.producerStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [self.producerStream close];
+        }
+        
+        self.consumerStream = nil;
+        
+        [self.delegate streamStopped];
     }
-    
-    self.buffer = NULL;
-    self.bufferOffset = 0;
-    self.bufferLimit  = 0;
-    
-    if (self.connection != nil)
-    {
-        [self.connection cancel];
-        self.connection = nil;
-    }
-    
-    if (self.producerStream != nil)
-    {
-        self.producerStream.delegate = nil;
-        [self.producerStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        [self.producerStream close];
-    }
-    
-    self.consumerStream = nil;
 }
 
 -(void)appendPostData:(NSData*)data
