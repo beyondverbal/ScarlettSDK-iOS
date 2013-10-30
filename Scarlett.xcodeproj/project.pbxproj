@@ -97,6 +97,10 @@
 		657FCBB418214A6F002DA371 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */; };
 		657FCBB7182153F7002DA371 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBB6182153F7002DA371 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		657FCBB8182153F7002DA371 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBB6182153F7002DA371 /* OpenUDID.m */; };
+		657FCBBF18215856002DA371 /* VoiceDataStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBBE18215856002DA371 /* VoiceDataStreamer.m */; };
+		657FCBC018215856002DA371 /* VoiceDataStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBBE18215856002DA371 /* VoiceDataStreamer.m */; };
+		657FCBC318216442002DA371 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBC218216442002DA371 /* VoiceRecorder.m */; };
+		657FCBC418216442002DA371 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBC218216442002DA371 /* VoiceRecorder.m */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -212,6 +216,10 @@
 		657FCBAE18214A6F002DA371 /* Scarlett-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Scarlett-Prefix.pch"; sourceTree = "<group>"; };
 		657FCBB5182153F7002DA371 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		657FCBB6182153F7002DA371 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		657FCBBD18215856002DA371 /* VoiceDataStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceDataStreamer.h; sourceTree = "<group>"; };
+		657FCBBE18215856002DA371 /* VoiceDataStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceDataStreamer.m; sourceTree = "<group>"; };
+		657FCBC118216442002DA371 /* VoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorder.h; sourceTree = "<group>"; };
+		657FCBC218216442002DA371 /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -385,6 +393,10 @@
 				657FCB40182149C8002DA371 /* DetailsViewController.h */,
 				657FCB41182149C8002DA371 /* DetailsViewController.m */,
 				657FCB42182149C8002DA371 /* DetailsViewController.xib */,
+				657FCBBD18215856002DA371 /* VoiceDataStreamer.h */,
+				657FCBBE18215856002DA371 /* VoiceDataStreamer.m */,
+				657FCBC118216442002DA371 /* VoiceRecorder.h */,
+				657FCBC218216442002DA371 /* VoiceRecorder.m */,
 				657FCB46182149C8002DA371 /* Sample.WAV */,
 			);
 			path = ScarlettTester;
@@ -551,11 +563,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657FCBBF18215856002DA371 /* VoiceDataStreamer.m in Sources */,
 				657FCB69182149C8002DA371 /* SCACompositStringAnalysis.m in Sources */,
 				657FCB7F182149C8002DA371 /* SCATemperMeterValues.m in Sources */,
 				657FCB63182149C8002DA371 /* SCAVote.m in Sources */,
 				657FCB71182149C8002DA371 /* SCAResponseStatuses.m in Sources */,
 				657FCB4F182149C8002DA371 /* SCAPcmDataFormat.m in Sources */,
+				657FCBC318216442002DA371 /* VoiceRecorder.m in Sources */,
 				657FCB79182149C8002DA371 /* SCAStringAnalysis.m in Sources */,
 				657FCB6B182149C8002DA371 /* SCAFloatAnalysis.m in Sources */,
 				657FCB65182149C8002DA371 /* SCAAnalysisCollection.m in Sources */,
@@ -598,11 +612,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657FCBC018215856002DA371 /* VoiceDataStreamer.m in Sources */,
 				657FCB6A182149C8002DA371 /* SCACompositStringAnalysis.m in Sources */,
 				657FCB80182149C8002DA371 /* SCATemperMeterValues.m in Sources */,
 				657FCB64182149C8002DA371 /* SCAVote.m in Sources */,
 				657FCB72182149C8002DA371 /* SCAResponseStatuses.m in Sources */,
 				657FCB50182149C8002DA371 /* SCAPcmDataFormat.m in Sources */,
+				657FCBC418216442002DA371 /* VoiceRecorder.m in Sources */,
 				657FCB7A182149C8002DA371 /* SCAStringAnalysis.m in Sources */,
 				657FCB6C182149C8002DA371 /* SCAFloatAnalysis.m in Sources */,
 				657FCB66182149C8002DA371 /* SCAAnalysisCollection.m in Sources */,

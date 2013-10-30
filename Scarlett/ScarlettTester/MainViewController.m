@@ -13,29 +13,9 @@ NSTimeInterval const kRequestTimeout = 30.0;
 NSTimeInterval const kGetAnalysisTimeInterval = 5.0;
 float const kCollectedVoiceDataIntervalMilliseconds = 2000;
 
-void AudioInputCallback(void * inUserData,
-                        AudioQueueRef inAQ,
-                        AudioQueueBufferRef inBuffer,
-                        const AudioTimeStamp * inStartTime,
-                        UInt32 inNumberPacketDescriptions,
-                        const AudioStreamPacketDescription * inPacketDescs);
-
-void AudioOutputCallback(void * inUserData,
-                         AudioQueueRef outAQ,
-                         AudioQueueBufferRef outBuffer);
-
 @implementation MainViewController
 
--(void)sendSampleFile
-{
-    self.lblStatus.text = @"Sending Sample.wav file";
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:kSampleWavFileName ofType:nil];
-    
-    NSInputStream *inputStream = [[NSInputStream alloc] initWithFileAtPath:path];
-    
-    [self.emotionsAnalyzerSession analyzeInputStream:inputStream];
-}
+#pragma mark IBAction
 
 -(IBAction)btnStartStopSession_Pressed:(id)sender
 {
@@ -77,6 +57,17 @@ void AudioOutputCallback(void * inUserData,
 -(void)initView
 {
     [self.tblAnalysisList reloadData];
+}
+
+-(void)sendSampleFile
+{
+    self.lblStatus.text = @"Sending Sample.wav file";
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:kSampleWavFileName ofType:nil];
+    
+    NSInputStream *inputStream = [[NSInputStream alloc] initWithFileAtPath:path];
+    
+    [self.emotionsAnalyzerSession analyzeInputStream:inputStream];
 }
 
 -(void)startSession
@@ -135,6 +126,8 @@ void AudioOutputCallback(void * inUserData,
         [self.emotionsAnalyzerSession stopSession];
     }
 }
+
+#pragma mark EmotionsAnalyzerSession delegates
 
 -(void)startSessionSucceed
 {
@@ -200,99 +193,25 @@ void AudioOutputCallback(void * inUserData,
     }
 }
 
-#pragma mark - audio recording
-
-// Takes a filled buffer and writes it to disk, "emptying" the buffer
-void AudioInputCallback(void * inUserData,
-                        AudioQueueRef inAQ,
-                        AudioQueueBufferRef inBuffer,
-                        const AudioTimeStamp * inStartTime,
-                        UInt32 inNumberPacketDescriptions,
-                        const AudioStreamPacketDescription * inPacketDescs)
-{
-	RecordState * recordState = (RecordState*)inUserData;
-    if (!recordState->recording)
-    {
-        printf("Not recording, returning\n");
-    }
-    
-    // send notification with recorded data
-    NSData *data = [NSData dataWithBytes:inBuffer->mAudioData length:inBuffer->mAudioDataByteSize];
-    
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:data forKey:kUpStreamVoiceDataKey];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kUpStreamVoiceDataNotification object:nil userInfo:userInfo];
-    
-    AudioQueueEnqueueBuffer(recordState->queue, inBuffer, 0, NULL);
-}
-
-- (void)setupAudioFormat:(AudioStreamBasicDescription*)format
-{
-	format->mSampleRate = 8000.0;
-    
-    if(self.streamingVoiceData)
-    {
-        format->mFormatID = kAudioFormatLinearPCM;
-    }
-    else
-    {
-        format->mFormatID = kAudioFormatULaw;
-    }
-	format->mFramesPerPacket = 1;
-	format->mChannelsPerFrame = 1;
-	format->mBytesPerFrame = 2;
-	format->mBytesPerPacket = 2;
-	format->mBitsPerChannel = 16;
-	format->mReserved = 0;
-	format->mFormatFlags = kLinearPCMFormatFlagIsBigEndian     |
-    kLinearPCMFormatFlagIsSignedInteger |
-    kLinearPCMFormatFlagIsPacked;
-}
+#pragma mark - Recording
 
 - (void)startRecording
 {
-    // Init state variables
-    recordState.recording = false;
-    
     self.lblStatus.text = @"Starting recording...";
+ 
+    self.voiceRecorder = [[VoiceRecorder alloc] init];
     
-    [self setupAudioFormat:&recordState.dataFormat];
+    BOOL recordingStarted = [self.voiceRecorder startRecording:self.streamingVoiceData];
     
-    recordState.currentPacket = 0;
-	
-    OSStatus status;
-    status = AudioQueueNewInput(&recordState.dataFormat,
-                                AudioInputCallback,
-                                &recordState,
-                                CFRunLoopGetCurrent(),
-                                kCFRunLoopCommonModes,
-                                0,
-                                &recordState.queue);
-    
-    if (status == 0)
+    if(recordingStarted)
     {
-        // Prime recording buffers with empty data
-        for (int i = 0; i < NUM_BUFFERS; i++)
-        {
-            AudioQueueAllocateBuffer(recordState.queue, 16000, &recordState.buffers[i]);
-            AudioQueueEnqueueBuffer (recordState.queue, recordState.buffers[i], 0, NULL);
-        }
-        
-        recordState.recording = true;
-        status = AudioQueueStart(recordState.queue, NULL);
-        
-        if (status == 0)
-        {
-            self.lblStatus.text = @"Recording";
-            self.btnSendSampleFile.enabled = YES;
-            self.btnStartStopSession.enabled = YES;
-            self.btnStartStopSession.titleLabel.text = @"Stop Stream";
-        }
+        self.lblStatus.text = @"Recording";
+        self.btnSendSampleFile.enabled = YES;
+        self.btnStartStopSession.enabled = YES;
+        self.btnStartStopSession.titleLabel.text = @"Stop Stream";
     }
-    
-    if (status != 0)
+    else
     {
-        [self stopRecording];
-        
         self.lblStatus.text = @"Record Failed";
         self.btnSendSampleFile.enabled = YES;
         self.btnStartStopSession.enabled = YES;
@@ -302,24 +221,14 @@ void AudioInputCallback(void * inUserData,
 
 - (void)stopRecording
 {
-    if(recordState.recording)
-    {
-        recordState.recording = false;
-        
-        AudioQueueStop(recordState.queue, true);
-        for(int i = 0; i < NUM_BUFFERS; i++)
-        {
-            AudioQueueFreeBuffer(recordState.queue, recordState.buffers[i]);
-        }
-        
-        AudioQueueDispose(recordState.queue, true);
-        
-        self.lblStatus.text = @"Recording stopped";
-        self.btnSendSampleFile.enabled = YES;
-        self.btnStartStopSession.enabled = YES;
-        self.btnStartStopSession.titleLabel.text = @"Start";
-    }
+    [self.voiceRecorder stopRecording];
+    
+    self.lblStatus.text = @"Recording stopped";
+    self.btnSendSampleFile.enabled = YES;
+    self.btnStartStopSession.enabled = YES;
+    self.btnStartStopSession.titleLabel.text = @"Start Stream";
 }
+
 
 #pragma mark - UITableView delegates
 
