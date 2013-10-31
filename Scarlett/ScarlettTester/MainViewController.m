@@ -110,7 +110,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
     
     SCASessionParameters *sessionParameters = [[SCASessionParameters alloc] initWithDataFormat:dataFormat recorderInfo:recorderInfo requiredAnalysisTypes:requiredAnalysis];
         
-    self.emotionsAnalyzerSession = [SCAEmotionsAnalyzer initializeSession:sessionParameters apiKey:nil plistFileName:@"Scarlett-Info.plist" requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta sessionDelegate:self];
+    self.emotionsAnalyzerSession = [SCAEmotionsAnalyzer initializeSession:sessionParameters apiKey:nil plistFileName:@"Scarlett-Info.plist" requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta isDebug:YES sessionDelegate:self];
     
     [self.emotionsAnalyzerSession startSession];
 }
@@ -167,9 +167,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
 }
 
 -(void)newAnalysis:(SCAAnalysisResult *)analysisResult
-{
-    NSLog(@"newAnalysis %@", analysisResult);
-    
+{   
     if(analysisResult.analysisSegments && [analysisResult.analysisSegments count] > 0)
     {
         NSArray *analysisSegments = analysisResult.analysisSegments;
@@ -245,6 +243,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     SCASegment *segment = [self.analysisSegments objectAtIndex:indexPath.row];

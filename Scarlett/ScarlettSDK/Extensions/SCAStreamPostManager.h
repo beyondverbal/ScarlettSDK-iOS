@@ -20,6 +20,7 @@ enum
 
 @interface SCAStreamPostManager : NSObject<NSStreamDelegate>
 
+@property (nonatomic) BOOL isDebug;
 @property (nonatomic) BOOL isSending;
 @property (nonatomic) NSTimeInterval requestTimeout;
 @property (nonatomic, strong, readwrite) NSURLConnection *connection;
@@ -41,8 +42,9 @@ enum
  * Description: Initialize stream post manager object responsible of streaming audio data to server
  * Parameters:  delegate - delegate object that responds to streaming events
  *              requestTimeout - timeout for the request
+ *              isDebug - write to NSLog when isDebug = YES
  */
--(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout;
+-(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout isDebug:(BOOL)isDebug;
 
 /**
  * Method name: startSend

@@ -16,8 +16,6 @@
     {
         id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
         
-        NSLog(@"SCAAnalysisResult %@", jsonObject);
-        
         NSDictionary *dictionary = (NSDictionary*)jsonObject;
         
         self.status = [dictionary objectForKey:@"status"];

@@ -22,6 +22,7 @@
  *              requestTimeout - timeout for the url requests such get analysis, summary request and vote request
  *              getAnalysisTimeInterval - interval to wait between each get analysis request
  *              host - kEmotionAnalysisHostBeta or kEmotionAnalysisHostProduction
+ *              isDebug - write to NSLog when isDebug = YES
  *              sessionDelegate - delegate object that responds to session events
  */
 +(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters
@@ -30,6 +31,7 @@
                                  requestTimeout:(NSTimeInterval)requestTimeout
                         getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                                            host:(NSString*)host
+                                        isDebug:(BOOL)isDebug
                                 sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
 
 @end

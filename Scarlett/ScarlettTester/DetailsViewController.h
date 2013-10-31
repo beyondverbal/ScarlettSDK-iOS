@@ -25,10 +25,30 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblTemperMeter;
 @property (nonatomic, strong) IBOutlet UILabel *lblTemperValue;
 
+/**
+ * Method name: initWithEmotionsAnalyzerSession
+ * Description: Initialize analysis details view
+ * Parameters:  emotionsAnalyzerSession - analysis session object to call get summary and vote
+ *              segment - analysis segment
+ */
 -(id)initWithEmotionsAnalyzerSession:(SCAEmotionsAnalyzerSession*)emotionsAnalyzerSession segment:(SCASegment*)segment;
 
+/**
+ * Method name: btnClose_Pressed
+ * Description: Close view
+ */
 -(IBAction)btnClose_Pressed:(id)sender;
+
+/**
+ * Method name: btnGetSummary_Pressed
+ * Description: Get summary request
+ */
 -(IBAction)btnGetSummary_Pressed:(id)sender;
+
+/**
+ * Method name: btnVote_Pressed
+ * Description: Execute vote request
+ */
 -(IBAction)btnVote_Pressed:(id)sender;
 
 @end

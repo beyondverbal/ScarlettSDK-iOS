@@ -30,13 +30,13 @@
 
 /**
  * Method name: btnStartStopSession_Pressed
- * Description: Start/stop analysis session and then start voice recording
+ * Description: Start/stop analysis session and then start voice recording and streaming to server
  */
 -(IBAction)btnStartStopSession_Pressed:(id)sender;
 
 /**
  * Method name: btnSendSampleFile_Pressed
- * Description: Send file to the server for analysis
+ * Description: Send sample WAVE file to the server for analysis
  */
 -(IBAction)btnSendSampleFile_Pressed:(id)sender;
 

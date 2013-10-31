@@ -37,14 +37,14 @@ typedef struct
 
 /**
  * Method name: startRecording
- * Description: Start recording
+ * Description: Start recording audio and post notification with each time new voice data collected
  * Parameters:  streamingVoiceData - YES when streaming voice data, NO - when about to upload file
  */
 -(BOOL)startRecording:(BOOL)streamingVoiceData;
 
 /**
  * Method name: stopRecording
- * Description: Stop the recording
+ * Description: Stop recording audio
  */
 -(void)stopRecording;
 

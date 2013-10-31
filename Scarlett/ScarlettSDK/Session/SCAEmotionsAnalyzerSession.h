@@ -51,12 +51,25 @@
 @property (nonatomic) NSTimeInterval getAnalysisTimeInterval;
 @property (nonatomic, strong) NSTimer *getAnalysisTimer;
 @property (nonatomic, strong) NSString *host;
+@property (nonatomic) BOOL isDebug;
 
+/**
+ * Method name: initWithSessionParameters
+ * Description: Initialize emotion analyzer session
+ * Parameters:  sessionParameters - session parameters such audio data format, recorder info and required analysis types
+ *              apiKey - api key
+ *              requestTimeout - timeout for the url requests such get analysis, summary request and vote request
+ *              getAnalysisTimeInterval - interval to wait between each get analysis request
+ *              host - kEmotionAnalysisHostBeta or kEmotionAnalysisHostProduction
+ *              isDebug - write to NSLog when isDebug = YES
+ *              sessionDelegate - delegate object that responds to session events
+ */
 -(id)initWithSessionParameters:(SCASessionParameters*)sessionParameters
                         apiKey:(NSString*)apiKey
                 requestTimeout:(NSTimeInterval)requestTimeout
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                           host:(NSString*)host
+                       isDebug:(BOOL)isDebug
                sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
 
 /**

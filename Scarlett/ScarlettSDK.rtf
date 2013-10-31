@@ -86,12 +86,13 @@ Getting Started:\
 	- Initialize analyzer session:\
 \
     \cf7 		\cf2 SCAEmotionsAnalyzerSession \cf0 *emotionAnalyzerSession = [\cf2 SCAEmotionsAnalyzer\cf0  \cf4 initializeSession\cf0 :sessionParameters \
-																						           \cf4 apiKey\cf0 :\cf7 nil\cf0  \
-																							\cf4 plistFileName\cf0 :\cf6 @"Scarlett-Info.plist"\cf0 \
-																						   \cf4 requestTimeout\cf0 :\cf2 kRequestTimeout\cf0  \
-																				  \cf4 getAnalysisTimeInterval\cf0 :\cf2 kGetAnalysisTimeInterval\cf0  \
-																									 \cf4 host\cf0 :\cf2 kEmotionAnalysisHostBeta\cf0  \
-																						  \cf4 sessionDelegate\cf0 :\cf7 self\cf0 ];\
+																								 \cf4 apiKey\cf0 :\cf7 nil\cf0  \
+																						  \cf4 plistFileName\cf0 :\cf6 @"Scarlett-Info.plist"\cf0  \
+																						 \cf4 requestTimeout\cf0 :\cf2 kRequestTimeout\cf0  \
+																				\cf4 getAnalysisTimeInterval\cf0 :\cf2 kGetAnalysisTimeInterval\cf0  \
+																								   \cf4 host\cf0 :\cf2 kEmotionAnalysisHostBeta\cf0  \
+																								\cf4 isDebug\cf0 :\cf7 YES\cf0  \
+																						\cf4 sessionDelegate\cf0 :\cf7 self\cf0 ];\
 	- Start analysis session:\
     \
 				[emotionAnalyzerSession \cf4 startSession\cf0 ];\

@@ -17,6 +17,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
                 requestTimeout:(NSTimeInterval)requestTimeout
        getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                           host:(NSString*)host
+                       isDebug:(BOOL)isDebug
                sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate
 {
     if(self = [super init])
@@ -40,6 +41,7 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
         self.requestTimeout = requestTimeout;
         self.getAnalysisTimeInterval = getAnalysisTimeInterval;
         self.host = host;
+        self.isDebug = isDebug;
     }
     return self;
 }
@@ -58,9 +60,12 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     NSData *bodyData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
     
-    NSString *jsonString =[[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
+    if(self.isDebug)
+    {
+        NSString *jsonString =[[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
     
-    NSLog(@"startSession %@", jsonString);
+        NSLog(@"startSession %@", jsonString);
+    }
     
     SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
     
@@ -71,7 +76,15 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)stopSession
 {
-    _sessionStarted = NO;
+    if(_sessionStarted)
+    {
+        if(self.isDebug)
+        {
+            NSLog(@"stopSession");
+        }
+        
+        _sessionStarted = NO;
+    }
     
     [self stopStreamPostManager];
 }
@@ -80,9 +93,14 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 {
     if(_sessionStarted)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"analyzeVoiceData %@", voiceData);
+        }
+        
         if(!self.streamPostManager)
         {
-            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder requestTimeout:self.requestTimeout];
+            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder requestTimeout:self.requestTimeout isDebug:self.isDebug];
             
             [self.streamPostManager startSend:_startSessionResult.followupActions.upStream];
         }
@@ -100,9 +118,14 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 {
     if(_sessionStarted)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"analyzeInputStream %@", inputStream);
+        }
+        
         if(!self.streamPostManager)
         {
-            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder requestTimeout:self.requestTimeout];
+            self.streamPostManager = [[SCAStreamPostManager alloc] initWithDelegate:self.upStreamVoiceResponder requestTimeout:self.requestTimeout isDebug:self.isDebug];
             
             [self.streamPostManager startSend:_startSessionResult.followupActions.upStream inputStream:inputStream];
         }
@@ -120,6 +143,11 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     if(_lastAnalysisResult)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"getSummary");
+        }
+        
         SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
         
         NSString *url = _lastAnalysisResult.followupActions.summary;
@@ -148,6 +176,11 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
     
     if(_lastAnalysisResult)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"vote voteScore = %d, verbalVote = %@", voteScore, verbalVote);
+        }
+        
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
         
         if(segment)
@@ -165,9 +198,12 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
         
         NSData *bodyData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
         
-        NSString *jsonString =[[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
+        if(self.isDebug)
+        {
+            NSString *jsonString =[[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
         
-        NSLog(@"vote %@", jsonString);
+            NSLog(@"vote %@", jsonString);
+        }
         
         SCAUrlRequest *request = [[SCAUrlRequest alloc] init];
         
@@ -185,9 +221,12 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)startSessionSucceed:(NSData *)responseData
 {
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    if(self.isDebug)
+    {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
-    NSLog(@"startSessionSucceed %@", jsonObject);
+        NSLog(@"startSessionSucceed %@", jsonObject);
+    }
     
     _startSessionResult = [[SCAStartSessionResult alloc] initWithResponseData:responseData];
     
@@ -203,16 +242,22 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)startSessionFailed:(NSError*)error
 {
+    if(self.isDebug)
+    {
+        NSLog(@"startSessionFailed %@", [error localizedDescription]);
+    }
+    
     [self.sessionDelegate startSessionFailed:[error localizedDescription]];
 }
 
 -(void)upStreamVoiceSucceed:(NSData *)responseData
 {
-    //TODO: parse response
+    if(self.isDebug)
+    {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
-    
-    NSLog(@"upStreamVoiceSucceed %@", jsonObject);
+        NSLog(@"upStreamVoiceSucceed %@", jsonObject);
+    }
     
     [self stopSession];
     
@@ -221,7 +266,10 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)upStreamVoiceFailed:(NSString *)errorDescription
 {
-    NSLog(@"upStreamVoiceFailed %@", errorDescription);
+    if(self.isDebug)
+    {
+        NSLog(@"upStreamVoiceFailed %@", errorDescription);
+    }
     
     [self stopSession];
     
@@ -230,7 +278,10 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)upStreamVoiceStopped
 {
-    NSLog(@"upStreamVoiceStopped");
+    if(self.isDebug)
+    {
+        NSLog(@"upStreamVoiceStopped");
+    }
     
     [self stopSession];
     
@@ -239,9 +290,12 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)getAnalysisSucceed:(NSData *)responseData
 {
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    if(self.isDebug)
+    {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
-    NSLog(@"getAnalysisSucceed %@", jsonObject);
+        NSLog(@"getAnalysisSucceed %@", jsonObject);
+    }
     
     _lastAnalysisResult = [[SCAAnalysisResult alloc] initWithResponseData:responseData];
     
@@ -259,16 +313,22 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)getAnalysisFailed:(NSError *)error
 {
-    NSLog(@"analysisFailed %@", [error localizedDescription]);
-        
+    if(self.isDebug)
+    {
+        NSLog(@"analysisFailed %@", [error localizedDescription]);
+    }
+    
     _getAnalysisInProgress = NO;
 }
 
 -(void)getSummarySucceed:(NSData *)responseData
 {
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    if(self.isDebug)
+    {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
-    NSLog(@"getSummarySucceed %@", jsonObject);
+        NSLog(@"getSummarySucceed %@", jsonObject);
+    }
     
     SCASummaryResult *summaryResult = [[SCASummaryResult alloc] initWithResponseData:responseData];
     
@@ -277,16 +337,22 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)getSummaryFailed:(NSError *)error
 {
-    NSLog(@"getSummaryFailed %@", [error localizedDescription]);
+    if(self.isDebug)
+    {
+        NSLog(@"getSummaryFailed %@", [error localizedDescription]);
+    }
     
     [self.summaryDelegate getSummaryFailed:[error localizedDescription]];
 }
 
 -(void)voteSucceed:(NSData *)responseData
 {
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+    if(self.isDebug)
+    {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
-    NSLog(@"voteSucceed %@", jsonObject);
+        NSLog(@"voteSucceed %@", jsonObject);
+    }
     
     SCAVoteResult *voteResult = [[SCAVoteResult alloc] initWithResponseData:responseData];
     
@@ -295,7 +361,10 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)voteFailed:(NSError *)error
 {
-    NSLog(@"voteFailed %@", [error localizedDescription]);
+    if(self.isDebug)
+    {
+        NSLog(@"voteFailed %@", [error localizedDescription]);
+    }
     
     [self.voteDelegate voteFailed:[error localizedDescription]];
 }
@@ -322,7 +391,10 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
             url = _lastAnalysisResult.followupActions.analysis;
         }
         
-        NSLog(@"getAnalysis %@", url);
+        if(self.isDebug)
+        {
+            NSLog(@"getAnalysis %@", url);
+        }
         
         [request loadWithUrl:url body:nil timeoutInterval:self.requestTimeout isStream:NO httpMethod:@"GET" delegate:self.analysisResponder];
     }
@@ -330,6 +402,11 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 
 -(void)startAnalysisTimer
 {
+    if(self.isDebug)
+    {
+        NSLog(@"startAnalysisTimer");
+    }
+    
     self.getAnalysisTimer = [NSTimer scheduledTimerWithTimeInterval:self.getAnalysisTimeInterval
                                                              target:self
                                                            selector:@selector(getAnalysisExecute:)
@@ -341,6 +418,11 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 {
     if(self.getAnalysisTimer)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"stopAnalysisTimer");
+        }
+        
         [self.getAnalysisTimer invalidate];
     }
     
@@ -351,6 +433,11 @@ NSString* const SCAStartSessionUrlFormat = @"https://%@/v1/recording/start?api_k
 {
     if(self.streamPostManager)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"stopStreamPostManager");
+        }
+        
         [self.streamPostManager stopSend];
     }
     

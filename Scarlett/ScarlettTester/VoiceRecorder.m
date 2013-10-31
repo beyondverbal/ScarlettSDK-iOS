@@ -26,9 +26,10 @@ void AudioInputCallback(void * inUserData,
                         const AudioStreamPacketDescription * inPacketDescs)
 {
 	RecordState * recordState = (RecordState*)inUserData;
+    
     if (!recordState->recording)
     {
-        printf("Not recording, returning\n");
+        return;
     }
     
     // send notification with recorded data

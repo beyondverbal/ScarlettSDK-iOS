@@ -18,6 +18,7 @@ NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
                                  requestTimeout:(NSTimeInterval)requestTimeout
                         getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                                            host:(NSString*)host
+                                        isDebug:(BOOL)isDebug
                                 sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate
 {
     NSString *currentApiKey = apiKey;
@@ -27,7 +28,7 @@ NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
         currentApiKey = [SCAEmotionsAnalyzer readApiKeyFromPlist:plistFileName];
     }
     
-    SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:currentApiKey requestTimeout:requestTimeout getAnalysisTimeInterval:getAnalysisTimeInterval host:host sessionDelegate:sessionDelegate];
+    SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:currentApiKey requestTimeout:requestTimeout getAnalysisTimeInterval:getAnalysisTimeInterval host:host isDebug:isDebug sessionDelegate:sessionDelegate];
     
     return emotionsAnalyzerSession;
 }

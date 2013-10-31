@@ -12,11 +12,12 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 @implementation SCAStreamPostManager
 
--(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout
+-(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout isDebug:(BOOL)isDebug
 {
     if(self = [super init])
     {
         self.delegate = delegate;
+        self.isDebug = isDebug;
         self.requestTimeout = requestTimeout;
         self.postData = [[NSMutableData alloc] init];
 
@@ -31,26 +32,6 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     return self;
 }
 
-- (NSString *)generateBoundaryString
-{
-    CFUUIDRef       uuid;
-    CFStringRef     uuidStr;
-    NSString *      result;
-    
-    uuid = CFUUIDCreate(NULL);
-    assert(uuid != NULL);
-    
-    uuidStr = CFUUIDCreateString(NULL, uuid);
-    assert(uuidStr != NULL);
-    
-    result = [NSString stringWithFormat:@"Boundary-%@", uuidStr];
-    
-    CFRelease(uuidStr);
-    CFRelease(uuid);
-    
-    return result;
-}
-
 -(void)startSend:(NSString*)url
 {
     [self startSend:url inputStream:nil];
@@ -58,6 +39,11 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 
 -(void)startSend:(NSString *)url inputStream:(NSInputStream*)inputStream
 {
+    if(self.isDebug)
+    {
+        NSLog(@"startSend %@", url);
+    }
+    
     self.isSending = YES;
     
     NSURL *                 myURL = [NSURL URLWithString:url];
@@ -104,6 +90,11 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 {
     if(self.isSending)
     {
+        if(self.isDebug)
+        {
+            NSLog(@"stopSend");
+        }
+        
         self.isSending = NO;
         
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkForNewPostDataToWrite) object:nil];
@@ -141,7 +132,10 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
 {
     [self.postData appendData:[data copy]];
     
-    NSLog(@"**************** appendPostData %d", [data length]);
+    if(self.isDebug)
+    {
+        NSLog(@"appendPostData %d", [data length]);
+    }
 }
 
 // An NSStream delegate callback that's called when events happen on our
@@ -152,11 +146,17 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     
     switch (eventCode) {
         case NSStreamEventOpenCompleted:
-            NSLog(@"producer stream opened");
+            if(self.isDebug)
+            {
+                NSLog(@"Producer stream opened");
+            }
             break;
             
         case NSStreamEventHasBytesAvailable:
-            assert(NO);     // should never happen for the output stream
+            if(self.isDebug)
+            {
+                NSLog(@"Producer stream has bytes available");
+            }
             break;
             
         case NSStreamEventHasSpaceAvailable:
@@ -164,18 +164,22 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
             break;
             
         case NSStreamEventErrorOccurred:
-            NSLog(@"producer stream error %@", [aStream streamError]);
+            if(self.isDebug)
+            {
+                NSLog(@"Producer stream error %@", [aStream streamError]);
+            }
             [self stopSend];
             [self.delegate streamFailed:@"Stream open error"];
             break;
             
         case NSStreamEventEndEncountered:
-            //assert(NO);     // should never happen for the output stream
-            NSLog(@"producer stream ended");
+            if(self.isDebug)
+            {
+                NSLog(@"Producer stream ended");
+            }
             break;
             
         default:
-            //assert(NO);
             break;
     }
 }
@@ -191,7 +195,10 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     {
         NSUInteger postDataLength = [self.postData length];
         
-        NSLog(@"---------- postDataLength %d --------------", postDataLength);
+        if(self.isDebug)
+        {
+            NSLog(@"postDataLength %d", postDataLength);
+        }
         
         if(postDataLength > 0)
         {
@@ -206,14 +213,9 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
             
             NSUInteger bytesLeft = postDataLength - bytesRead;
             
-            NSLog(@"---------- bytesRead-bytesLeft %d-%d", bytesRead, bytesLeft);
-            NSLog(@"---------- postData %d", [self.postData length]);
-            
             NSData *subData = [self.postData subdataWithRange:NSMakeRange(bytesRead, bytesLeft)];
             
             self.postData = [NSMutableData dataWithData:subData];
-            
-            NSLog(@"---------- postData %d", [self.postData length]);
             
             self.bufferOffset = 0;
             self.bufferLimit  = bytesRead;
@@ -225,7 +227,10 @@ const NSTimeInterval kCheckForNewPostDataToWrite = 2.0;
     {
         NSInteger bytesWritten = [self.producerStream write:&self.buffer[self.bufferOffset] maxLength:self.bufferLimit - self.bufferOffset];
         
-        NSLog(@"---------- bytesWritten %d --------------", bytesWritten);
+        if(self.isDebug)
+        {
+            NSLog(@"bytesWritten %d", bytesWritten);
+        }
         
         if (bytesWritten <= 0)
         {
