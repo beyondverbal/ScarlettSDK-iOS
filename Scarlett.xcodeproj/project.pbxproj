@@ -93,7 +93,6 @@
 		657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAA18214A6F002DA371 /* InfoPlist.strings */; };
 		657FCBB118214A6F002DA371 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBAC18214A6F002DA371 /* main.m */; };
 		657FCBB218214A6F002DA371 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBAC18214A6F002DA371 /* main.m */; };
-		657FCBB318214A6F002DA371 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */; };
 		657FCBB418214A6F002DA371 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */; };
 		657FCBB7182153F7002DA371 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBB6182153F7002DA371 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		657FCBB8182153F7002DA371 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBB6182153F7002DA371 /* OpenUDID.m */; };
@@ -540,7 +539,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657FCBB318214A6F002DA371 /* Scarlett-Info.plist in Resources */,
 				657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */,
 				657FCB9D182149C8002DA371 /* Sample.WAV in Resources */,
 				657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */,

@@ -14,17 +14,17 @@
 \cf0 \
 Overview:\
 \
-	- Scarlett SDK - objective-c library that allows you to stream voice data or WAVE file from iPhone/iPad to Beyond Verbals server to get analysis of the speaker person mood.\
+	- Scarlett SDK - objective-c library that allows you to stream voice data or WAVE file from iPhone/iPad to Beyond Verbals server and get analysis of the speaker person mood.\
 \
-Importing ScarlettSDK into new Project:\
+Importing Scarlett SDK into new Project:\
 \
-	- Copy ScarlettSDK folder into new project.\
+	- Copy Scarlett SDK folder into new project.\
 \
 	- Go to build option and mark OpenUDID.m as -fno-obj-arc\
 \
 Streaming options:\
 \
-	- Continuously stream voice data (e.g. NSData) to server. In this case there is need to call stop session when finished streaming.\
+	- Continuously stream voice data (e.g. NSData) to server. In this case there is need to call stop session when finished streaming or stop streaming data and the stream will stop.\
 \
 	- Stream voice data from WAVE file via NSInputStream. In this case no need to stop stream, it will stop when the file is finished to upload and processingDone will be called.\
 \
@@ -87,6 +87,7 @@ Getting Started:\
 \
     \cf7 		\cf2 SCAEmotionsAnalyzerSession \cf0 *emotionAnalyzerSession = [\cf2 SCAEmotionsAnalyzer\cf0  \cf4 initializeSession\cf0 :sessionParameters \
 																						           \cf4 apiKey\cf0 :\cf7 nil\cf0  \
+																							\cf4 plistFileName\cf0 :\cf6 @"Scarlett-Info.plist"\cf0 \
 																						   \cf4 requestTimeout\cf0 :\cf2 kRequestTimeout\cf0  \
 																				  \cf4 getAnalysisTimeInterval\cf0 :\cf2 kGetAnalysisTimeInterval\cf0  \
 																									 \cf4 host\cf0 :\cf2 kEmotionAnalysisHostBeta\cf0  \
@@ -129,7 +130,7 @@ Getting Started:\
 \
 				[emotionAnalyzerSession \cf4 stopSession\cf0 ];\
 \
-	- When session started and some audio data streamed to server - analysis response received (with analysis time interval):\
+	- When session started and some audio data streamed to server - analysis response will start to received (with analysis time interval):\
 \
 			To get analysis segments - implement the following protocol:\
 			\
@@ -174,7 +175,7 @@ Getting Started:\
 \
 				[emotionAnalyzerSession \cf4 vote\cf0 :\cf7 self\cf0  \cf4 voteScore\cf0 :voteScore \cf4 verbalVote\cf0 :verbalVote \cf4 segment\cf0 :analysisSegment];\
 	\
-			To check if vote succeeded of failed - implement the following protocols:\
+			To check if vote succeed of failed - implement the following protocols:\
 \
 				-(\cf7 void\cf0 )voteSucceed:(\cf2 SCAVoteResult\cf0 *)voteResult\
 				\{\

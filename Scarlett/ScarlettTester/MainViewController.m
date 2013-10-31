@@ -110,7 +110,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
     
     SCASessionParameters *sessionParameters = [[SCASessionParameters alloc] initWithDataFormat:dataFormat recorderInfo:recorderInfo requiredAnalysisTypes:requiredAnalysis];
         
-    self.emotionsAnalyzerSession = [SCAEmotionsAnalyzer initializeSession:sessionParameters apiKey:nil requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta sessionDelegate:self];
+    self.emotionsAnalyzerSession = [SCAEmotionsAnalyzer initializeSession:sessionParameters apiKey:nil plistFileName:@"Scarlett-Info.plist" requestTimeout:kRequestTimeout getAnalysisTimeInterval:kGetAnalysisTimeInterval host:kEmotionAnalysisHostBeta sessionDelegate:self];
     
     [self.emotionsAnalyzerSession startSession];
 }

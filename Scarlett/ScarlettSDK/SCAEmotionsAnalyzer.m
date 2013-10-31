@@ -8,13 +8,13 @@
 
 #import "SCAEmotionsAnalyzer.h"
 
-NSString* const kScarlettPlistFileName = @"Scarlett-Info.plist";
 NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
 
 @implementation SCAEmotionsAnalyzer
 
 +(SCAEmotionsAnalyzerSession*)initializeSession:(SCASessionParameters*)sessionParameters
                                          apiKey:(NSString*)apiKey
+                                  plistFileName:(NSString*)plistFileName
                                  requestTimeout:(NSTimeInterval)requestTimeout
                         getAnalysisTimeInterval:(NSTimeInterval)getAnalysisTimeInterval
                                            host:(NSString*)host
@@ -24,7 +24,7 @@ NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
     
     if(!currentApiKey || [currentApiKey isEqualToString:@""])
     {
-        currentApiKey = [SCAEmotionsAnalyzer readApiKeyFromPlist];
+        currentApiKey = [SCAEmotionsAnalyzer readApiKeyFromPlist:plistFileName];
     }
     
     SCAEmotionsAnalyzerSession *emotionsAnalyzerSession = [[SCAEmotionsAnalyzerSession alloc] initWithSessionParameters:sessionParameters apiKey:currentApiKey requestTimeout:requestTimeout getAnalysisTimeInterval:getAnalysisTimeInterval host:host sessionDelegate:sessionDelegate];
@@ -32,10 +32,10 @@ NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
     return emotionsAnalyzerSession;
 }
 
-+(NSString*)readApiKeyFromPlist
++(NSString*)readApiKeyFromPlist:(NSString*)plistFileName
 {
     // read api key from plist ScarlettApiKey
-    NSString *plistFile = [[NSBundle mainBundle] pathForResource:kScarlettPlistFileName ofType:nil];
+    NSString *plistFile = [[NSBundle mainBundle] pathForResource:plistFileName ofType:nil];
     
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:plistFile];
     
