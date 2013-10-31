@@ -61,7 +61,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
 
 -(void)sendSampleFile
 {
-    self.lblStatus.text = @"Sending Sample.wav file";
+    self.lblStatus.text = @"Sending Sample.wav file...";
     
     NSString *path = [[NSBundle mainBundle] pathForResource:kSampleWavFileName ofType:nil];
     
@@ -184,7 +184,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
     {
         [self stopSession];
         
-        self.lblStatus.text = @"Finished recieving analysis";
+        self.lblStatus.text = @"Finished recieving analysis !";
         self.btnSendSampleFile.enabled = YES;
         self.btnStartStopSession.enabled = YES;
         self.btnStartStopSession.titleLabel.text = @"Start Stream";
@@ -203,14 +203,14 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
     
     if(recordingStarted)
     {
-        self.lblStatus.text = @"Recording";
-        self.btnSendSampleFile.enabled = YES;
+        self.lblStatus.text = @"Recording...";
+        self.btnSendSampleFile.enabled = NO;
         self.btnStartStopSession.enabled = YES;
         self.btnStartStopSession.titleLabel.text = @"Stop Stream";
     }
     else
     {
-        self.lblStatus.text = @"Record Failed";
+        self.lblStatus.text = @"Recording failed";
         self.btnSendSampleFile.enabled = YES;
         self.btnStartStopSession.enabled = YES;
         self.btnStartStopSession.titleLabel.text = @"Start Stream";
@@ -221,10 +221,7 @@ float const kCollectedVoiceDataIntervalMilliseconds = 2000;
 {
     [self.voiceRecorder stopRecording];
     
-    self.lblStatus.text = @"Recording stopped";
-    self.btnSendSampleFile.enabled = YES;
-    self.btnStartStopSession.enabled = YES;
-    self.btnStartStopSession.titleLabel.text = @"Start Stream";
+    self.lblStatus.text = @"Recording stopped, finishing...";
 }
 
 

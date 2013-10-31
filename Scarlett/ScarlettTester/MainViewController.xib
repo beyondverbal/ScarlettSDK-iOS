@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="btnSendSampleFile" destination="5Q6-3g-PxD" id="EOz-P5-fnz"/>
-                <outlet property="btnStartStopSession" destination="Q5k-Rv-ekX" id="LYt-1F-ZvS"/>
+                <outlet property="btnStartStopSession" destination="Q5k-Rv-ekX" id="zd0-OO-Pf9"/>
                 <outlet property="lblStatus" destination="yh7-oO-GRY" id="SuI-Zb-BN5"/>
                 <outlet property="tblAnalysisList" destination="4VS-b9-hpE" id="SqP-QB-6j7"/>
                 <outlet property="view" destination="1" id="3"/>

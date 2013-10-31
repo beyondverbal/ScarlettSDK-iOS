@@ -35,6 +35,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>ScarlettApiKey</key>
-	<string>66c7581c48b54589b046e489fafab19e</string>
+	<string>PUT_SCARLETT_API_KEY_HERE</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 </dict>
 </plist>

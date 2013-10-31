@@ -32,7 +32,6 @@ void AudioInputCallback(void * inUserData,
         return;
     }
     
-    // send notification with recorded data
     NSData *data = [NSData dataWithBytes:inBuffer->mAudioData length:inBuffer->mAudioDataByteSize];
     
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:data forKey:kUpStreamVoiceDataKey];

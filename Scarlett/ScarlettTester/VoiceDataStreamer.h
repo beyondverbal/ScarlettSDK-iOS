@@ -29,4 +29,7 @@ extern NSString* const kUpStreamVoiceDataKey;
  */
 -(id)initWithEmotionsAnalyzerSession:(SCAEmotionsAnalyzerSession*)emotionsAnalyzerSession collectedVoiceDataIntervalMilliseconds:(float)collectedVoiceDataIntervalMilliseconds;
 
+
+-(void)upStreamVoiceDataNotification:(NSNotification*)notification;
+
 @end

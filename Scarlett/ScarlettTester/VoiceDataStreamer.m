@@ -21,6 +21,7 @@ NSString* const kUpStreamVoiceDataKey = @"UpStreamVoiceDataKey";
         _collectedVoiceDataIntervalMilliseconds = collectedVoiceDataIntervalMilliseconds;
         _collectedVoiceData = [[NSMutableData alloc] init];
         
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kUpStreamVoiceDataKey object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(upStreamVoiceDataNotification:)
                                                      name:kUpStreamVoiceDataNotification
@@ -54,6 +55,11 @@ NSString* const kUpStreamVoiceDataKey = @"UpStreamVoiceDataKey";
     {
         _collectedVoiceDataMilliseconds = [SCAMillisecondsUtils getMilliseconds];
     }
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

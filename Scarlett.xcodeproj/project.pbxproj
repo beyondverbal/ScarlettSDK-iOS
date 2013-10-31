@@ -102,6 +102,7 @@
 		657FCBC418216442002DA371 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBC218216442002DA371 /* VoiceRecorder.m */; };
 		657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBC81822531F002DA371 /* ScarlettSDK.rtf */; };
 		657FCBCA1822531F002DA371 /* ScarlettSDK.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBC81822531F002DA371 /* ScarlettSDK.rtf */; };
+		657FCBCB182280E6002DA371 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAD18214A6F002DA371 /* Scarlett-Info.plist */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -539,6 +540,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657FCBCB182280E6002DA371 /* Scarlett-Info.plist in Resources */,
 				657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */,
 				657FCB9D182149C8002DA371 /* Sample.WAV in Resources */,
 				657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */,
