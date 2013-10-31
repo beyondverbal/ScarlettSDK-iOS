@@ -15,6 +15,11 @@
 @property (nonatomic, strong) NSString *summary;
 @property (nonatomic, strong) NSString *vote;
 
+/**
+ * Method name: initWithDictionary
+ * Description: Initialize with dictionary from server response
+ * Parameters:  dictionary - dictionary from server response
+ */
 -(id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

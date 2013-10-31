@@ -21,6 +21,11 @@ extern NSString* const SCARequiredAnalysisMoodGroupSummary;
 
 @property (nonatomic, retain) NSArray *requiredAnalisys;
 
+/**
+ * Method name: initWithRequiredAnalysis
+ * Description: Initialize required analysis types
+ * Parameters:  requiredAnalysis - types for required analysis (such SCARequiredAnalysisTemperValue, SCARequiredAnalysisTemperMeter, ...)
+ */
 -(id)initWithRequiredAnalysis:(NSArray*)requiredAnalysis;
 
 @end

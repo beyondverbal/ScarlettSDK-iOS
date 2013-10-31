@@ -24,6 +24,10 @@
 @property (nonatomic, strong) NSString *twitter_id;
 @property (nonatomic, strong) NSString *device_info;
 
+/**
+ * Method name: toDictionary
+ * Description: Convert parameters to dictionary
+ */
 -(NSMutableDictionary*)toDictionary;
 
 @end

@@ -28,7 +28,16 @@
 @property (nonatomic, strong) VoiceDataStreamer *voiceDataStreamer;
 @property (nonatomic, strong) VoiceRecorder *voiceRecorder;
 
+/**
+ * Method name: btnStartStopSession_Pressed
+ * Description: Start/stop analysis session and then start voice recording
+ */
 -(IBAction)btnStartStopSession_Pressed:(id)sender;
+
+/**
+ * Method name: btnSendSampleFile_Pressed
+ * Description: Send file to the server for analysis
+ */
 -(IBAction)btnSendSampleFile_Pressed:(id)sender;
 
 @end

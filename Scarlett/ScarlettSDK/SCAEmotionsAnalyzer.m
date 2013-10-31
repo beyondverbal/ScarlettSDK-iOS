@@ -22,7 +22,7 @@ NSString* const kScarlettPlistApiKeyName = @"ScarlettApiKey";
 {
     NSString *currentApiKey = apiKey;
     
-    if(!currentApiKey)
+    if(!currentApiKey || [currentApiKey isEqualToString:@""])
     {
         currentApiKey = [SCAEmotionsAnalyzer readApiKeyFromPlist];
     }

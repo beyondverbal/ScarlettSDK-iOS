@@ -16,7 +16,17 @@
 @property (nonatomic, strong) NSString *reason;
 @property (nonatomic, strong) SCAFollowupActions *followupActions;
 
+/**
+ * Method name: initWithDictionary
+ * Description: Initialize with dictionary from server response
+ * Parameters:  dictionary - dictionary from server response
+ */
 -(id)initWithResponseData:(NSData*)responseData;
+
+/**
+ * Method name: isSucceed
+ * Description: Checks if start session succeeded
+ */
 -(BOOL)isSucceed;
 
 @end

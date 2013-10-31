@@ -21,7 +21,17 @@
 @property (nonatomic, strong) NSString *sessionStatus;
 @property (nonatomic, strong) NSMutableArray *analysisSegments;
 
+/**
+ * Method name: initWithResponseData
+ * Description: Initialize with response from server
+ * Parameters:  responseData - response data from server
+ */
 -(id)initWithResponseData:(NSData*)responseData;
+
+/**
+ * Method name: isSessionStatusDone
+ * Description: Checks if session status Done processing audio data
+ */
 -(BOOL)isSessionStatusDone;
 
 @end

@@ -36,10 +36,40 @@ enum
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) id<SCAStreamPostManagerDelegate> delegate;
 
+/**
+ * Method name: initWithDelegate
+ * Description: Initialize stream post manager object responsible of streaming audio data to server
+ * Parameters:  delegate - delegate object that responds to streaming events
+ *              requestTimeout - timeout for the request
+ */
 -(id)initWithDelegate:(id<SCAStreamPostManagerDelegate>)delegate requestTimeout:(NSTimeInterval)requestTimeout;
+
+/**
+ * Method name: startSend
+ * Description: Initialize voice data streaming
+ * Parameters:  url - request url to stream voice data
+ */
 -(void)startSend:(NSString*)url;
+
+/**
+ * Method name: startSend
+ * Description: Initialize stream from file (or any other input stream)
+ * Parameters:  url - request url to stream voice data
+ *              inputStream - input stream (can use to stream from file)
+ */
 -(void)startSend:(NSString *)url inputStream:(NSInputStream*)inputStream;
+
+/**
+ * Method name: stopSend
+ * Description: Stops streaming the data
+ */
 -(void)stopSend;
+
+/**
+ * Method name: appendPostData
+ * Description: Adds voice data to stream
+ * Parameters:  data - new voice data
+ */
 -(void)appendPostData:(NSData*)data;
 
 @end

@@ -13,6 +13,10 @@
 @property (nonatomic) double x;
 @property (nonatomic) double y;
 
+/**
+ * Method name: toDictionary
+ * Description: Convert parameters to dictionary
+ */
 -(NSMutableDictionary*)toDictionary;
 
 @end

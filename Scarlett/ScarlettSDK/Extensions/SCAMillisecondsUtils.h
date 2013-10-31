@@ -11,6 +11,10 @@
 
 @interface SCAMillisecondsUtils : NSObject
 
+/**
+ * Method name: getMilliseconds
+ * Description: Get current time milliseconds
+ */
 +(float)getMilliseconds;
 
 @end

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @protocol SCAUrlRequestDelegate <NSObject>
+
 -(void)loadUrlSucceed:(NSData*)responseData;
 -(void)loadUrlFailed:(NSError*)error;
+
 @end

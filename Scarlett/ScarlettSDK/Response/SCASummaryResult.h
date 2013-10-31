@@ -21,6 +21,11 @@
 @property (nonatomic, strong) NSString *sessionStatus;
 @property (nonatomic, strong) SCASummaryCollection *summaryCollection;
 
+/**
+ * Method name: initWithResponseData
+ * Description: Initialize with response from server
+ * Parameters:  responseData - response data from server
+ */
 -(id)initWithResponseData:(NSData*)responseData;
 
 @end

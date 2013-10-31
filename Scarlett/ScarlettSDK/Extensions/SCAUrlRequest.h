@@ -14,6 +14,15 @@
 @property (nonatomic, weak) id<SCAUrlRequestDelegate> delegate;
 @property (nonatomic, strong) NSMutableData *responseData;
 
+/**
+ * Method name: loadWithUrl
+ * Description: Initialize url request
+ * Parameters:  url - request url
+ *              body - request body (json parameters)
+ *              isStream - choose between json and stream request
+ *              httpMethod - POST or GET
+ *              delegate - delegate object that responds to request events
+ */
 -(void)loadWithUrl:(NSString*)url
               body:(NSData*)body
    timeoutInterval:(NSTimeInterval)timeoutInterval

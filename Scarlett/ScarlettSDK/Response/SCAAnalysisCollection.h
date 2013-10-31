@@ -19,6 +19,11 @@
 @property (nonatomic, strong) SCACompositStringAnalysis *compositMood;
 @property (nonatomic, strong) SCACompositStringAnalysis *moodGroup;
 
+/**
+ * Method name: initWithDictionary
+ * Description: Initialize with dictionary from server response
+ * Parameters:  dictionary - dictionary from server response
+ */
 -(id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

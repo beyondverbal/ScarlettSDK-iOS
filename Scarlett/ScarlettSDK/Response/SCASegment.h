@@ -15,6 +15,11 @@
 @property (nonatomic) unsigned long duration;
 @property (nonatomic, strong) SCAAnalysisCollection *analysis;
 
+/**
+ * Method name: initWithDictionary
+ * Description: Initialize with dictionary from server response
+ * Parameters:  dictionary - dictionary from server response
+ */
 -(id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

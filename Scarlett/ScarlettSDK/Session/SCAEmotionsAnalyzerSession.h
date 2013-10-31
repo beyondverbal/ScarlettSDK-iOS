@@ -59,13 +59,64 @@
                           host:(NSString*)host
                sessionDelegate:(id<SCAEmotionsAnalyzerSessionDelegate>)sessionDelegate;
 
+/**
+ * Method name: startSession
+ * Description: Starts the session
+ */
 -(void)startSession;
+
+/**
+ * Method name: stopSession
+ * Description: Stops the session (call this function when finished streaming voice data)
+ */
 -(void)stopSession;
+
+/**
+ * Method name: analyzeVoiceData
+ * Description: Stream voice data to server
+ * Parameters:  voiceData - coice data to stream
+ */
 -(void)analyzeVoiceData:(NSData*)voiceData;
+
+/**
+ * Method name: analyzeInputStream
+ * Description: Stream file via input stream
+ * Parameters:  inputStream - input stream (can be used to stream from file)
+ */
 -(void)analyzeInputStream:(NSInputStream*)inputStream;
+
+/**
+ * Method name: getSummary
+ * Description: Get summary for the analysis
+ * Parameters:  summaryDelegate - delegate object that responds to summary events
+ */
 -(void)getSummary:(id<SCAEmotionsAnalyzerSummaryDelegate>)summaryDelegate;
+
+/**
+ * Method name: vote
+ * Description: Vote for the analysis
+ * Parameters:  voteDelegate - delegate object that responds to vote events
+ *              voteScore - voting score (0 - wrong analysis, 1 - correct analysis
+ */
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore;
+
+/**
+ * Method name: vote
+ * Description: Vote for the analysis
+ * Parameters:  voteDelegate - delegate object that responds to vote events
+ *              voteScore - voting score (0 - wrong analysis, 1 - correct analysis
+ *              verbalVote - verbal text
+ */
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote;
+
+/**
+ * Method name: vote
+ * Description: Vote for the analysis
+ * Parameters:  voteDelegate - delegate object that responds to vote events
+ *              voteScore - voting score (0 - wrong analysis, 1 - correct analysis
+ *              verbalVote - verbal text
+ *              segment - analysis segment that you vote about
+ */
 -(void)vote:(id<SCAEmotionsAnalyzerVoteDelegate>)voteDelegate voteScore:(int)voteScore verbalVote:(NSString*)verbalVote segment:(SCASegment*)segment;
 
 @end

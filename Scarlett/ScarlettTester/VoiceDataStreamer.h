@@ -21,6 +21,12 @@ extern NSString* const kUpStreamVoiceDataKey;
     float _collectedVoiceDataMilliseconds;
 }
 
+/**
+ * Method name: initWithEmotionsAnalyzerSession
+ * Description: Initialize voice streamer
+ * Parameters:  emotionsAnalyzerSession - current analysis session
+ *              collectedVoiceDataIntervalMilliseconds - time interval to send collected voice data to server
+ */
 -(id)initWithEmotionsAnalyzerSession:(SCAEmotionsAnalyzerSession*)emotionsAnalyzerSession collectedVoiceDataIntervalMilliseconds:(float)collectedVoiceDataIntervalMilliseconds;
 
 @end

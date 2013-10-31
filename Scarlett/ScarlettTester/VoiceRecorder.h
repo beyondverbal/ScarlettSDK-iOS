@@ -29,8 +29,23 @@ typedef struct
     RecordState recordState;
 }
 
+/**
+ * Method name: isRecording
+ * Description: Check if recording
+ */
 -(BOOL)isRecording;
+
+/**
+ * Method name: startRecording
+ * Description: Start recording
+ * Parameters:  streamingVoiceData - YES when streaming voice data, NO - when about to upload file
+ */
 -(BOOL)startRecording:(BOOL)streamingVoiceData;
+
+/**
+ * Method name: stopRecording
+ * Description: Stop the recording
+ */
 -(void)stopRecording;
 
 @end
