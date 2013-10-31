@@ -101,6 +101,8 @@
 		657FCBC018215856002DA371 /* VoiceDataStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBBE18215856002DA371 /* VoiceDataStreamer.m */; };
 		657FCBC318216442002DA371 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBC218216442002DA371 /* VoiceRecorder.m */; };
 		657FCBC418216442002DA371 /* VoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBC218216442002DA371 /* VoiceRecorder.m */; };
+		657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBC81822531F002DA371 /* ScarlettSDK.rtf */; };
+		657FCBCA1822531F002DA371 /* ScarlettSDK.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBC81822531F002DA371 /* ScarlettSDK.rtf */; };
 		65C5F57F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5811813B2BF0012328F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5801813B2BF0012328F /* CoreGraphics.framework */; };
 		65C5F5831813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
@@ -220,6 +222,7 @@
 		657FCBBE18215856002DA371 /* VoiceDataStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceDataStreamer.m; sourceTree = "<group>"; };
 		657FCBC118216442002DA371 /* VoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorder.h; sourceTree = "<group>"; };
 		657FCBC218216442002DA371 /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
+		657FCBC81822531F002DA371 /* ScarlettSDK.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ScarlettSDK.rtf; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -456,6 +459,7 @@
 				657FCAE6182149C8002DA371 /* ScarlettSDK */,
 				657FCB3D182149C8002DA371 /* ScarlettTester */,
 				657FCBA818214A51002DA371 /* Supporting Files */,
+				657FCBC81822531F002DA371 /* ScarlettSDK.rtf */,
 			);
 			path = Scarlett;
 			sourceTree = "<group>";
@@ -537,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				657FCBB318214A6F002DA371 /* Scarlett-Info.plist in Resources */,
+				657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */,
 				657FCB9D182149C8002DA371 /* Sample.WAV in Resources */,
 				657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */,
 				657FCB97182149C8002DA371 /* DetailsViewController.xib in Resources */,
@@ -549,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				657FCBB418214A6F002DA371 /* Scarlett-Info.plist in Resources */,
+				657FCBCA1822531F002DA371 /* ScarlettSDK.rtf in Resources */,
 				657FCB9E182149C8002DA371 /* Sample.WAV in Resources */,
 				657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */,
 				657FCB98182149C8002DA371 /* DetailsViewController.xib in Resources */,

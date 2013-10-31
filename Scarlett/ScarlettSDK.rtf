@@ -1,5 +1,192 @@
-{\rtf1\ansi\ansicpg1252\cocoartf949
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red63\green110\blue116;\red46\green13\blue110;\red38\green71\blue75;
+\red28\green0\blue207;\red196\green26\blue22;\red170\green13\blue145;\red0\green116\blue0;\red92\green38\blue153;
+}
 \margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\fs24 \cf0 \
+\pard\tx529\pardeftab529\pardirnatural\qc
+
+\f1\fs22 \cf0 \CocoaLigature0 Scarlett SDK\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+Overview:\
+\
+	- Scarlett SDK - objective-c library that allows you to stream voice data or WAVE file from iPhone/iPad to Beyond Verbals server to get analysis of the speaker person mood.\
+\
+Importing ScarlettSDK into new Project:\
+\
+	- Copy ScarlettSDK folder into new project.\
+\
+	- Go to build option and mark OpenUDID.m as -fno-obj-arc\
+\
+Streaming options:\
+\
+	- Continuously stream voice data (e.g. NSData) to server. In this case there is need to call stop session when finished streaming.\
+\
+	- Stream voice data from WAVE file via NSInputStream. In this case no need to stop stream, it will stop when the file is finished to upload and processingDone will be called.\
+\
+Getting Started:\
+\
+	- Register on Beyond Verbal site and get API key.\
+\
+	- Open Scarlett-Info.plist and insert API key in ScarlettApiKey section.\
+\
+	- Choose what audio format you want to stream:\
+\
+		Streaming PCM voice data:\
+		\
+			\cf2 SCABaseDataFormat\cf0  *dataFormat = [[\cf2 SCAPcmDataFormat\cf0  \cf3 alloc\cf0 ] \cf4 initWithSampleRate\cf0 :\cf5 8000\cf0  \cf4 bitsPerSample\cf0 :\cf5 16\cf0  \cf4 channels\cf0 :\cf5 1\cf0 ];\
+\
+		Streaming WAVE file:\
+			\
+			\cf2 SCABaseDataFormat\cf0  *dataFormat = [[\cf2 SCAWavDataFormat\cf0  \cf3 alloc\cf0 ] \cf4 initWithSampleRate\cf0 :\cf5 8000\cf0  \cf4 bitsPerSample\cf0 :\cf5 16\cf0  \cf4 channels\cf0 :\cf5 1\cf0 ];
+\f0\fs24 \CocoaLigature1 \
+
+\f1\fs22 \CocoaLigature0  \
+	- Initialize information about recorder:\
+           \
+			\cf2 SCARecorderInfo\cf0  *recorderInfo = [[\cf2 SCARecorderInfo\cf0  \cf3 alloc\cf0 ] \cf3 init\cf0 ];\
+    \
+           	recorderInfo.\cf2 ip\cf0  = \cf6 @""\cf0 ;\
+           	recorderInfo.\cf2 coordinates\cf0  = \cf7 nil\cf0 ;\
+           	recorderInfo.\cf2 gender\cf0  = \cf7 nil\cf0 ;\
+           	recorderInfo.\cf2 email\cf0  = \cf6 @"some@email.com"\cf0 ;\
+           	recorderInfo.\cf2 phone\cf0  = \cf6 @"0505005005"\cf0 ;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0             recorderInfo.\cf2 facebook_id\cf0  = \cf6 @"1111111"\cf0 ;\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0            	recorderInfo.\cf2 twitter_id\cf0  = \cf6 @"2222222"\cf0 ;\
+           	recorderInfo.\cf2 device_info\cf0  = \cf6 @"iPhone"\cf0 ;\
+	 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 	\CocoaLigature1 - Initialize required analysis types:\CocoaLigature0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+            \cf2 SCARequiredAnalysis\cf0  *requiredAnalysis = [[\cf2 SCARequiredAnalysis\cf0  \cf3 alloc\cf0 ] \cf4 initWithRequiredAnalysis\cf0 :\cf5 @[\cf2 SCARequiredAnalysisTemperValue\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisTemperMeter\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisComposureMeter\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisCooperationLevel\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisServiceScore\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisCompositMood\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisMoodGroup\cf0 ,\
+                                                                                                    	   \cf2 SCARequiredAnalysisMoodGroupSummary\cf5 ]\cf0 ];\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 	\CocoaLigature1 - Initialize session parameters:
+\f0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 	\
+	
+\f1\fs22 \CocoaLigature0        \cf2 SCASessionParameters\cf0  *sessionParameters = [[\cf2 SCASessionParameters\cf0  \cf3 alloc\cf0 ] \cf4 initWithDataFormat\cf0 :dataFormat \cf4 recorderInfo\cf0 :recorderInfo \cf4 requiredAnalysisTypes\cf0 :requiredAnalysis];\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0         \
+	- Initialize analyzer session:\
+\
+    \cf7 		\cf2 SCAEmotionsAnalyzerSession \cf0 *emotionAnalyzerSession = [\cf2 SCAEmotionsAnalyzer\cf0  \cf4 initializeSession\cf0 :sessionParameters \
+																						           \cf4 apiKey\cf0 :\cf7 nil\cf0  \
+																						   \cf4 requestTimeout\cf0 :\cf2 kRequestTimeout\cf0  \
+																				  \cf4 getAnalysisTimeInterval\cf0 :\cf2 kGetAnalysisTimeInterval\cf0  \
+																									 \cf4 host\cf0 :\cf2 kEmotionAnalysisHostBeta\cf0  \
+																						  \cf4 sessionDelegate\cf0 :\cf7 self\cf0 ];\
+	- Start analysis session:\
+    \
+				[emotionAnalyzerSession \cf4 startSession\cf0 ];\
+\
+			To know if session start succeed or failed - implement the following protocol:\
+\
+				-(\cf7 void\cf0 )startSessionSucceed\
+				\{\
+					\cf8 // start recording and sending recorded voice data or send WAVE file\cf0 \
+				\}\
+\
+				-(\cf7 void\cf0 )startSessionFailed:(\cf9 NSString\cf0 *)errorDescription\
+				\{\
+					\cf8 // display error\cf0 \
+				\}\
+\
+	- When starting session succeed - start recording audio and send recording data to analysis server by calling:\
+\
+				[emotionAnalyzerSession \cf4 analyzeVoiceData\cf0 :newVoiceData];\
+\
+			Alternatively initialize NSInputStream to stream WAVE file:\
+\
+				\cf9 NSInputStream\cf0  *inputStream = [[\cf9 NSInputStream\cf0  \cf3 alloc\cf0 ] \cf3 initWithFileAtPath\cf0 :path];\
+\
+				[emotionAnalyzerSession \cf4 analyzeInputStream\cf0 :inputStream];\
+	\
+			Implement the following protocol to know when stream is done:\
+\
+				-(\cf7 void\cf0 )processingDone\
+				\{\
+    \cf7 				\cf8 // finished upload file or stream closed - stop recording and sending voice data\cf0 \
+				\}\
+\
+\
+	- When streaming voice data - need to call stop session when finished streaming:\
+\
+				[emotionAnalyzerSession \cf4 stopSession\cf0 ];\
+\
+	- When session started and some audio data streamed to server - analysis response received (with analysis time interval):\
+\
+			To get analysis segments - implement the following protocol:\
+			\
+				-(\cf7 void\cf0 )newAnalysis:(\cf2 SCAAnalysisResult\cf0 *)analysisResult\
+				\{\
+        			\cf9 NSArray\cf0  *analysisSegments = analysisResult.\cf2 analysisSegments\cf0 ;\
+        \
+        			\cf7 for\cf0  (\cf2 SCASegment\cf0  *segment \cf7 in\cf0  analysisSegments)\
+        			\{\
+            			\cf8 // populate list with analysis segments\cf0 \
+        			\}\
+				\}\
+			\
+\
+	- At any time after receiving at least one analysis response it's possible to get summary analysis:\
+\
+				[emotionAnalyzerSession \cf4 getSummary\cf0 :\cf7 self\cf0 ];\
+\
+			To get summary results - implement the following protocols:\
+\
+				-(\cf7 void\cf0 )getSummarySucceed:(\cf2 SCASummaryResult\cf0 *)summaryResult\
+				\{\
+					\cf2 SCASummaryCollection\cf0  *summaryCollection = summaryResult.\cf2 summaryCollection\cf0 ;\
+				\}\
+\
+				-(\cf7 void\cf0 )getSummaryFailed:(\cf9 NSString\cf0 *)errorDescription\
+				\{\
+					\cf8 // display error\cf0 \
+				\}\
+\
+	- At any time after receiving at least one analysis response it's possible to call vote for analysis segment or general vote:\
+\
+			General vote:\
+\
+				[emotionAnalyzerSession \cf4 vote\cf0 :\cf7 self\cf0  \cf4 voteScore\cf0 :voteScore];\
+\
+			Vote with text:\
+\
+				[emotionAnalyzerSession \cf4 vote\cf0 :\cf7 self\cf0  \cf4 voteScore\cf0 :voteScore \cf4 verbalVote\cf0 :verbalVote];\
+\
+			Vote with text for specific analysis segment:\
+\
+				[emotionAnalyzerSession \cf4 vote\cf0 :\cf7 self\cf0  \cf4 voteScore\cf0 :voteScore \cf4 verbalVote\cf0 :verbalVote \cf4 segment\cf0 :analysisSegment];\
+	\
+			To check if vote succeeded of failed - implement the following protocols:\
+\
+				-(\cf7 void\cf0 )voteSucceed:(\cf2 SCAVoteResult\cf0 *)voteResult\
+				\{\
+					\cf9 NSString\cf0  *result = voteResult.\cf2 result\cf0 ;\
+				\}\
+\
+				-(\cf7 void\cf0 )voteFailed:(\cf9 NSString\cf0 *)errorDescription\
+				\{\
+					\cf8 // display error\cf0 \
+				\}			\
+			
+\f0\fs24 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
 }
