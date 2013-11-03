@@ -87,8 +87,6 @@
 		657FCB9A182149C8002DA371 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCB44182149C8002DA371 /* MainViewController.m */; };
 		657FCB9B182149C8002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB45182149C8002DA371 /* MainViewController.xib */; };
 		657FCB9C182149C8002DA371 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB45182149C8002DA371 /* MainViewController.xib */; };
-		657FCB9D182149C8002DA371 /* Sample.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB46182149C8002DA371 /* Sample.WAV */; };
-		657FCB9E182149C8002DA371 /* Sample.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 657FCB46182149C8002DA371 /* Sample.WAV */; };
 		657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAA18214A6F002DA371 /* InfoPlist.strings */; };
 		657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657FCBAA18214A6F002DA371 /* InfoPlist.strings */; };
 		657FCBB118214A6F002DA371 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FCBAC18214A6F002DA371 /* main.m */; };
@@ -109,6 +107,8 @@
 		65C5F78218140C0A0012328F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F78118140C090012328F /* AudioToolbox.framework */; };
 		720DD96A1826670100DE71A8 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 720DD9691826670100DE71A8 /* Scarlett-Info.plist */; };
 		720DD96B1826670100DE71A8 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 720DD9691826670100DE71A8 /* Scarlett-Info.plist */; };
+		720DD9701826692500DE71A8 /* Sample.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 720DD96F1826692500DE71A8 /* Sample.WAV */; };
+		720DD9711826692500DE71A8 /* Sample.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 720DD96F1826692500DE71A8 /* Sample.WAV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,7 +211,6 @@
 		657FCB43182149C8002DA371 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		657FCB44182149C8002DA371 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		657FCB45182149C8002DA371 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		657FCB46182149C8002DA371 /* Sample.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Sample.WAV; sourceTree = "<group>"; };
 		657FCBAB18214A6F002DA371 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		657FCBAC18214A6F002DA371 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		657FCBAE18214A6F002DA371 /* Scarlett-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Scarlett-Prefix.pch"; sourceTree = "<group>"; };
@@ -229,6 +228,7 @@
 		65C5F59C1813B2BF0012328F /* ScarlettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScarlettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F78118140C090012328F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		720DD9691826670100DE71A8 /* Scarlett-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Scarlett-Info.plist"; sourceTree = "<group>"; };
+		720DD96F1826692500DE71A8 /* Sample.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Sample.WAV; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,7 +400,7 @@
 				657FCBBE18215856002DA371 /* VoiceDataStreamer.m */,
 				657FCBC118216442002DA371 /* VoiceRecorder.h */,
 				657FCBC218216442002DA371 /* VoiceRecorder.m */,
-				657FCB46182149C8002DA371 /* Sample.WAV */,
+				720DD96F1826692500DE71A8 /* Sample.WAV */,
 			);
 			path = ScarlettTester;
 			sourceTree = "<group>";
@@ -540,8 +540,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				720DD9701826692500DE71A8 /* Sample.WAV in Resources */,
 				657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */,
-				657FCB9D182149C8002DA371 /* Sample.WAV in Resources */,
 				720DD96A1826670100DE71A8 /* Scarlett-Info.plist in Resources */,
 				657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */,
 				657FCB97182149C8002DA371 /* DetailsViewController.xib in Resources */,
@@ -553,8 +553,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				720DD9711826692500DE71A8 /* Sample.WAV in Resources */,
 				657FCBCA1822531F002DA371 /* ScarlettSDK.rtf in Resources */,
-				657FCB9E182149C8002DA371 /* Sample.WAV in Resources */,
 				720DD96B1826670100DE71A8 /* Scarlett-Info.plist in Resources */,
 				657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */,
 				657FCB98182149C8002DA371 /* DetailsViewController.xib in Resources */,
