@@ -1,4 +1,3 @@
-
 Scarlett SDK
 ============
 
@@ -108,12 +107,14 @@ Getting Started:
         			}
         }
 
+Analysis Summary
+----------------
 
-  At any time after receiving at least one analysis response it's possible to get summary analysis:
+   At any time after receiving at least one analysis response it's possible to get summary analysis:
 
         [emotionAnalyzerSession getSummary:self];
 
-	To get summary results - implement the following protocols:
+   To get summary results - implement the following protocols:
 
         (void)getSummarySucceed:(SCASummaryResult*)summaryResult
         {
@@ -125,21 +126,24 @@ Getting Started:
         	// display error
         }
 
-  At any time after receiving at least one analysis response it's possible to call vote for analysis segment or general vote:
+Analysis Voting
+---------------
 
-	General vote:
+At any time after receiving at least one analysis response it's possible to call vote for analysis segment or general vote:
+
+General vote:
 
       [emotionAnalyzerSession vote:self voteScore:voteScore];
 
-	Vote with text:
+Vote with text:
 
       [emotionAnalyzerSession vote:self voteScore:voteScore verbalVote:verbalVote];
 
-	Vote with text for specific analysis segment:
+Vote with text for specific analysis segment:
 
       [emotionAnalyzerSession vote:self voteScore:voteScore verbalVote:verbalVote segment:analysisSegment];
 	
-	To check if vote succeed of failed - implement the following protocols:
+To check if vote succeed of failed - implement the following protocols:
 
       (void)voteSucceed:(SCAVoteResult*)voteResult
       {
