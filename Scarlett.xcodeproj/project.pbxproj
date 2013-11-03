@@ -107,6 +107,8 @@
 		65C5F59F1813B2BF0012328F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F57E1813B2BF0012328F /* Foundation.framework */; };
 		65C5F5A01813B2BF0012328F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F5821813B2BF0012328F /* UIKit.framework */; };
 		65C5F78218140C0A0012328F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5F78118140C090012328F /* AudioToolbox.framework */; };
+		720DD96A1826670100DE71A8 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 720DD9691826670100DE71A8 /* Scarlett-Info.plist */; };
+		720DD96B1826670100DE71A8 /* Scarlett-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 720DD9691826670100DE71A8 /* Scarlett-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,13 +222,13 @@
 		657FCBC118216442002DA371 /* VoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorder.h; sourceTree = "<group>"; };
 		657FCBC218216442002DA371 /* VoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorder.m; sourceTree = "<group>"; };
 		657FCBC81822531F002DA371 /* ScarlettSDK.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ScarlettSDK.rtf; sourceTree = "<group>"; };
-		657FCBCC182293C6002DA371 /* Scarlett-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Scarlett-Info.plist"; sourceTree = "<group>"; };
 		65C5F57B1813B2BF0012328F /* Scarlett.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scarlett.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F57E1813B2BF0012328F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65C5F5801813B2BF0012328F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		65C5F5821813B2BF0012328F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		65C5F59C1813B2BF0012328F /* ScarlettTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScarlettTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C5F78118140C090012328F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		720DD9691826670100DE71A8 /* Scarlett-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Scarlett-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,7 +411,7 @@
 				657FCBA918214A6F002DA371 /* en.lproj */,
 				657FCBAC18214A6F002DA371 /* main.m */,
 				657FCBAE18214A6F002DA371 /* Scarlett-Prefix.pch */,
-				657FCBCC182293C6002DA371 /* Scarlett-Info.plist */,
+				720DD9691826670100DE71A8 /* Scarlett-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -540,6 +542,7 @@
 			files = (
 				657FCBC91822531F002DA371 /* ScarlettSDK.rtf in Resources */,
 				657FCB9D182149C8002DA371 /* Sample.WAV in Resources */,
+				720DD96A1826670100DE71A8 /* Scarlett-Info.plist in Resources */,
 				657FCBAF18214A6F002DA371 /* InfoPlist.strings in Resources */,
 				657FCB97182149C8002DA371 /* DetailsViewController.xib in Resources */,
 				657FCB9B182149C8002DA371 /* MainViewController.xib in Resources */,
@@ -552,6 +555,7 @@
 			files = (
 				657FCBCA1822531F002DA371 /* ScarlettSDK.rtf in Resources */,
 				657FCB9E182149C8002DA371 /* Sample.WAV in Resources */,
+				720DD96B1826670100DE71A8 /* Scarlett-Info.plist in Resources */,
 				657FCBB018214A6F002DA371 /* InfoPlist.strings in Resources */,
 				657FCB98182149C8002DA371 /* DetailsViewController.xib in Resources */,
 				657FCB9C182149C8002DA371 /* MainViewController.xib in Resources */,
